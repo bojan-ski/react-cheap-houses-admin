@@ -1,0 +1,454 @@
+/* BOOTSTRAP */
+@import "/node_modules/bootstrap/dist/css/bootstrap.css";
+
+/* GOOGLE FONT - POPPINS */
+@import url("https://fonts.googleapis.com/css2?family=Limelight&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* GOOGLE FONT - POPPINS */
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+/* ---------- GENERAL ---------- */
+:root {
+  /* colors */
+  --orange-color: rgb(255, 169, 32);
+  --dark-orange-color: rgb(226, 151, 31);
+  --dark-color: rgb(18, 10, 33);
+  --light-gray-color: rgb(229, 229, 234);
+  --gray-color: rgb(142, 142, 147);
+  --dark-gray-color: rgba(255, 255, 255, 0.1);
+
+  /* shadow */
+  --light-dark-shadow: 0px 4px 26px 0px rgba(66, 71, 76, 0.07);
+
+  /* transition */
+  --transition-ease: all 0.3s ease;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fafafa;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  font-family: "Mulish", sans-serif;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+textarea {
+  resize: none;
+}
+
+.text-orange,
+.text-orange-hover {
+  color: var(--orange-color);
+  transition: var(--transition-ease);
+}
+
+.text-orange-hover:hover {
+  color: var(--dark-orange-color);
+  transition: var(--transition-ease);
+}
+
+.bg-orange,
+.bg-orange-hover {
+  background-color: var(--orange-color);
+  transition: var(--transition-ease);
+}
+
+.bg-orange-hover:hover {
+  background-color: var(--dark-orange-color);
+  transition: var(--transition-ease);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--orange-color);
+  box-shadow: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* -------------------- APP (SHARED) COMPONENTS -------------------- */
+/* LOADER (PRELOAD) - LOADING PAGE */
+.preload {
+  overflow: hidden;
+}
+
+.preload-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 99999999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.boxes {
+  --size: 32px;
+  --duration: 800ms;
+  height: calc(var(--size) * 2);
+  width: calc(var(--size) * 3);
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  margin-top: calc(var(--size) * 1.5 * -1);
+  transform: rotateX(60deg) rotateZ(45deg) rotateY(0deg) translateZ(0px);
+}
+
+.boxes .box {
+  width: var(--size);
+  height: var(--size);
+  top: 0;
+  left: 0;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.boxes .box:nth-child(1) {
+  transform: translate(100%, 0);
+  animation: box1 var(--duration) linear infinite;
+}
+
+.boxes .box:nth-child(2) {
+  transform: translate(0, 100%);
+  animation: box2 var(--duration) linear infinite;
+}
+
+.boxes .box:nth-child(3) {
+  transform: translate(100%, 100%);
+  animation: box3 var(--duration) linear infinite;
+}
+
+.boxes .box:nth-child(4) {
+  transform: translate(200%, 0);
+  animation: box4 var(--duration) linear infinite;
+}
+
+.boxes .box > div {
+  --background: rgb(255, 169, 32);
+  --top: auto;
+  --right: auto;
+  --bottom: auto;
+  --left: auto;
+  --translateZ: calc(var(--size) / 2);
+  --rotateY: 0deg;
+  --rotateX: 0deg;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  top: var(--top);
+  right: var(--right);
+  bottom: var(--bottom);
+  left: var(--left);
+  transform: rotateY(var(--rotateY)) rotateX(var(--rotateX))
+    translateZ(var(--translateZ));
+}
+
+.boxes .box > div:nth-child(1) {
+  --top: 0;
+  --left: 0;
+}
+
+.boxes .box > div:nth-child(2) {
+  --background: rgb(211, 129, 0);
+  --right: 0;
+  --rotateY: 90deg;
+}
+
+.boxes .box > div:nth-child(3) {
+  --background: rgb(255, 159, 7);
+  --rotateX: -90deg;
+}
+
+.boxes .box > div:nth-child(4) {
+  --background: #dbe3f4;
+  --top: 0;
+  --left: 0;
+  --translateZ: calc(var(--size) * 3 * -1);
+}
+
+@keyframes box1 {
+  0%,
+  50% {
+    transform: translate(100%, 0);
+  }
+  100% {
+    transform: translate(200%, 0);
+  }
+}
+@keyframes box2 {
+  0% {
+    transform: translate(0, 100%);
+  }
+  50% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100%, 0);
+  }
+}
+@keyframes box3 {
+  0%,
+  50% {
+    transform: translate(100%, 100%);
+  }
+  100% {
+    transform: translate(0, 100%);
+  }
+}
+@keyframes box4 {
+  0% {
+    transform: translate(200%, 0);
+  }
+  50% {
+    transform: translate(200%, 100%);
+  }
+  100% {
+    transform: translate(100%, 100%);
+  }
+}
+
+/* SPINNER */
+.spinner img {
+  height: 100px;
+}
+
+/* SWIPER */
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.swiper-slide img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: var(--transition-ease);
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #fff !important;
+  opacity: 0 !important;
+  transition: var(--transition-ease);
+}
+
+.swiper-pagination {
+  opacity: 0 !important;
+  transition: var(--transition-ease);
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active.swiper-pagination-bullet-active-main {
+  background-color: #fff;
+}
+
+.swiper:hover .swiper-button-prev,
+.swiper:hover .swiper-button-next,
+.swiper:hover .swiper-pagination {
+  opacity: 1 !important;
+  transition: var(--transition-ease);
+}
+
+.swiper:hover .swiper-button-prev.swiper-button-disabled,
+.swiper:hover .swiper-button-next.swiper-button-disabled {
+  opacity: 0.35 !important;
+}
+
+.swiper:hover .swiper-slide img {
+  filter: brightness(85%);
+  transition: var(--transition-ease);
+}
+
+/* PAGINATION */
+.pagination .number-of-pages p {
+  font-size: 18px;
+}
+
+.pagination-btn-container button {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid var(--orange-color);
+}
+
+.pagination-btn-container button svg polyline {
+  color: #000;
+}
+
+.pagination-btn-container button:hover {
+  background-color: var(--orange-color);
+}
+
+.pagination-btn-container button:hover svg polyline {
+  color: #fff;
+}
+
+/* -------------------- APP COMPONENTS -------------------- */
+/* ---------- HEADER ---------- */
+#header {
+  background-color: #fff;
+}
+
+/* NavbarUserOnboarding component */
+#header .user-onboarding .navbar-brand img {
+  width: 197px;
+  height: 48px;
+}
+
+#header .user-onboarding .header-btn-container,
+#header .user-onboarding .header-btn-container button {
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+#header .user-onboarding .header-btn-container .display-signUp-modal:hover,
+#header .user-onboarding .header-btn-container .display-logIn-modal:hover {
+  color: var(--orange-color);
+  transition: all 0.3s ease;
+}
+
+/* NavbarNavigation component */
+#header .navbar .home-btn {
+  padding: 15px 18px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+#header .navbar .home-btn:hover {
+  transition: all 0.3s ease;
+}
+
+#header .navbar .navbar-toggler {
+  color: var(--orange-color);
+}
+
+#header .navbar .navbar-nav {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  #header .navbar .navbar-nav {
+    width: 75%;
+  }
+}
+
+@media (min-width: 992px) {
+  #header .navbar .navbar-nav {
+    width: 50%;
+  }
+}
+
+#header .navbar .navbar-nav .nav-item a {
+  color: var(--dark-color);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  #header .navbar .navbar-nav .nav-item {
+    text-align: center;
+    margin: 10px 0;
+  }
+}
+
+#header .navbar .navbar-nav .nav-item a:hover,
+#header .navbar .navbar-nav .nav-item a.active {
+  color: var(--orange-color);
+  transition: all 0.3s ease;
+}
+
+/* Registration Modals - Sing Up, LogIn, Forgot Password */
+#signUpModal,
+#logInModal,
+#forgotPasswordModal {
+  font-size: 0.88rem;
+}
+
+#signUpModal .modal-content .form-control,
+#logInModal .modal-content .form-control,
+#forgotPasswordModal .modal-content .form-control {
+  padding: 12px 14px;
+}
+
+#signUpModal .modal-content .modal-footer .btn,
+#logInModal .modal-content .modal-footer .btn,
+#logInModal .modal-content .forgot-password-container .btn,
+#forgotPasswordModal .modal-content .modal-footer .btn {
+  font-size: 14px;
+}
+
+#logInModal .modal-content .forgot-password-container .btn:hover {
+  color: var(--dark-orange-color);
+}
+
+#signUpModal .modal-content .modal-images,
+#forgotPasswordModal .modal-content .col-5 {
+  position: relative;
+}
+
+#signUpModal .modal-content .modal-images .modal-img-2,
+#logInModal .modal-content .modal-images .modal-img-2,
+#forgotPasswordModal .modal-content .modal-images .modal-img-2 {
+  width: 200px;
+  position: absolute;
+  left: 60px;
+  bottom: 40px;
+}
+
+/* ---------- MAIN ---------- */
+main {
+  flex: 1;
+}
+
+/* PageLocation Component */
+.page-location {
+  font-size: 0.75rem;
+}
+
+.page-location .home-link {
+  color: var(--orange-color);
+}
+
+.page-location .home-link:hover {
+  color: var(--dark-orange-color);
+}
+
+.page-location .home-link:after {
+  content: ">";
+  color: var(--dark-color);
+  margin: 0 12px;
+  font-weight: 500;
+}
