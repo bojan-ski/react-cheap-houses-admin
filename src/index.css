@@ -323,27 +323,26 @@ textarea {
   background-color: #fff;
 }
 
-/* NavbarUserOnboarding component */
-#header .user-onboarding .navbar-brand img {
+/* Auth component */
+#header .auth .navbar-brand img {
   width: 197px;
   height: 48px;
 }
 
-#header .user-onboarding .header-btn-container,
-#header .user-onboarding .header-btn-container button {
+#header .auth .header-btn-container .logout-btn,
+#header .auth .header-btn-container .login-btn {
   font-weight: 500;
   font-size: 0.85rem;
+  padding: 7px 15px;
 }
 
-#header .user-onboarding .header-btn-container .display-signUp-modal:hover,
-#header .user-onboarding .header-btn-container .display-logIn-modal:hover {
-  color: var(--orange-color);
-  transition: all 0.3s ease;
+/* Navbar component */
+#header .navbar .home-btn img{
+    height: 40px;
 }
 
-/* NavbarNavigation component */
 #header .navbar .home-btn {
-  padding: 15px 18px;
+  padding: 10px 12px;
   border-radius: 10px;
   transition: all 0.3s ease;
 }
@@ -362,13 +361,13 @@ textarea {
 
 @media (min-width: 768px) {
   #header .navbar .navbar-nav {
-    width: 75%;
+    width: 90%;
   }
 }
 
 @media (min-width: 992px) {
   #header .navbar .navbar-nav {
-    width: 50%;
+    width: 70%;
   }
 }
 

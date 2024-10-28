@@ -3,8 +3,8 @@ import { Outlet, useNavigation } from "react-router-dom"
 import { AppProvider } from "../context.jsx"
 // components
 import Loading from "../components/Loading.jsx"
+import Header from "../components/appLayout/header/Header.jsx";
 import Footer from "../components/appLayout/footer/Footer.jsx"
-import Navbar from "../components/appLayout/navbar/Navbar.jsx"
 // toastify
 import { ToastContainer } from 'react-toastify';
 
@@ -16,7 +16,7 @@ const AppLayout = () => {
     return (
         <AppProvider>
             <>
-                <Navbar />
+                <Header />
 
                 <main>
                     {isPageLoading ? <Loading /> : <Outlet />}
