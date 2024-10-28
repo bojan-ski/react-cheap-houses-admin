@@ -337,8 +337,8 @@ textarea {
 }
 
 /* Navbar component */
-#header .navbar .home-btn img{
-    height: 40px;
+#header .navbar .home-btn img {
+  height: 40px;
 }
 
 #header .navbar .home-btn {
@@ -450,4 +450,18 @@ main {
   color: var(--dark-color);
   margin: 0 12px;
   font-weight: 500;
+}
+
+/* ERROR PAGE */
+.error {
+  background-image: url(../src/assets/dashboard-assets/jeftine_kuce_slider_bg.png);
+}
+
+.error-page {
+  height: 100vh;
+}
+
+/* ---------- FOOTER ---------- */
+#footer {
+  background: #1c1c1e;
 }
