@@ -1,6 +1,6 @@
 import { Outlet, useNavigation } from "react-router-dom"
 // context
-// import { AppProvider } from "../context.jsx"
+import { AppProvider } from "../context.jsx"
 // components
 import Loading from "../components/Loading.jsx"
 import Footer from "../components/appLayout/footer/Footer.jsx"
@@ -14,7 +14,7 @@ const AppLayout = () => {
     const isPageLoading = navigation.state === 'loading'
 
     return (
-        <>
+        <AppProvider>
             <>
                 <Navbar />
 
@@ -29,7 +29,7 @@ const AppLayout = () => {
                 autoClose={2500}
                 pauseOnFocusLoss={false}
             />
-        </>
+        </AppProvider>
     )
 }
 
