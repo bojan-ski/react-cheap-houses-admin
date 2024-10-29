@@ -432,25 +432,11 @@ main {
   flex: 1;
 }
 
-/* PageLocation Component */
-.page-location {
-  font-size: 0.75rem;
+/* LOGIN PAGE */
+.login-page .login-form{
+  margin-top: 150px;
 }
 
-.page-location .home-link {
-  color: var(--orange-color);
-}
-
-.page-location .home-link:hover {
-  color: var(--dark-orange-color);
-}
-
-.page-location .home-link:after {
-  content: ">";
-  color: var(--dark-color);
-  margin: 0 12px;
-  font-weight: 500;
-}
 
 /* ERROR PAGE */
 .error {
