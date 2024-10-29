@@ -55,6 +55,7 @@ p {
 
 textarea {
   resize: none;
+  width: 100%;
 }
 
 .text-orange,
@@ -388,45 +389,6 @@ textarea {
   color: var(--orange-color);
   transition: all 0.3s ease;
 }
-
-/* Registration Modals - Sing Up, LogIn, Forgot Password */
-#signUpModal,
-#logInModal,
-#forgotPasswordModal {
-  font-size: 0.88rem;
-}
-
-#signUpModal .modal-content .form-control,
-#logInModal .modal-content .form-control,
-#forgotPasswordModal .modal-content .form-control {
-  padding: 12px 14px;
-}
-
-#signUpModal .modal-content .modal-footer .btn,
-#logInModal .modal-content .modal-footer .btn,
-#logInModal .modal-content .forgot-password-container .btn,
-#forgotPasswordModal .modal-content .modal-footer .btn {
-  font-size: 14px;
-}
-
-#logInModal .modal-content .forgot-password-container .btn:hover {
-  color: var(--dark-orange-color);
-}
-
-#signUpModal .modal-content .modal-images,
-#forgotPasswordModal .modal-content .col-5 {
-  position: relative;
-}
-
-#signUpModal .modal-content .modal-images .modal-img-2,
-#logInModal .modal-content .modal-images .modal-img-2,
-#forgotPasswordModal .modal-content .modal-images .modal-img-2 {
-  width: 200px;
-  position: absolute;
-  left: 60px;
-  bottom: 40px;
-}
-
 /* ---------- MAIN ---------- */
 main {
   flex: 1;
@@ -434,7 +396,20 @@ main {
 
 /* LOGIN PAGE */
 .login-page .login-form{
-  margin-top: 150px;
+  margin-top: 80px;
+}
+
+/* BLOG PAGE */
+/* BlogPageSelectOptions component */
+.blog-page .blog-page-options button{
+  color: var(--orange-color);
+  border: 1px solid var(--orange-color);
+}
+
+.blog-page .blog-page-options button:hover,
+.blog-page .blog-page-options .selected-blog-page-options{
+  background-color: var(--orange-color);
+  color: #fff;
 }
 
 

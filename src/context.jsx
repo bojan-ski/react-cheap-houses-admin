@@ -11,7 +11,7 @@ export const AppProvider = ({ children }) => {
     })
 
     return <AppContext.Provider value={{
-        userData, // Auth
+        userData, // Auth, NewBlogPostForm
     }}>
         {children}
     </AppContext.Provider>

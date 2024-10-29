@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 // toastify
 import { toast } from 'react-toastify'
+import PageHeader from "../components/PageHeader";
 
 
 const Login = () => {
@@ -19,8 +20,10 @@ const Login = () => {
 
 
   return (
-    <div className="login-page">
+    <div className="login-page mt-5">
       <div className="container">
+
+        <PageHeader title='Registracija'/>
 
         <section className="login-form bg-white w-75 mx-auto p-5 rounded-5">
           <form onSubmit={handleLoginSubmit}>
