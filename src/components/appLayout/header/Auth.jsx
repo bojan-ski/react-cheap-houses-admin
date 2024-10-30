@@ -15,13 +15,13 @@ const Auth = () => {
             </div>
 
             <div className="header-btn-container d-flex align-items-center">
-                {userData.userName ? (
+                {userData.userEmail ? (
                     <>
                         <p className='d-none d-md-block mb-0 fw-bold text-muted me-3'>
-                            Dobrodošli
-                            <span className='ms-2 text-dark'>
-                                {userData.userName}
-                            </span>
+                            Dobrodošli Admin
+                            {/* <span className='ms-2 text-dark'>
+                                {userData.userEmail}
+                            </span> */}
                         </p>
 
                         <button type="button" className="logout-btn btn btn-danger">

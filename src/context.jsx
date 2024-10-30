@@ -1,4 +1,7 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+// firebase
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase.config";
 
 
 const AppContext = createContext()
@@ -6,9 +9,27 @@ const AppContext = createContext()
 export const AppProvider = ({ children }) => {
     // user details
     const [userData, setUserData] = useState({
-        userID: '123',
-        userName: 'Admin',
+        userID: '',
+        userEmail: '',
     })
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                auth.currentUser ? (
+                    setUserData({
+                        userID: user.uid,
+                        userEmail: user.email,
+                    })
+                ) : (
+                    setUserData({
+                        userID: '',
+                        userEmail: '',
+                    })
+                )
+            }
+        })
+    }, [])
 
     return <AppContext.Provider value={{
         userData, // Auth, NewBlogPostForm
