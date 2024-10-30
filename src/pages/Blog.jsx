@@ -2,8 +2,8 @@ import { useState } from "react"
 // components
 import PageHeader from "../components/PageHeader"
 import BlogPageSelectOptions from "../components/blogPage/BlogPageSelectOptions"
-import BlogPostsContainer from "../components/blogPage/BlogPostsContainer"
-import PostNewBlogPost from "../components/blogPage/PostNewBlogPost"
+import BlogPostsContainer from "../components/blogPage/blogPostList/BlogPostsContainer"
+import NewBlogPost from "../components/blogPage/newBlogPost/NewBlogPost"
 
 
 const Blog = () => {
@@ -11,7 +11,6 @@ const Blog = () => {
 
   return (
     <div className="blog-page mt-5">
-      <div className="container">
 
         <PageHeader title='Blog' />
 
@@ -20,9 +19,8 @@ const Blog = () => {
         <>
           {selectedContent == 'blogs' && <BlogPostsContainer />}
 
-          {selectedContent == 'new-blog-post' && <PostNewBlogPost />}
+          {selectedContent == 'new-blog-post' && <NewBlogPost />}
         </>
-      </div>
     </div>
   )
 }

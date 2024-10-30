@@ -1,9 +1,10 @@
 import { useState } from "react"
+// components
 import NewBlogPostCustomization from "./NewBlogPostCustomization"
-import NewBlogPostForm from "./NewBlogPostForm";
+import NewBlogPostContainer from "./NewBlogPostContainer"
 
 
-const PostNewBlogPost = () => {
+const NewBlogPost = () => {
     const [customEntry, setCustomEntry] = useState({
         imageOne: false,
         postContentTwo: false,
@@ -16,9 +17,9 @@ const PostNewBlogPost = () => {
         <section className="new-blog-post mb-5">
             <NewBlogPostCustomization setCustomEntry={setCustomEntry}/>
 
-            <NewBlogPostForm customEntry={customEntry}/>
+            <NewBlogPostContainer customEntry={customEntry}/>
         </section>
     )
 }
 
-export default PostNewBlogPost
+export default NewBlogPost

@@ -412,6 +412,10 @@ main {
   color: #fff;
 }
 
+/* NewBlogPostForm component */
+.new-blog-post-form form{
+  box-shadow: var(--light-dark-shadow);
+}
 
 /* ERROR PAGE */
 .error {

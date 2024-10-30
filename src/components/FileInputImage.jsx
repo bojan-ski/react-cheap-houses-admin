@@ -4,7 +4,7 @@ import { RiImageAddFill } from "react-icons/ri";
 const FileInputImage = ({ image, onMutate, inputId }) => (
     <>
         <input
-            className="hidden"
+            className="d-none"
             type="file"
             name={inputId}
             id={inputId}
@@ -13,7 +13,7 @@ const FileInputImage = ({ image, onMutate, inputId }) => (
         />
         <button
             type="button"
-            className="btn bg-orange-400 text-white"
+            className="btn bg-orange-hover text-white"
             onClick={() => document.getElementById(inputId).click()}
         >
             <RiImageAddFill size={25} />
@@ -23,8 +23,8 @@ const FileInputImage = ({ image, onMutate, inputId }) => (
                 <img
                     src={URL.createObjectURL(image)}
                     alt={inputId}
-                    className="img-thumbnail mx-auto"
-                    style={{ objectFit: 'cover' }}
+                    className="img-fluid"
+                    style={{ objectFit: 'cover', height: '600px' }}
                 />
             </div>
         )}

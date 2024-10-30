@@ -1,6 +1,3 @@
-import { auth } from "../../firebase.config"
-
-
 
 const BlogPostsContainer = () => {
   
