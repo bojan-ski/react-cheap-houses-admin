@@ -33,6 +33,7 @@ export const AppProvider = ({ children }) => {
 
     return <AppContext.Provider value={{
         userData, // Auth, NewBlogPostForm
+        setUserData, // LogOutBtn
     }}>
         {children}
     </AppContext.Provider>

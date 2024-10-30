@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { useGlobalContext } from '../../../context'
 // asset
 import headerLogo from '../../../assets/header-assets/jeftine_kuce_logo_text_header.png'
+// components
+import LogOutBtn from './LogOutBtn'
 
 
 const Auth = () => {
@@ -24,9 +26,7 @@ const Auth = () => {
                             </span> */}
                         </p>
 
-                        <button type="button" className="logout-btn btn btn-danger">
-                            Odjavi se
-                        </button>
+                        <LogOutBtn />
                     </>
                 ) : (
                     <Link className="login-btn btn bg-orange border" to='/'>

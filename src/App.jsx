@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom"
 // PAGES
 import AppLayout from "./pages/AppLayout.jsx"
 import Login from "./pages/Login.jsx"
+import Users from "./pages/Users.jsx"
 import Blog from "./pages/Blog.jsx"
 import SelectedBlogPost from "./pages/SelectedBlogPost.jsx"
 import ErrorPage from "./pages/ErrorPage.jsx"
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Login />,
+      },
+      {
+        path: '/korisnici',
+        element: <Users />,
       },
       {
         path: '/blog',
