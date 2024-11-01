@@ -1,11 +1,21 @@
 import { useState } from "react"
+// api
+import fetchAllBlogPostsFromFirebase from "../api/fetchAllBlogPostsFromFirebase"
+// context
+import { useGlobalContext } from "../context"
 // components
 import PageHeader from "../components/PageHeader"
 import BlogPageSelectOptions from "../components/blogPage/BlogPageSelectOptions"
-import BlogPostsContainer from "../components/blogPage/blogPostList/BlogPostsContainer"
+import BlogPostsList from "../components/blogPage/blogPostList/BlogPostsList"
 import NewBlogPost from "../components/blogPage/newBlogPost/NewBlogPost"
-// context
-import { useGlobalContext } from "../context"
+
+
+// LOADER
+export const loader = async () => {
+  const allBlogPosts = await fetchAllBlogPostsFromFirebase()
+
+  return allBlogPosts
+}
 
 
 const Blog = () => {
@@ -21,7 +31,7 @@ const Blog = () => {
       {/* <BlogPageSelectOptions selectedContent={selectedContent} setSelectedContent={setSelectedContent} /> */}
 
       <>
-        {selectedContent == 'blogs' && <BlogPostsContainer />}
+        {selectedContent == 'blogs' && <BlogPostsList />}
 
         {selectedContent == 'new-blog-post' && <NewBlogPost />}
       </>

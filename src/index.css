@@ -395,26 +395,42 @@ main {
 }
 
 /* LOGIN PAGE */
-.login-page .login-form{
+.login-page .login-form {
   margin-top: 80px;
 }
 
 /* BLOG PAGE */
 /* BlogPageSelectOptions component */
-.blog-page .blog-page-options button{
+.blog-page .blog-page-options button {
   color: var(--orange-color);
   border: 1px solid var(--orange-color);
 }
 
 .blog-page .blog-page-options button:hover,
-.blog-page .blog-page-options .selected-blog-page-options{
+.blog-page .blog-page-options .selected-blog-page-options {
   background-color: var(--orange-color);
   color: #fff;
 }
 
 /* NewBlogPostForm component */
-.new-blog-post-form form{
+.new-blog-post-form form {
   box-shadow: var(--light-dark-shadow);
+}
+
+/* BlogPostsCard component */
+.blog-page .blog-post-card .blog-post-card-main{
+  height: 220px;
+}
+
+/* BLOG PAGE and SELECTED BLOG POST PAGE */
+.blog-page .blog-post-card,
+.selected-blog-post-page .container {
+  box-shadow: var(--light-dark-shadow);
+}
+
+/* SELECTED BLOG POST PAGE */
+.selected-blog-post-page p {
+  text-align: justify;
 }
 
 /* ERROR PAGE */
