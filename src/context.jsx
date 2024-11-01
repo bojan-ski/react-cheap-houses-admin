@@ -38,7 +38,6 @@ export const AppProvider = ({ children }) => {
     return <AppContext.Provider value={{
         userData, // Auth, 
         setUserData, // LogOutBtn
-
         selectedContent, // Blog, BlogPageSelectOptions
         setSelectedContent, // BlogPageSelectOptions
     }}>

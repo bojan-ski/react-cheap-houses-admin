@@ -10,7 +10,7 @@ import ErrorPage from "./pages/ErrorPage.jsx"
 
 
 // LOADERS
-import { loader as allBlogPostsLoader } from "./pages/Blog.jsx"
+
 
 
 const router = createBrowserRouter([
@@ -29,8 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/blog',
-        element: <Blog />,
-        loader: allBlogPostsLoader
+        element: <Blog />
       },
       {
         path: '/blog/:id',

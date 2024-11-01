@@ -1,6 +1,3 @@
-import { useState } from "react"
-// api
-import fetchAllBlogPostsFromFirebase from "../api/fetchAllBlogPostsFromFirebase"
 // context
 import { useGlobalContext } from "../context"
 // components
@@ -10,16 +7,7 @@ import BlogPostsList from "../components/blogPage/blogPostList/BlogPostsList"
 import NewBlogPost from "../components/blogPage/newBlogPost/NewBlogPost"
 
 
-// LOADER
-export const loader = async () => {
-  const allBlogPosts = await fetchAllBlogPostsFromFirebase()
-
-  return allBlogPosts
-}
-
-
 const Blog = () => {
-  // const [selectedContent, setSelectedContent] = useState('blogs')
   const { selectedContent } = useGlobalContext()
 
   return (
@@ -28,7 +16,6 @@ const Blog = () => {
       <PageHeader title='Blog' />
 
       <BlogPageSelectOptions />
-      {/* <BlogPageSelectOptions selectedContent={selectedContent} setSelectedContent={setSelectedContent} /> */}
 
       <>
         {selectedContent == 'blogs' && <BlogPostsList />}

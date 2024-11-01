@@ -2,13 +2,12 @@
 import { useGlobalContext } from "../../context"
 
 
-// const BlogPageSelectOptions = ({ selectedContent, setSelectedContent }) => {
 const BlogPageSelectOptions = () => {
     const { selectedContent, setSelectedContent } = useGlobalContext()
-
+    
     return (
-        <div className="container">
-            <section className="blog-page-options border-bottom pb-4 mb-4">
+        <section className="blog-page-options">
+            <div className="container border-bottom pb-4 mb-4">
                 <button className={`btn px-3 me-3 ${selectedContent == 'blogs' && 'selected-blog-page-options'}`} onClick={() => setSelectedContent('blogs')}>
                     Blog
                 </button>
@@ -16,8 +15,8 @@ const BlogPageSelectOptions = () => {
                 <button className={`btn px-3 me-3 ${selectedContent == 'new-blog-post' && 'selected-blog-page-options'}`} onClick={() => setSelectedContent('new-blog-post')}>
                     Objavi novi post
                 </button>
-            </section>
-        </div>
+            </div>
+        </section>
     )
 }
 
