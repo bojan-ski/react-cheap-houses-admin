@@ -91,6 +91,86 @@ textarea {
 }
 
 /* -------------------- APP (SHARED) COMPONENTS -------------------- */
+/* ---------- HEADER ---------- */
+#header {
+  background-color: #fff;
+}
+
+/* Auth component */
+#header .auth .navbar-brand img {
+  width: 197px;
+  height: 48px;
+}
+
+#header .auth .header-btn-container .logout-btn,
+#header .auth .header-btn-container .login-btn {
+  font-weight: 500;
+  font-size: 0.85rem;
+  padding: 7px 15px;
+}
+
+/* Navbar component */
+#header .navbar .home-btn img {
+  height: 40px;
+}
+
+#header .navbar .home-btn {
+  padding: 10px 12px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+#header .navbar .home-btn:hover {
+  transition: all 0.3s ease;
+}
+
+#header .navbar .navbar-toggler {
+  color: var(--orange-color);
+}
+
+#header .navbar .navbar-nav {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  #header .navbar .navbar-nav {
+    width: 90%;
+  }
+}
+
+@media (min-width: 992px) {
+  #header .navbar .navbar-nav {
+    width: 70%;
+  }
+}
+
+#header .navbar .navbar-nav .nav-item a {
+  color: var(--dark-color);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  #header .navbar .navbar-nav .nav-item {
+    text-align: center;
+    margin: 10px 0;
+  }
+}
+
+#header .navbar .navbar-nav .nav-item a:hover,
+#header .navbar .navbar-nav .nav-item a.active {
+  color: var(--orange-color);
+  transition: all 0.3s ease;
+}
+/* ---------- MAIN ---------- */
+main {
+  flex: 1;
+}
+
+/* ---------- FOOTER ---------- */
+#footer {
+  background: #1c1c1e;
+}
+
 /* LOADER (PRELOAD) - LOADING PAGE */
 .preload {
   overflow: hidden;
@@ -318,82 +398,7 @@ textarea {
   color: #fff;
 }
 
-/* -------------------- APP COMPONENTS -------------------- */
-/* ---------- HEADER ---------- */
-#header {
-  background-color: #fff;
-}
-
-/* Auth component */
-#header .auth .navbar-brand img {
-  width: 197px;
-  height: 48px;
-}
-
-#header .auth .header-btn-container .logout-btn,
-#header .auth .header-btn-container .login-btn {
-  font-weight: 500;
-  font-size: 0.85rem;
-  padding: 7px 15px;
-}
-
-/* Navbar component */
-#header .navbar .home-btn img {
-  height: 40px;
-}
-
-#header .navbar .home-btn {
-  padding: 10px 12px;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-}
-
-#header .navbar .home-btn:hover {
-  transition: all 0.3s ease;
-}
-
-#header .navbar .navbar-toggler {
-  color: var(--orange-color);
-}
-
-#header .navbar .navbar-nav {
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  #header .navbar .navbar-nav {
-    width: 90%;
-  }
-}
-
-@media (min-width: 992px) {
-  #header .navbar .navbar-nav {
-    width: 70%;
-  }
-}
-
-#header .navbar .navbar-nav .nav-item a {
-  color: var(--dark-color);
-  transition: all 0.3s ease;
-}
-
-@media (max-width: 768px) {
-  #header .navbar .navbar-nav .nav-item {
-    text-align: center;
-    margin: 10px 0;
-  }
-}
-
-#header .navbar .navbar-nav .nav-item a:hover,
-#header .navbar .navbar-nav .nav-item a.active {
-  color: var(--orange-color);
-  transition: all 0.3s ease;
-}
-/* ---------- MAIN ---------- */
-main {
-  flex: 1;
-}
-
+/* -------------------- PAGES -------------------- */
 /* LOGIN PAGE */
 .login-page .login-form {
   margin-top: 80px;
@@ -440,9 +445,4 @@ main {
 
 .error-page {
   height: 100vh;
-}
-
-/* ---------- FOOTER ---------- */
-#footer {
-  background: #1c1c1e;
 }

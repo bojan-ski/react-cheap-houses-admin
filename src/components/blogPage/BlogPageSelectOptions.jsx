@@ -7,7 +7,7 @@ const BlogPageSelectOptions = () => {
     
     return (
         <section className="blog-page-options">
-            <div className="container border-bottom pb-4 mb-4">
+            <div className="container border-bottom pb-4 mb-5">
                 <button className={`btn px-3 me-3 ${selectedContent == 'blogs' && 'selected-blog-page-options'}`} onClick={() => setSelectedContent('blogs')}>
                     Blog
                 </button>
