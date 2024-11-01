@@ -1,4 +1,11 @@
-const BlogPageSelectOptions = ({ selectedContent, setSelectedContent }) => {
+// context
+import { useGlobalContext } from "../../context"
+
+
+// const BlogPageSelectOptions = ({ selectedContent, setSelectedContent }) => {
+const BlogPageSelectOptions = () => {
+    const { selectedContent, setSelectedContent } = useGlobalContext()
+
     return (
         <div className="container">
             <section className="blog-page-options border-bottom pb-4 mb-4">

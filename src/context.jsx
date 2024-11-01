@@ -13,6 +13,7 @@ export const AppProvider = ({ children }) => {
         userEmail: '',
     })
 
+    // check if user is logged in
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -30,10 +31,16 @@ export const AppProvider = ({ children }) => {
             }
         })
     }, [])
+    
+    // blog
+    const [selectedContent, setSelectedContent] = useState('blogs')
 
     return <AppContext.Provider value={{
         userData, // Auth, 
         setUserData, // LogOutBtn
+
+        selectedContent, // Blog, BlogPageSelectOptions
+        setSelectedContent, // BlogPageSelectOptions
     }}>
         {children}
     </AppContext.Provider>

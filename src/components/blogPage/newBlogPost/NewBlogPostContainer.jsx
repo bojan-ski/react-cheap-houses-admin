@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 // components
 import FileInputImage from '../../FileInputImage';
 import NewBlogPostForm from './NewBlogPostForm';
+// toastify
+import { toast } from 'react-toastify';
 
 
 const NewBlogPostContainer = ({ customEntry }) => {
@@ -12,11 +14,23 @@ const NewBlogPostContainer = ({ customEntry }) => {
         newBlogPostPromoImgTwo: null,
     });
 
-    const handleImageMutate = (e, imageField) => {
+    const handleAddImage = (e, imageField) => {
         const { files } = e.target;
+
+        if (files[0].size > import.meta.env.VITE_MAX_IMAGE_SIZE) {
+            toast.error("Slika mora biti manja od 1MB.");
+        } else {
+            setUploadedImagesData((prevState) => ({
+                ...prevState,
+                [imageField]: files[0],
+            }));
+        }
+    };
+
+    const handleRemoveImage = (imageField) => {
         setUploadedImagesData((prevState) => ({
             ...prevState,
-            [imageField]: files[0],
+            [imageField]: null,
         }));
     };
 
@@ -29,15 +43,16 @@ const NewBlogPostContainer = ({ customEntry }) => {
                     {customEntry.promoOne && (
                         <FileInputImage
                             image={uploadedImagesData.newBlogPostPromoImgOne}
-                            onMutate={(e) => handleImageMutate(e, 'newBlogPostPromoImgOne')}
+                            onMutate={(e) => handleAddImage(e, 'newBlogPostPromoImgOne')}
                             inputId="newBlogPostPromoImgOne"
+                            handleRemoveImage={handleRemoveImage}
                         />
                     )}
                 </div>
 
                 {/* row item 2 */}
                 <div className="col-8">
-                    <NewBlogPostForm customEntry={customEntry} uploadedImagesData={uploadedImagesData} handleImageMutate={handleImageMutate}/>
+                    <NewBlogPostForm customEntry={customEntry} uploadedImagesData={uploadedImagesData} handleAddImage={handleAddImage} handleRemoveImage={handleRemoveImage}/>
                 </div>
 
                 {/* row item 3 */}
@@ -45,8 +60,9 @@ const NewBlogPostContainer = ({ customEntry }) => {
                     {customEntry.promoTwo && (
                         <FileInputImage
                             image={uploadedImagesData.newBlogPostPromoImgTwo}
-                            onMutate={(e) => handleImageMutate(e, 'newBlogPostPromoImgTwo')}
+                            onMutate={(e) => handleAddImage(e, 'newBlogPostPromoImgTwo')}
                             inputId="newBlogPostPromoImgTwo"
+                            handleRemoveImage={handleRemoveImage}
                         />
                     )}
                 </div>

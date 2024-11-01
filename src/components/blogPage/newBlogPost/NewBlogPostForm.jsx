@@ -1,7 +1,8 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+// context
+import { useGlobalContext } from "../../../context"
 // api
-import storeUploadedImage from "../../../api/storeUploadedImage"
+import checkIfImageIsValid from "../../../api/checkIfImageIsValid"
 import postNewBlogPost from "../../../api/postNewBlogPost"
 // firebase
 import { serverTimestamp } from "firebase/firestore"
@@ -14,8 +15,8 @@ import FormTextArea from "../../FormTextArea"
 import { toast } from "react-toastify"
 
 
-const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleImageMutate }) => {
-    const navigate = useNavigate()
+const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleAddImage, handleRemoveImage }) => {
+    const { setSelectedContent } = useGlobalContext()
 
     const [isLoading, setIsLoading] = useState(false)
     const [textFormData, setTextFormData] = useState({
@@ -40,62 +41,19 @@ const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleImageMutate })
 
         const newBlogPostTitle = textFormData.newBlogPostTitle;
         const newBlogPostContentOne = textFormData.newBlogPostContentOne;
-        const newBlogPostContentTwo = textFormData.newBlogPostContentTwo;
+        const newBlogPostContentTwo = textFormData.newBlogPostContentTwo.length > 0 ? textFormData.newBlogPostContentTwo : null;
 
         const currentDate = getCurrentDate()
 
-        let newBlogPostImgOneUrl;
-        let newBlogPostImgTwoUrl;
-        let newBlogPostPromoImgOneUrl;
-        let newBlogPostPromoImgTwoUrl;
-
-        if (uploadedImagesData.newBlogPostImgOne
-            && uploadedImagesData.newBlogPostImgOne.name != 'undefined' && uploadedImagesData.newBlogPostImgOne.size < 1000000) {
-            try {
-                newBlogPostImgOneUrl = await storeUploadedImage('blogPostImages', uploadedImagesData.newBlogPostImgOne, newBlogPostTitle, currentDate)
-            } catch (error) {
-                // error message 
-                console.log('Error image - one')
-                console.log(error)
-            }
-        }
-
-        if (uploadedImagesData.newBlogPostImgTwo && uploadedImagesData.newBlogPostImgTwo.name != 'undefined' && uploadedImagesData.newBlogPostImgTwo.size < 1000000) {
-            try {
-                newBlogPostImgTwoUrl = await storeUploadedImage('blogPostImages', uploadedImagesData.newBlogPostImgTwo, newBlogPostTitle, currentDate)
-            } catch (error) {
-                // error message
-                console.log('Error image - two')
-                console.log(error)
-            }
-        }
-
-
-        if (uploadedImagesData.newBlogPostPromoImgOne
-            && uploadedImagesData.newBlogPostPromoImgOne.name != 'undefined' && uploadedImagesData.newBlogPostPromoImgOne.size < 1000000) {
-            try {
-                newBlogPostPromoImgOneUrl = await storeUploadedImage('blogPostImages', uploadedImagesData.newBlogPostPromoImgOne, newBlogPostTitle, currentDate)
-            } catch (error) {
-                // error message 
-                console.log('Error promo image - one')
-                console.log(error)
-            }
-        }
-
-        if (uploadedImagesData.newBlogPostPromoImgTwo && uploadedImagesData.newBlogPostPromoImgTwo.name != 'undefined' && uploadedImagesData.newBlogPostPromoImgTwo.size < 1000000) {
-            try {
-                newBlogPostPromoImgTwoUrl = await storeUploadedImage('blogPostImages', uploadedImagesData.newBlogPostPromoImgTwo, newBlogPostTitle, currentDate)
-            } catch (error) {
-                // error message
-                console.log('Error promo image - two')
-                console.log(error)
-            }
-        }
+        const newBlogPostImgOneUrl = await checkIfImageIsValid(uploadedImagesData.newBlogPostImgOne, newBlogPostTitle, currentDate);
+        const newBlogPostImgTwoUrl = await checkIfImageIsValid(uploadedImagesData.newBlogPostImgTwo, newBlogPostTitle, currentDate);
+        const newBlogPostPromoImgOneUrl = await checkIfImageIsValid(uploadedImagesData.newBlogPostPromoImgOne, newBlogPostTitle, currentDate);
+        const newBlogPostPromoImgTwoUrl = await checkIfImageIsValid(uploadedImagesData.newBlogPostPromoImgTwo, newBlogPostTitle, currentDate);
 
         const newBlogPostData = {
             newBlogPostTitle,
             newBlogPostContentOne,
-            newBlogPostContentTwo: newBlogPostContentTwo.length > 0 ? newBlogPostContentTwo : null,
+            newBlogPostContentTwo,
             newBlogPostImgOneUrl: newBlogPostImgOneUrl ? newBlogPostImgOneUrl : null,
             newBlogPostImgTwoUrl: newBlogPostImgTwoUrl ? newBlogPostImgTwoUrl : null,
             newBlogPostPromoImgOneUrl: newBlogPostPromoImgOneUrl ? newBlogPostPromoImgOneUrl : null,
@@ -111,14 +69,11 @@ const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleImageMutate })
             toast.success('Uspešno ste objavili novi Blog post.')
 
             // redirect user
-            // setTimeout(() => navigate('/blog'), 1500)
-            // setTimeout(() => window.location.href = '/blog', 1500)
+            setTimeout(() => setSelectedContent('blogs'), 2000)
         }
 
         setIsLoading(false)
     }
-
-    // console.log(textFormData);    
 
     return (
         <form className="text-center bg-white rounded-5 p-5" onSubmit={handlePostNewBlogPost}>
@@ -135,9 +90,9 @@ const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleImageMutate })
             <div className="row mb-5">
                 {/* ROW ITEM ONE */}
                 {customEntry.imageOne ? (
-                    <>
+                    <div className="row">
                         {/* new blog post - content 1 */}
-                        <div className="col-6">
+                        <div className="col-12 col-xl-6">
                             <FormTextArea
                                 name="newBlogPostContentOne"
                                 rows={27}
@@ -149,14 +104,15 @@ const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleImageMutate })
                         </div>
 
                         {/* new blog post - img 1 */}
-                        <div className="col-6">
+                        <div className="col-12 col-xl-6">
                             <FileInputImage
                                 image={uploadedImagesData.newBlogPostImgOne}
-                                onMutate={(e) => handleImageMutate(e, 'newBlogPostImgOne')}
+                                onMutate={(e) => handleAddImage(e, 'newBlogPostImgOne')}
                                 inputId="newBlogPostImgOne"
+                                handleRemoveImage={handleRemoveImage}
                             />
                         </div>
-                    </>
+                    </div>
                 ) : (
                     <>
                         {/* new blog post - content 1 */}
@@ -175,7 +131,7 @@ const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleImageMutate })
 
                 {/* ROW ITEM TWO */}
                 {(customEntry.imageTwo || customEntry.postContentTwo) && (
-                    <>
+                    <div className="row">
                         {(customEntry.postContentTwo && !customEntry.imageTwo) && (
                             <>
                                 {/* new blog post - content 2 */}
@@ -198,8 +154,9 @@ const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleImageMutate })
                                 <div className="col-12">
                                     <FileInputImage
                                         image={uploadedImagesData.newBlogPostImgTwo}
-                                        onMutate={(e) => handleImageMutate(e, 'newBlogPostImgTwo')}
+                                        onMutate={(e) => handleAddImage(e, 'newBlogPostImgTwo')}
                                         inputId="newBlogPostImgTwo"
+                                        handleRemoveImage={handleRemoveImage}
                                     />
                                 </div>
                             </>
@@ -208,16 +165,17 @@ const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleImageMutate })
                         {(customEntry.imageTwo && customEntry.postContentTwo) && (
                             <>
                                 {/* new blog post - img 2 */}
-                                <div className="col-6">
+                                <div className="col-12 col-xl-6 order-2 order-xl-1">
                                     <FileInputImage
                                         image={uploadedImagesData.newBlogPostImgTwo}
-                                        onMutate={(e) => handleImageMutate(e, 'newBlogPostImgTwo')}
+                                        onMutate={(e) => handleAddImage(e, 'newBlogPostImgTwo')}
                                         inputId="newBlogPostImgTwo"
+                                        handleRemoveImage={handleRemoveImage}
                                     />
                                 </div>
 
                                 {/* new blog post - content 2 */}
-                                <div className="col-6">
+                                <div className="col-12 col-xl-6 order-1 order-xl-2">
                                     <FormTextArea
                                         name="newBlogPostContentTwo"
                                         rows={27}
@@ -229,7 +187,7 @@ const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleImageMutate })
                                 </div>
                             </>
                         )}
-                    </>
+                    </div>
                 )}
             </div>
 
