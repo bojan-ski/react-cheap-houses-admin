@@ -1,14 +1,20 @@
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+// context
+import { useGlobalContext } from "../context";
 // api 
 import userSignIn from "../api/userSignIn";
 // component
 import PageHeader from "../components/PageHeader";
+import FormInput from "../components/FormInput";
 // toastify
 import { toast } from 'react-toastify'
-import FormInput from "../components/FormInput";
 
 
 const Login = () => {
+  const { userData } = useGlobalContext()
+
+  if (userData.isLoggedIn) return <Navigate to='/korisnici' />
+
   const navigate = useNavigate()
 
   const handleLoginSubmit = async e => {

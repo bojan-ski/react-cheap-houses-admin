@@ -9,6 +9,7 @@ const AppContext = createContext()
 export const AppProvider = ({ children }) => {
     // user details
     const [userData, setUserData] = useState({
+        isLoggedIn: false,
         userID: '',
         userEmail: '',
     })
@@ -19,11 +20,13 @@ export const AppProvider = ({ children }) => {
             if (user) {
                 auth.currentUser ? (
                     setUserData({
+                        isLoggedIn: true,
                         userID: user.uid,
                         userEmail: user.email,
                     })
                 ) : (
                     setUserData({
+                        isLoggedIn: false,
                         userID: '',
                         userEmail: '',
                     })
@@ -36,7 +39,7 @@ export const AppProvider = ({ children }) => {
     const [selectedContent, setSelectedContent] = useState('blogs')
 
     return <AppContext.Provider value={{
-        userData, // Auth, 
+        userData, // Auth, Login
         setUserData, // LogOutBtn
         selectedContent, // Blog, BlogPageSelectOptions
         setSelectedContent, // BlogPageSelectOptions

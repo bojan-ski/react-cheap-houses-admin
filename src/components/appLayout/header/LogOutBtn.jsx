@@ -18,6 +18,7 @@ const LogOutBtn = () => {
                 await signOut(auth)
 
                 setUserData({
+                    isLoggedIn: false,
                     userID: '',
                     userEmail: '',
                 })
