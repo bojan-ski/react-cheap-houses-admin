@@ -38,8 +38,6 @@ const useFetchAllListingsData = (itemsPerPage, listingsStatus) => {
 
             let q;
 
-            console.log(q);
-
             if (reset || pageNumber === 0) {
                 // Fetch the first page or reset to the first page
                 q = query(
@@ -82,7 +80,6 @@ const useFetchAllListingsData = (itemsPerPage, listingsStatus) => {
             toast.error('Greška prilikom prikazivanja svi objavljenih oglasa, molimo Vas probajte ponovo')
 
             console.log(error);
-
         }
     }, [itemsPerPage, lastVisible])
 

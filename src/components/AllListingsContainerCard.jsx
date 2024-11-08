@@ -16,6 +16,7 @@ const AllListingsContainerCard = ({ listing }) => {
     const { listingType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyLocation, propertyDistrict, imageUrls, askingPrice, listingCreated } = listing.data
 
     const pathname = window.location.pathname
+    // console.log(pathname);    
 
     return (
         <div className="listings-card col-12 col-lg-4 p-1 text-center text-lg-start">

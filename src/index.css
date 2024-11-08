@@ -420,6 +420,12 @@ main {
   height: 300px;
 }
 
+/* SELECTED LISTING PAGE */
+.images-gallery {
+  height: 500px;
+  width: 100%;
+}
+
 /* BLOG PAGE */
 /* BlogPageSelectOptions component */
 .blog-page .blog-page-options button {
