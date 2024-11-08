@@ -404,6 +404,22 @@ main {
   margin-top: 80px;
 }
 
+/* PENDING & ACTIVE LISTINGS PAGE */
+/* AllListingsContainerCard component */
+.listings-card .listings-card-details {
+  background-color: #fff;
+  box-shadow: var(--light-dark-shadow);
+  margin: 5px;
+  padding: 25px;
+  border: 1px solid var(--light-gray-color);
+  border-radius: 25px;
+}
+
+.listings-card .listings-card-details-images {
+  position: relative;
+  height: 300px;
+}
+
 /* BLOG PAGE */
 /* BlogPageSelectOptions component */
 .blog-page .blog-page-options button {

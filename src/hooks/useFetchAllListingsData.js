@@ -86,9 +86,6 @@ const useFetchAllListingsData = (itemsPerPage, listingsStatus) => {
         }
     }, [itemsPerPage, lastVisible])
 
-    console.log(listings);
-
-
     return { listings, fetchListings, page };
 }
 
