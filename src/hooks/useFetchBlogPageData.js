@@ -9,9 +9,11 @@ import { toast } from "react-toastify";
 const useFetchBlogPageData = (itemsPerPage) => {
     const [blogPosts, setBlogPosts] = useState([]);
     const [lastVisible, setLastVisible] = useState(null);
-    const [page, setPage] = useState(0);
+    const [curBlogPage, setCurBlogPage] = useState(0);
 
     const fetchBlogPosts = async (pageNumber = 0, searchTerm = '', reset = false) => {
+        console.log('fetchBlogPosts');
+        
         try {
             let additionalQueryParams = [
                 collection(db, 'blogPosts'),
@@ -62,7 +64,7 @@ const useFetchBlogPageData = (itemsPerPage) => {
                 blogPostData: doc.data()
             })));
 
-            setPage(pageNumber);
+            setCurBlogPage(pageNumber);
         } catch (error) {
             //error message
             toast.error('Greška prilikom prikazivanja svi Blog post-ova, molimo Vas probajte ponovo')
@@ -70,7 +72,7 @@ const useFetchBlogPageData = (itemsPerPage) => {
         }
     };
 
-    return { blogPosts, fetchBlogPosts, page };
+    return { blogPosts, fetchBlogPosts, curBlogPage };
 }
 
 export default useFetchBlogPageData

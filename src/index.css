@@ -111,7 +111,7 @@ textarea {
 
 /* Navbar component */
 #header .navbar .home-btn img {
-  height: 40px;
+  height: 30px;
 }
 
 #header .navbar .home-btn {
@@ -427,7 +427,6 @@ main {
   height: 220px;
 }
 
-/* BLOG PAGE */
 .blog-page .blog-post-card {
   box-shadow: var(--light-dark-shadow);
 }

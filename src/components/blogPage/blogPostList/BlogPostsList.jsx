@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-// custom hook
-import useFetchBlogPageData from '../../../hooks/useFetchBlogPageData'
+// context
+import { useGlobalContext } from '../../../context'
 // components
 import BlogPageSearchOption from './BlogPageSearchOption'
 import NoDataAvailableMessage from '../../NoDataAvailableMessage'
@@ -9,18 +9,20 @@ import Pagination from '../../Pagination'
 
 
 const BlogPostsList = () => {
-    const itemsPerPage = 12;
-    const { blogPosts, fetchBlogPosts, page } = useFetchBlogPageData(itemsPerPage)
+    const { blogPosts, fetchBlogPosts, curBlogPage } = useGlobalContext()
+    // search feature - state
+    const [searchTerm, setSearchTerm] = useState('')
 
     // Fetch the first page on mount
     useEffect(() => {
         console.log('Blog page - useEffect');
 
-        fetchBlogPosts();
+        if (blogPosts.length == 0 && searchTerm == ''){
+            console.log('get blog data');
+            
+            fetchBlogPosts();
+        }
     }, [])
-
-    // search feature - state
-    const [searchTerm, setSearchTerm] = useState('')
 
     return (
         <section className="blog-posts mb-5">
@@ -28,14 +30,13 @@ const BlogPostsList = () => {
 
                 <BlogPageSearchOption searchTerm={searchTerm} setSearchTerm={setSearchTerm} fetchBlogPosts={fetchBlogPosts} />
 
-
                 {!blogPosts || blogPosts == 0 ? (
-                    <NoDataAvailableMessage text='Blog post-ova' />
+                    <NoDataAvailableMessage text='postavljenih Blog post-ova' />
                 ) : (
                     <>
                         <BlogPostsContainer blogPosts={blogPosts} />
 
-                        <Pagination itemsPerPage={itemsPerPage} data={blogPosts} fetchData={fetchBlogPosts} page={page} queryParam={searchTerm} />
+                        <Pagination fetchData={fetchBlogPosts} page={curBlogPage} queryParam={searchTerm} />
                     </>
                 )}
             </div>

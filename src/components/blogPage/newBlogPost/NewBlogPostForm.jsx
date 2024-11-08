@@ -16,7 +16,7 @@ import { toast } from "react-toastify"
 
 
 const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleAddImage, handleRemoveImage }) => {
-    const { setSelectedContent } = useGlobalContext()
+    const { setSelectedContent, fetchBlogPosts } = useGlobalContext()
 
     const [isLoading, setIsLoading] = useState(false)
     const [textFormData, setTextFormData] = useState({
@@ -68,8 +68,11 @@ const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleAddImage, hand
             // success message
             toast.success('Uspešno ste objavili novi Blog post.')
 
+            // re-fetch blog posts
+            await fetchBlogPosts()
+
             // redirect user
-            setTimeout(() => setSelectedContent('blogs'), 2000)
+            setTimeout(() => setSelectedContent('blogs'), 2000)            
         }
 
         setIsLoading(false)
