@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useLoaderData } from 'react-router-dom'
+// components
+import ApproveListingBtn from './ApproveListingBtn'
 
 
-const AccountDetails = ({ selectedListingDetails }) => {
-    const { userRef, userUsername, userEmail, userAccountType } = selectedListingDetails
+const AccountDetails = () => {
+    const selectedListingDetails = useLoaderData()
+    const { userRef, userUsername, userEmail, userAccountType, listingStatus } = selectedListingDetails
+
+    const [isLoading, setIsLoading] = useState(false)
 
     return (
         <div className="row">
@@ -27,11 +33,9 @@ const AccountDetails = ({ selectedListingDetails }) => {
             </div>
 
             <div className="col-12 col-lg-6 text-start text-lg-end mb-3">
-                <button className="btn btn-success me-3">
-                    Odobri oglas
-                </button>
+                {listingStatus != 'active' && <ApproveListingBtn />}
 
-                <button className="btn btn-danger">
+                <button className="btn btn-danger" disabled={isLoading}>
                     Obriši oglas
                 </button>
             </div>

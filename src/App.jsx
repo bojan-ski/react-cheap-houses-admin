@@ -8,14 +8,15 @@ import Users from "./pages/Users.jsx"
 import AllActiveListings from "./pages/AllActiveListings.jsx"
 import AllPendingListings from "./pages/AllPendingListings.jsx"
 import SelectedListing from "./pages/SelectedListing.jsx"
+import Agencies from "./pages/Agencies.jsx"
 import Blog from "./pages/Blog.jsx"
 import SelectedBlogPost from "./pages/SelectedBlogPost.jsx"
 import ErrorPage from "./pages/ErrorPage.jsx"
 
 // LOADERS
 import { loader as selectedListingLoader } from "./pages/SelectedListing.jsx"
+import { loader as allAgenciesLoader } from "./pages/Agencies.jsx"
 import { loader as selectedBlogPostLoader } from "./pages/SelectedBlogPost.jsx"
-
 
 const router = createBrowserRouter([
   {
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
       {
         path: '/oglasi_na_cekanju/:id',
         element: <SelectedListing />,
-        loader:selectedListingLoader
+        loader: selectedListingLoader
       },
       {
         path: '/aktivni_oglasi',
@@ -47,7 +48,12 @@ const router = createBrowserRouter([
       {
         path: '/aktivni_oglasi/:id',
         element: <SelectedListing />,
-        loader:selectedListingLoader
+        loader: selectedListingLoader
+      },
+      {
+        path: '/agencije',
+        element: <Agencies />,
+        loader: allAgenciesLoader
       },
       {
         path: '/blog',

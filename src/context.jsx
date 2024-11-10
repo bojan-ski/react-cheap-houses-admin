@@ -17,11 +17,11 @@ export const AppProvider = ({ children }) => {
         userEmail: '',
     })
 
-    // check if user is logged in
+    // check if user is logged
     useEffect(() => {
         console.log('context - onAuthStateChanged');
 
-        onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, async (user) => {
             if (user) {
                 auth.currentUser ? (
                     setUserData({

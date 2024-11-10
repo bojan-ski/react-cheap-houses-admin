@@ -17,13 +17,13 @@ import SelectedImageModal from "../modals/SelectedImageModal.jsx";
 
 // LOADER
 export const loader = async ({ params }) => {
-    const selectedListingDetails = await fetchSelectedListingDetailsFromFirebase(params.id)
+    const selectedListingDetails = await fetchSelectedListingDetailsFromFirebase(params.id)   
 
     return selectedListingDetails
 }
 
 const SelectedListing = () => {
-    const selectedListingDetails = useLoaderData()
+    const selectedListingDetails = useLoaderData()  
 
     const [imageSrc, setImageSrc] = useState('')
 
@@ -39,7 +39,7 @@ const SelectedListing = () => {
                     </div>
 
                     <section className="mb-4 pb-2 border-bottom">
-                        <AccountDetails selectedListingDetails={selectedListingDetails} />
+                        <AccountDetails />
                     </section>
 
                     <section className="mb-5 text-center">
