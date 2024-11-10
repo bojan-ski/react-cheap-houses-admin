@@ -68,7 +68,6 @@ const useFetchBlogPageData = (itemsPerPage) => {
         } catch (error) {
             //error message
             toast.error('Greška prilikom prikazivanja svi Blog post-ova, molimo Vas probajte ponovo')
-            console.log(error);
         }
     };
 

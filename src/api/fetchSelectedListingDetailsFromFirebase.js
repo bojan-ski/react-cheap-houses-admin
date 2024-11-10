@@ -12,8 +12,7 @@ const fetchSelectedListingDetailsFromFirebase = async (id) => {
         return docSnap.data()       
     } catch (error) {
         // error message
-        toast.error('Greška prilikom prikazivanja izabranog oglasa, molimo Vas probajte ponovo')
-        console.log(error);        
+        toast.error('Greška prilikom prikazivanja izabranog oglasa, molimo Vas probajte ponovo')       
     }
 }
 

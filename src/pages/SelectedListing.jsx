@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useLoaderData } from "react-router-dom"
 // api funcs
 import fetchSelectedListingDetailsFromFirebase from '../api/fetchSelectedListingDetailsFromFirebase.js'
-// utils funcs
-import priceComma from "../utils/priceComma.js";
 // component
 import BackButton from "../components/BackButton.jsx";
+import AccountDetails from "../components/selectedListingPage/AccountDetails.jsx";
+import ListingType from "../components/selectedListingPage/ListingType.jsx";
 import ListingDetailsItemOne from "../components/selectedListingPage/ListingDetailsItemOne.jsx";
 import ListingDetailsItemTwo from "../components/selectedListingPage/ListingDetailsItemTwo.jsx";
 import ListingDetailsItemThree from "../components/selectedListingPage/ListingDetailsItemThree.jsx";
@@ -23,37 +23,27 @@ export const loader = async ({ params }) => {
 }
 
 const SelectedListing = () => {
-    const selectedListingDetails = useLoaderData()    
+    const selectedListingDetails = useLoaderData()
 
-    const { listingType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, listingDescription, listingCreated, contactFullName, contactPhoneNumber, contactEmailAddress } = selectedListingDetails
+    const [imageSrc, setImageSrc] = useState('')
 
-    const [imageSrc, setImageSrc] = useState('')   
-
-    const urlBackPath = `/${window.location.pathname.split('/')[1]}`    
+    const urlBackPath = `/${window.location.pathname.split('/')[1]}`
 
     return (
         <>
             <div className="selected-listing-page my-5">
                 <div className="container px-5 rounded-4 border bg-white">
 
-                    <section className="d-flex align-items-center justify-content-between my-5">
+                    <div className="my-5">
                         <BackButton backPath={urlBackPath} />
+                    </div>
 
-                        <h2 className="text-orange fw-bold">
-                            {listingType === 'izdajem' ? "IZDAJE SE" : 'NA PRODAJU'}
-                        </h2>
+                    <section className="mb-4 pb-2 border-bottom">
+                        <AccountDetails selectedListingDetails={selectedListingDetails} />
                     </section>
 
                     <section className="mb-5 text-center">
-                        <h4 className="text-muted fw-bold capitalize">
-                            {propertyType}
-                        </h4>
-                        <h3 className="fw-bold capitalize mb-3">
-                            {propertyName}
-                        </h3>
-                        <h4 className="text-orange fw-bold">
-                            {priceComma(askingPrice)} EUR {listingType === 'izdajem' ? 'mesečno' : ''}
-                        </h4>
+                        <ListingType selectedListingDetails={selectedListingDetails} />
                     </section>
 
                     <section>
@@ -86,7 +76,7 @@ const SelectedListing = () => {
                                 </h6>
 
                                 {/* ImgsGallery - component */}
-                                <ImagesGallery imageUrls={imageUrls} setImageSrc={setImageSrc} />
+                                <ImagesGallery imageUrls={selectedListingDetails.imageUrls} setImageSrc={setImageSrc} />
 
                                 {/* SelectedImageModal - modal */}
                                 <SelectedImageModal imageSrc={imageSrc} />

@@ -78,9 +78,8 @@ const useFetchAllListingsData = (itemsPerPage, listingsStatus) => {
         } catch (error) {
             //error message
             toast.error('Greška prilikom prikazivanja svi objavljenih oglasa, molimo Vas probajte ponovo')
-
-            console.log(error);
         }
+        
     }, [itemsPerPage, lastVisible])
 
     return { listings, fetchListings, page };
