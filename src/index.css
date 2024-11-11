@@ -420,6 +420,25 @@ main {
   height: 300px;
 }
 
+/* ACTIVE LISTINGS PAGE */
+/* SelectQueryOption component */
+.layout-btn {
+  border: 1px solid var(--light-gray-color);
+}
+
+.layout-btn:hover,
+.layout-btn:hover svg {
+  background-color: var(--orange-color);
+  color: #fff;
+}
+
+.layout-btn.layout-selected,
+.layout-btn.layout-selected svg {
+  border: none;
+  background-color: var(--orange-color);
+  color: #fff;
+}
+
 /* SELECTED LISTING PAGE */
 .images-gallery {
   height: 500px;

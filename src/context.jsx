@@ -47,6 +47,10 @@ export const AppProvider = ({ children }) => {
     // ACTIVE LISTINGS PAGE
     const itemsPerActiveListingsPage = 9;
     const { listings: allActiveListings, fetchListings: fetchAllActiveListings, page: curActiveListingsPage } = useFetchAllListingsData(itemsPerActiveListingsPage, 'active');
+    
+    // search and filter option
+    const [userQueryParameter, setUserQueryParameter] = useState() 
+    const [disableOption, setDisableOption] = useState(false)
 
     // BLOG PAGE
     // blog options
@@ -67,8 +71,12 @@ export const AppProvider = ({ children }) => {
 
         // ACTIVE LISTINGS PAGE
         allActiveListings, // AllActiveListings
-        fetchAllActiveListings, // AllActiveListings, ApproveListingBtn, DeleteListingBtn
+        fetchAllActiveListings, // AllActiveListings, ApproveListingBtn, DeleteListingBtn, SelectQueryOption, ListingsSearchOption, ListingsFilterOptions, 
         curActiveListingsPage, // AllActiveListings
+        userQueryParameter, // AllActiveListings, ListingsSearchOption, ListingsFilterOptions, FilterOptions
+        setUserQueryParameter, // SelectQueryOption, ListingsSearchOption, FilterOptions
+        disableOption, // ListingsSearchOption, ListingsFilterOptions, FilterOptions
+        setDisableOption, // SelectQueryOption, ListingsSearchOption, ListingsFilterOptions
 
         // BLOG PAGE
         selectedContent, // Blog, BlogPageSelectOptions
