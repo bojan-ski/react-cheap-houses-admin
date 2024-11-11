@@ -5,6 +5,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import AppLayout from "./pages/AppLayout.jsx"
 import Login from "./pages/Login.jsx"
 import Users from "./pages/Users.jsx"
+import SelectedUser from "./pages/SelectedUser.jsx"
 import AllActiveListings from "./pages/AllActiveListings.jsx"
 import AllPendingListings from "./pages/AllPendingListings.jsx"
 import SelectedListing from "./pages/SelectedListing.jsx"
@@ -15,8 +16,9 @@ import ErrorPage from "./pages/ErrorPage.jsx"
 
 // LOADERS
 import { loader as selectedListingLoader } from "./pages/SelectedListing.jsx"
-import { loader as allAgenciesLoader } from "./pages/Agencies.jsx"
 import { loader as selectedBlogPostLoader } from "./pages/SelectedBlogPost.jsx"
+import { loader as allAgenciesLoader } from "./pages/Agencies.jsx"
+
 
 const router = createBrowserRouter([
   {
@@ -26,11 +28,15 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Login />,
+        element: <Login />
       },
       {
         path: '/korisnici',
-        element: <Users />,
+        element: <Users />
+      },
+      {
+        path: '/korisnici/:id',
+        element: <SelectedUser />
       },
       {
         path: '/oglasi_na_cekanju',

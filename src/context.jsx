@@ -3,8 +3,9 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase.config";
 // api
-import useFetchBlogPageData from "./hooks/useFetchBlogPageData";
+import useFetchAllAppUsersData from "./hooks/useFetchAllAppUsersData";
 import useFetchAllListingsData from "./hooks/useFetchAllListingsData";
+import useFetchBlogPageData from "./hooks/useFetchBlogPageData";
 
 
 const AppContext = createContext()
@@ -40,6 +41,10 @@ export const AppProvider = ({ children }) => {
         })
     }, [])
 
+    // USERS PAGE
+    const itemsAppUsersPage = 2;
+    const { allUsersList, fetchAllUsers, curUsersPage } = useFetchAllAppUsersData(itemsAppUsersPage);
+
     // PENDING LISTINGS PAGE
     const itemsPerPendingListingsPage = 9;
     const { listings: allPendingListings, fetchListings: fetchAllPendingListings, page: curPendingListingsPage } = useFetchAllListingsData(itemsPerPendingListingsPage, 'pending');
@@ -47,7 +52,7 @@ export const AppProvider = ({ children }) => {
     // ACTIVE LISTINGS PAGE
     const itemsPerActiveListingsPage = 9;
     const { listings: allActiveListings, fetchListings: fetchAllActiveListings, page: curActiveListingsPage } = useFetchAllListingsData(itemsPerActiveListingsPage, 'active');
-    
+
     // search and filter option
     const [userQueryParameter, setUserQueryParameter] = useState() 
     const [disableOption, setDisableOption] = useState(false)
@@ -63,6 +68,11 @@ export const AppProvider = ({ children }) => {
     return <AppContext.Provider value={{
         userData, // Auth, Login
         setUserData, // LogOutBtn
+
+        // USERS PAGE
+        allUsersList, // Users
+        fetchAllUsers, // Users
+        curUsersPage, // Users
 
         // PENDING LISTINGS PAGE
         allPendingListings, // AllPendingListings

@@ -404,6 +404,15 @@ main {
   margin-top: 80px;
 }
 
+/* USERS PAGE */
+.users-page .table{
+  box-shadow: var(--light-dark-shadow);
+}
+
+.users-page .table thead tr th{
+  background-color: var(--orange-color);
+}
+
 /* PENDING & ACTIVE LISTINGS PAGE */
 /* AllListingsContainerCard component */
 .listings-card .listings-card-details {
