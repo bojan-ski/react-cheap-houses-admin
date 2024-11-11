@@ -62,12 +62,12 @@ export const AppProvider = ({ children }) => {
 
         // PENDING LISTINGS PAGE
         allPendingListings, // AllPendingListings
-        fetchAllPendingListings, // AllPendingListings
+        fetchAllPendingListings, // AllPendingListings, ApproveListingBtn, DeleteListingBtn
         curPendingListingsPage, // AllPendingListings
 
         // ACTIVE LISTINGS PAGE
         allActiveListings, // AllActiveListings
-        fetchAllActiveListings, // AllActiveListings
+        fetchAllActiveListings, // AllActiveListings, ApproveListingBtn, DeleteListingBtn
         curActiveListingsPage, // AllActiveListings
 
         // BLOG PAGE

@@ -15,8 +15,6 @@ const AllPendingListings = () => {
         console.log('All Pending Listings page - useEffect');
 
         if (allPendingListings.length == 0) {
-            console.log('get Pending data');
-
             fetchAllPendingListings();
         }
     }, [])

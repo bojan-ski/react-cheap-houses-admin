@@ -15,8 +15,6 @@ const AllActiveListings = () => {
         console.log('All Active Listings page - useEffect');
 
         if (allActiveListings.length == 0) {
-            console.log('get Active data');
-
             fetchAllActiveListings();
         }
     }, [])

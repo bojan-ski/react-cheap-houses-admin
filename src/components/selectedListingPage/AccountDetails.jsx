@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
 // components
 import ApproveListingBtn from './ApproveListingBtn'
+import DeleteListingBtn from './DeleteListingBtn'
 
 
 const AccountDetails = () => {
@@ -35,9 +36,7 @@ const AccountDetails = () => {
             <div className="col-12 col-lg-6 text-start text-lg-end mb-3">
                 {listingStatus != 'active' && <ApproveListingBtn />}
 
-                <button className="btn btn-danger" disabled={isLoading}>
-                    Obriši oglas
-                </button>
+                <DeleteListingBtn />
             </div>
         </div>
     )

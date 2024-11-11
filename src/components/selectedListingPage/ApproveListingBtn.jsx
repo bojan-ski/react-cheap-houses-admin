@@ -4,17 +4,19 @@ import { useLoaderData, useNavigate, useParams } from 'react-router-dom'
 import addAgency from '../../api/addAgency'
 import approveListing from '../../api/approveListing'
 import fetchAllAgencies from '../../api/fetchAllAgencies'
-// firebase
-import { serverTimestamp } from 'firebase/firestore'
-// toastify
-import { toast } from 'react-toastify'
 // context
 import { useGlobalContext } from '../../context'
+// firebase
+import { serverTimestamp } from 'firebase/firestore'
+// utils
+import scrollToTop from '../../utils/scrollToTop'
+// toastify
+import { toast } from 'react-toastify'
 
 
 const ApproveListingBtn = () => {
     const params = useParams()
-    const navigate = useNavigate()    
+    const navigate = useNavigate()
     const selectedListingDetails = useLoaderData()
     const { userRef, userUsername, userAccountType } = selectedListingDetails
 
@@ -33,7 +35,7 @@ const ApproveListingBtn = () => {
 
         fetchAllAgenciesList()
         // if (selectedListingDetails.listingStatus == 'pending') fetchAllAgenciesList()
-    }, [])    
+    }, [])
 
     const checkIfAgencyInDB = async () => {
         const agencyExists = allAgencies.some(agency => agency.data.agencyID === userRef);
@@ -72,16 +74,19 @@ const ApproveListingBtn = () => {
             const response = await approveListing(params.id)
 
             if (response) {
-                // success message
-                toast.success('Oglas je odobren')
-
                 // re-fetch listings
                 await fetchAllPendingListings()
                 await fetchAllActiveListings()
 
+                // success message
+                toast.success('Oglas je odobren')
+
                 // redirect user
                 setTimeout(() => navigate('/aktivni_oglasi'), 2500)
                 // setTimeout(()=> window.location.href ='/aktivni_oglasi',2000)
+
+                //scroll to top
+                scrollToTop()
             }
         }
 
