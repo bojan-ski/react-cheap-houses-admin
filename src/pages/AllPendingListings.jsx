@@ -5,6 +5,7 @@ import { useGlobalContext } from '../context'
 import PageHeader from '../components/PageHeader'
 import NoDataAvailableMessage from '../components/NoDataAvailableMessage'
 import AllListingsContainer from '../components/AllListingsContainer'
+import Pagination from '../components/Pagination'
 
 
 const AllPendingListings = () => {
@@ -22,7 +23,7 @@ const AllPendingListings = () => {
     // console.log(allPendingListings);
 
     return (
-        <div className="pending-listings-page mt-5">
+        <div className="pending-listings-page my-5">
 
             <PageHeader title='Oglasi na čekanju' />
 
@@ -33,7 +34,7 @@ const AllPendingListings = () => {
                     <>
                         <AllListingsContainer listingsList={allPendingListings} />
 
-                        {/* <Pagination fetchData={fetchBlogPosts} page={curBlogPage} queryParam={searchTerm} /> */}
+                        <Pagination fetchData={fetchAllPendingListings} page={curPendingListingsPage} />
                     </>
                 )}
             </div>

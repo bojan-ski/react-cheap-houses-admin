@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useLoaderData } from 'react-router-dom'
 // components
 import ApproveListingBtn from './ApproveListingBtn'
@@ -8,8 +8,6 @@ import DeleteListingBtn from './DeleteListingBtn'
 const AccountDetails = () => {
     const selectedListingDetails = useLoaderData()
     const { userRef, userUsername, userEmail, userAccountType, listingStatus } = selectedListingDetails
-
-    const [isLoading, setIsLoading] = useState(false)
 
     return (
         <div className="row">
