@@ -10,7 +10,7 @@ const AllUsersContainerCard = ({ appUserData }) => {
             <td>
                 {appUserData.userID}
             </td>
-            <td className="capitalize">
+            <td>
                 {username}
             </td>
             <td>

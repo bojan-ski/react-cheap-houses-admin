@@ -3,17 +3,17 @@ import React, { useState } from "react"
 import { toast } from "react-toastify"
 
 
-const BlogPageSearchOption = ({ searchTerm, setSearchTerm, fetchBlogPosts }) => {
+const SearchOption = ({ searchTerm, setSearchTerm, fetchSearchResults, placeholderText }) => {
     const [disableOption, setDisableOption] = useState(false)
 
     const handleSearchTerm = e => {
-        e.preventDefault()            
+        e.preventDefault()
 
-        if (searchTerm == '' || searchTerm.trim().length == 0) return toast.warning('Molimo Vas da uneste validan naziv Blog post-a')
+        if (searchTerm == '' || searchTerm.trim().length == 0) return toast.warning(`Molimo Vas da uneste validan naziv ${placeholderText}`)
 
         setDisableOption(true)
 
-        fetchBlogPosts(0, searchTerm.trim())
+        fetchSearchResults(0, searchTerm.trim())
     }
 
     const handleReset = () => {
@@ -21,17 +21,17 @@ const BlogPageSearchOption = ({ searchTerm, setSearchTerm, fetchBlogPosts }) => 
 
         setSearchTerm('')
 
-        fetchBlogPosts()
-    }    
+        fetchSearchResults()
+    }
 
     return (
-        <section className="blog-page-search-option mb-2">
+        <section className="search-option mb-3">
             <form onSubmit={handleSearchTerm}>
                 <div className="row">
 
                     {/* row item 1 */}
                     <div className="col-12 col-md-9 mb-3">
-                        <input type="text" className="form-control" value={searchTerm} placeholder="Unesite naziv Blog Post-a" onChange={e => setSearchTerm(e.target.value)} disabled={disableOption} />
+                        <input type="text" className="form-control" value={searchTerm} placeholder={`Unesite naziv ${placeholderText}`} onChange={e => setSearchTerm(e.target.value)} disabled={disableOption} />
                     </div>
 
                     {/* row item 2 */}
@@ -56,4 +56,4 @@ const BlogPageSearchOption = ({ searchTerm, setSearchTerm, fetchBlogPosts }) => 
     )
 }
 
-export default BlogPageSearchOption
+export default SearchOption

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 // context
 import { useGlobalContext } from '../context';
 // components
@@ -6,10 +6,13 @@ import PageHeader from '../components/PageHeader';
 import NoDataAvailableMessage from '../components/NoDataAvailableMessage';
 import AllUsersContainer from '../components/usersPage/AllUsersContainer';
 import Pagination from '../components/Pagination';
+import SearchOption from '../components/SearchOption';
 
 
 const Users = () => {
   const { allUsersList, fetchAllUsers, curUsersPage } = useGlobalContext()
+  // search feature - state
+  const [userSearchTerm, setUserSearchTerm] = useState('')
 
   // Fetch the first page on mount
   useEffect(() => {
@@ -26,13 +29,16 @@ const Users = () => {
       <PageHeader title='Korisnici' />
 
       <div className="container">
+
+        <SearchOption searchTerm={userSearchTerm} setSearchTerm={setUserSearchTerm} fetchSearchResults={fetchAllUsers} placeholderText='korisnika' />
+
         {!allUsersList || allUsersList == 0 ? (
           <NoDataAvailableMessage text='korisnika portal-a "JEFTINE KUĆE"' />
         ) : (
           <>
             <AllUsersContainer allUsersList={allUsersList} />
 
-            <Pagination fetchData={fetchAllUsers} page={curUsersPage} />
+            <Pagination fetchData={fetchAllUsers} page={curUsersPage} queryParam={userSearchTerm} />
           </>
         )}
       </div>

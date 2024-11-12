@@ -22,7 +22,7 @@ const useFetchAllAppUsersData = (itemsPerPage) => {
             ]
 
             if (searchTerm && searchTerm.length > 0) {
-                additionalQueryParams.push(where('newBlogPostTitle', '==', searchTerm));
+                additionalQueryParams.push(where('username', '==', searchTerm));
             }
 
             let q;
@@ -68,6 +68,9 @@ const useFetchAllAppUsersData = (itemsPerPage) => {
         } catch (error) {
             //error message
             toast.error('Greška prilikom prikazivanja svih korisnika')
+
+            console.log(error);
+            
         }
     };
 
