@@ -42,7 +42,7 @@ export const AppProvider = ({ children }) => {
     }, [])
 
     // USERS PAGE
-    const itemsAppUsersPage = 2;
+    const itemsAppUsersPage = 12;
     const { allUsersList, fetchAllUsers, curUsersPage } = useFetchAllAppUsersData(itemsAppUsersPage);
 
     // PENDING LISTINGS PAGE

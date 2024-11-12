@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 // api func
-import fetchSelectedBlogPostDataFromFirebase from "../api/fetchSelectedBlogPostDataFromFirebase";
+import fetchSelectedDataFromFirebase from "../api/fetchSelectedDataFromFirebase";
 //components
 import BlogPostOptions from "../components/selectedBlogPostPage/BlogPostOptions";
 import SelectedBlogPostContent from "../components/selectedBlogPostPage/SelectedBlogPostContent";
@@ -8,7 +8,7 @@ import SelectedBlogPostContent from "../components/selectedBlogPostPage/Selected
 
 // LOADER
 export const loader = async ({ params }) => {
-  const selectedBlogPost = await fetchSelectedBlogPostDataFromFirebase(params.id)
+  const selectedBlogPost = await fetchSelectedDataFromFirebase('blogPosts', params.id, 'Blog post-a')
 
   return selectedBlogPost
 }

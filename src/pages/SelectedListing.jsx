@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom"
 // api funcs
-import fetchSelectedListingDetailsFromFirebase from '../api/fetchSelectedListingDetailsFromFirebase.js'
+import fetchSelectedDataFromFirebase from "../api/fetchSelectedDataFromFirebase.js";
 // component
 import BackButton from "../components/BackButton.jsx";
 import AccountDetails from "../components/selectedListingPage/AccountDetails.jsx";
@@ -17,7 +17,7 @@ import SelectedImageModal from "../modals/SelectedImageModal.jsx";
 
 // LOADER
 export const loader = async ({ params }) => {
-    const selectedListingDetails = await fetchSelectedListingDetailsFromFirebase(params.id)   
+    const selectedListingDetails = await fetchSelectedDataFromFirebase('listings', params.id, 'oglasa')   
 
     return selectedListingDetails
 }

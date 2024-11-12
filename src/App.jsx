@@ -15,6 +15,7 @@ import SelectedBlogPost from "./pages/SelectedBlogPost.jsx"
 import ErrorPage from "./pages/ErrorPage.jsx"
 
 // LOADERS
+import { loader as selectedUserLoader } from "./pages/SelectedUser.jsx"
 import { loader as selectedListingLoader } from "./pages/SelectedListing.jsx"
 import { loader as selectedBlogPostLoader } from "./pages/SelectedBlogPost.jsx"
 import { loader as allAgenciesLoader } from "./pages/Agencies.jsx"
@@ -36,7 +37,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/korisnici/:id',
-        element: <SelectedUser />
+        element: <SelectedUser />,
+        loader: selectedUserLoader
       },
       {
         path: '/oglasi_na_cekanju',

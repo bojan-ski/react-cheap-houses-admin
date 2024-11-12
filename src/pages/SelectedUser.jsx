@@ -1,9 +1,22 @@
 import React from 'react'
+import { useLoaderData } from 'react-router-dom'
+// api
+import fetchSelectedDataFromFirebase from '../api/fetchSelectedDataFromFirebase'
 // components
 import BackButton from '../components/BackButton'
 
 
+// LOADER
+export const loader = async ({ params }) => {
+    const selectedUserAccountData = await fetchSelectedDataFromFirebase('users', params.id, 'korisnika')
+
+    return selectedUserAccountData
+}
+
 const SelectedUser = () => {
+    const selectedUserAccountData = useLoaderData()
+    console.log(selectedUserAccountData);
+
     const urlBackPath = `/${window.location.pathname.split('/')[1]}`
 
     return (
@@ -14,9 +27,9 @@ const SelectedUser = () => {
                     <BackButton backPath={urlBackPath} />
                 </div>
 
-                <h1>
-                    SelectedUser
-                </h1>
+                <section className='selected-user-account-details'>
+
+                </section>
             </div>
         </div>
     )
