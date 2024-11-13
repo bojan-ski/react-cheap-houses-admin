@@ -11,7 +11,9 @@ const useFetchSelectedUserListings = (itemsPerPage) => {
     const [lastVisible, setLastVisible] = useState(null);
     const [page, setPage] = useState(0);
 
-    const fetchListings = useCallback(async (pageNumber = 0, userID, reset = false) => {     
+    const fetchListings = useCallback(async (pageNumber = 0, userID, reset = false) => {   
+        console.log('useFetchSelectedUserListings');
+          
         try {
             let queryParameters = [
                 collection(db, 'listings'),

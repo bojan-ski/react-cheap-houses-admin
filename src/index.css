@@ -435,8 +435,9 @@ main {
   height: 300px;
 }
 
-/* ACTIVE LISTINGS PAGE */
+/* ACTIVE LISTINGS PAGE && AGENCIES PAGE*/
 /* SelectQueryOption component */
+/* AgenciesContainer component */
 .layout-btn {
   border: 1px solid var(--light-gray-color);
 }
@@ -463,6 +464,10 @@ main {
 /* AGENCIES PAGE */
 .agencies-page section .agency-box-data{
   box-shadow: var(--light-dark-shadow);
+}
+
+.agencies-page section .agency-box-data .agency-desc{
+  text-align: justify;
 }
 
 /* BLOG PAGE */

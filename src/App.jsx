@@ -69,6 +69,11 @@ const router = createBrowserRouter([
         loader: allAgenciesLoader
       },
       {
+        path: '/agencije/:id',
+        element: <SelectedListing />,
+        loader: selectedListingLoader
+      },
+      {
         path: '/blog',
         element: <Blog />
       },

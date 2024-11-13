@@ -48,15 +48,18 @@ export const AppProvider = ({ children }) => {
 
     // SELECTED USER PAGE
     const [selectedUserID, setSelectedUserID] = useState('')    
-    const itemsSelectedUserPage = 9;
+    const itemsSelectedUserPage = 2;
     const { listings: allSelectedUserListings, fetchListings: fetchAllSelectedUserListings, page: curSelectedUserPage } = useFetchSelectedUserListings(itemsSelectedUserPage);
+
+    // AGENCIES PAGE
+    const [selectedAgencyData, setSelectedAgencyData] = useState({})
 
     // PENDING LISTINGS PAGE
     const itemsPerPendingListingsPage = 9;
     const { listings: allPendingListings, fetchListings: fetchAllPendingListings, page: curPendingListingsPage } = useFetchAllListingsData(itemsPerPendingListingsPage, 'pending');
 
     // ACTIVE LISTINGS PAGE
-    const itemsPerActiveListingsPage = 9;
+    const itemsPerActiveListingsPage = 2;
     const { listings: allActiveListings, fetchListings: fetchAllActiveListings, page: curActiveListingsPage } = useFetchAllListingsData(itemsPerActiveListingsPage, 'active');
 
     // search and filter option
@@ -83,9 +86,12 @@ export const AppProvider = ({ children }) => {
         // SELECTED USER PAGE
         selectedUserID, // SelectedUser
         setSelectedUserID, // SelectedUser
-        allSelectedUserListings, // SelectedUser
-        fetchAllSelectedUserListings, // SelectedUser
-        curSelectedUserPage, // SelectedUser
+        allSelectedUserListings, // SelectedUser, AgenciesContainer, SelectedAgencyListings
+        fetchAllSelectedUserListings, // SelectedUser, SelectAgencyOptions, SelectedAgencyListings
+        curSelectedUserPage, // SelectedUser, SelectedAgencyListings
+
+        selectedAgencyData, // AgenciesContainer, SelectAgencyOptions, SelectedAgencyProfileData, SelectedAgencyListings
+        setSelectedAgencyData, // AgenciesContainer, SelectAgencyOptions
 
         // PENDING LISTINGS PAGE
         allPendingListings, // AllPendingListings

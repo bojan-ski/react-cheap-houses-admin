@@ -11,9 +11,10 @@ const Pagination = ({ fetchData, page, queryParam }) => {
     };
 
     const handlePreviousPage = () => {
+        scrollToTop()
+        
         if (page > 0) {
             queryParam ? fetchData(page - 1, queryParam) : fetchData(page - 1);
-            scrollToTop()
         }
     };
 
