@@ -2,6 +2,10 @@ import React from 'react'
 import { useLoaderData } from 'react-router-dom';
 // api
 import fetchAllAgencies from '../api/fetchAllAgencies';
+// components
+import PageHeader from '../components/PageHeader';
+import NoDataAvailableMessage from '../components/NoDataAvailableMessage';
+import AgenciesContainer from '../components/agenciesPage/AgenciesContainer';
 
 
 // LOADER
@@ -13,11 +17,19 @@ export const loader = async () => {
 
 const Agencies = () => {
     const allAgencies = useLoaderData()
-    console.log(allAgencies);
 
     return (
-        <div className='agencies-page'>
-            Agencies
+        <div className='agencies-page mt-5'>
+
+            <PageHeader title='Agencije' />
+
+            <div className="container">
+                {!allAgencies || allAgencies == 0 ? (
+                    <NoDataAvailableMessage text='verifikovanih Agencija' />
+                ) : (
+                    <AgenciesContainer />
+                )}
+            </div>
         </div>
     )
 }

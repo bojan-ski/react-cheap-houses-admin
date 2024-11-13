@@ -460,6 +460,11 @@ main {
   width: 100%;
 }
 
+/* AGENCIES PAGE */
+.agencies-page section .agency-box-data{
+  box-shadow: var(--light-dark-shadow);
+}
+
 /* BLOG PAGE */
 /* BlogPageSelectOptions component */
 .blog-page .blog-page-options button {
