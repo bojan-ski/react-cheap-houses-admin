@@ -413,6 +413,12 @@ main {
   background-color: var(--orange-color);
 }
 
+/* SELECTED USER PAGE */
+.selected-user-page .selected-user-account-details,
+.selected-user-page .selected-user-listings{
+  box-shadow: var(--light-dark-shadow);
+}
+
 /* PENDING & ACTIVE LISTINGS PAGE */
 /* AllListingsContainerCard component */
 .listings-card .listings-card-details {

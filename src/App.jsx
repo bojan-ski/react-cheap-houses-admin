@@ -41,6 +41,11 @@ const router = createBrowserRouter([
         loader: selectedUserLoader
       },
       {
+        path: '/korisnici/:id/:id',
+        element: <SelectedListing />,
+        loader: selectedListingLoader
+      },
+      {
         path: '/oglasi_na_cekanju',
         element: <AllPendingListings />,
       },

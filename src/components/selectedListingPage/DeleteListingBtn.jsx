@@ -13,14 +13,16 @@ import { toast } from 'react-toastify'
 const DeleteListingBtn = () => {
     const params = useParams()
     const navigate = useNavigate()
-    const selectedListingDetails = useLoaderData()
+    const selectedListingDetails = useLoaderData()   
 
     const { fetchAllPendingListings, fetchAllActiveListings } = useGlobalContext()
     
     const [isLoading, setIsLoading] = useState(false)
 
-    const urlBackPath = `/${window.location.pathname.split('/')[1]}`
-    console.log(urlBackPath);
+    const urlBackPath = window.location.pathname.split('/')[3] ?
+    `${window.location.pathname.split('/')[1]}/${window.location.pathname.split('/')[2]}` :
+    window.location.pathname.split('/')[1]
+    // console.log(urlBackPath);
 
     const handleDeleteListing = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
@@ -30,7 +32,7 @@ const DeleteListingBtn = () => {
 
             if (response) {
                 // re-fetch listings
-                if (urlBackPath == '/oglasi_na_cekanju') {
+                if (selectedListingDetails.listingStatus == 'pending') {
                     console.log('pending');                    
                     await fetchAllPendingListings()
                 } else {
@@ -42,7 +44,7 @@ const DeleteListingBtn = () => {
                 toast.success('Uspešno ste obrisali oglas');
 
                 // redirect user
-                setTimeout(() => navigate(`${urlBackPath}`), 2000)
+                setTimeout(() => navigate(`/${urlBackPath}`), 2000)
 
                 //scroll to top
                 scrollToTop()

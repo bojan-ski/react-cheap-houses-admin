@@ -12,7 +12,7 @@ const BlogPostOptions = () => {
         <div className="mb-5">
             <div className="container">
                 <div className="d-flex align-items-center justify-content-between">
-                    <BackButton backPath='/blog' />
+                    <BackButton />
 
                     <DeleteBlogPost blogPostID={params.id} selectedBlogPost={selectedBlogPost} />
                 </div>

@@ -34,8 +34,12 @@ const ApproveListingBtn = () => {
         console.log('useEffect - ApproveListingBtn');
 
         fetchAllAgenciesList()
-        // if (selectedListingDetails.listingStatus == 'pending') fetchAllAgenciesList()
     }, [])
+
+    const urlBackPath = window.location.pathname.split('/')[3] ?
+    `${window.location.pathname.split('/')[1]}/${window.location.pathname.split('/')[2]}` :
+    window.location.pathname.split('/')[1]
+    // console.log(urlBackPath);
 
     const checkIfAgencyInDB = async () => {
         const agencyExists = allAgencies.some(agency => agency.data.agencyID === userRef);
@@ -82,7 +86,8 @@ const ApproveListingBtn = () => {
                 toast.success('Oglas je odobren')
 
                 // redirect user
-                setTimeout(() => navigate('/aktivni_oglasi'), 2500)
+                setTimeout(() => navigate(`/${urlBackPath}`), 2000)
+                // setTimeout(() => navigate('/oglasi_na_cekanju'), 2500)
                 // setTimeout(()=> window.location.href ='/aktivni_oglasi',2000)
 
                 //scroll to top

@@ -26,16 +26,14 @@ const SelectedListing = () => {
     const selectedListingDetails = useLoaderData()  
 
     const [imageSrc, setImageSrc] = useState('')
-
-    const urlBackPath = `/${window.location.pathname.split('/')[1]}`
-
+    
     return (
         <>
             <div className="selected-listing-page my-5">
                 <div className="container px-5 rounded-4 border bg-white">
 
                     <div className="my-5">
-                        <BackButton backPath={urlBackPath} />
+                        <BackButton />
                     </div>
 
                     <section className="mb-4 pb-2 border-bottom">

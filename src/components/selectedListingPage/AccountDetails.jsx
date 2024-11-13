@@ -28,7 +28,6 @@ const AccountDetails = () => {
                 <p className='mb-0 fw-bold text-muted'>
                     Tip naloga:<span className='ms-2 text-dark capitalize'>{userAccountType}</span>
                 </p>
-
             </div>
 
             <div className="col-12 col-lg-6 text-start text-lg-end mb-3">
