@@ -6,6 +6,7 @@ import { useGlobalContext } from '../../context'
 import deleteListing from '../../api/deleteListing'
 // utils
 import scrollToTop from '../../utils/scrollToTop'
+import backPathUrl from '../../utils/backPathUrl'
 // toastify
 import { toast } from 'react-toastify'
 
@@ -19,10 +20,7 @@ const DeleteListingBtn = () => {
     
     const [isLoading, setIsLoading] = useState(false)
 
-    const urlBackPath = window.location.pathname.split('/')[3] ?
-    `${window.location.pathname.split('/')[1]}/${window.location.pathname.split('/')[2]}` :
-    window.location.pathname.split('/')[1]
-    // console.log(urlBackPath);
+    const backPath = backPathUrl()
 
     const handleDeleteListing = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
@@ -44,7 +42,7 @@ const DeleteListingBtn = () => {
                 toast.success('Uspešno ste obrisali oglas');
 
                 // redirect user
-                setTimeout(() => navigate(`/${urlBackPath}`), 2000)
+                setTimeout(() => navigate(`/${backPath}`), 2000)
 
                 //scroll to top
                 scrollToTop()

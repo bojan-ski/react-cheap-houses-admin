@@ -10,6 +10,7 @@ import { useGlobalContext } from '../../context'
 import { serverTimestamp } from 'firebase/firestore'
 // utils
 import scrollToTop from '../../utils/scrollToTop'
+import backPathUrl from '../../utils/backPathUrl'
 // toastify
 import { toast } from 'react-toastify'
 
@@ -25,6 +26,8 @@ const ApproveListingBtn = () => {
     const [allAgencies, setAllAgencies] = useState([])
     const [isLoading, setIsLoading] = useState(false)
 
+    const backPath = backPathUrl()
+
     const fetchAllAgenciesList = async () => {
         const response = await fetchAllAgencies()
         setAllAgencies(response);
@@ -34,12 +37,7 @@ const ApproveListingBtn = () => {
         console.log('useEffect - ApproveListingBtn');
 
         fetchAllAgenciesList()
-    }, [])
-
-    const urlBackPath = window.location.pathname.split('/')[3] ?
-    `${window.location.pathname.split('/')[1]}/${window.location.pathname.split('/')[2]}` :
-    window.location.pathname.split('/')[1]
-    // console.log(urlBackPath);
+    }, [])    
 
     const checkIfAgencyInDB = async () => {
         const agencyExists = allAgencies.some(agency => agency.data.agencyID === userRef);
@@ -86,7 +84,7 @@ const ApproveListingBtn = () => {
                 toast.success('Oglas je odobren')
 
                 // redirect user
-                setTimeout(() => navigate(`/${urlBackPath}`), 2000)
+                setTimeout(() => navigate(`/${backPath}`), 2000)
                 // setTimeout(() => navigate('/oglasi_na_cekanju'), 2500)
                 // setTimeout(()=> window.location.href ='/aktivni_oglasi',2000)
 
