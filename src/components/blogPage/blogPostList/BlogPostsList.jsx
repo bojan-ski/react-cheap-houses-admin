@@ -24,6 +24,9 @@ const BlogPostsList = () => {
         }
     }, [])
 
+    console.log(blogPosts);
+    
+
     return (
         <section className="blog-posts mb-5">
             <div className="container">

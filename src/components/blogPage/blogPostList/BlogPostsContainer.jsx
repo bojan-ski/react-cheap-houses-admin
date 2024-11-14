@@ -7,8 +7,8 @@ const BlogPostsContainer = ({ blogPosts }) => {
   return (
     <section className='blog-posts-list'>
       <div className="row">
-        {blogPosts.map(blogPost => <BlogPostsCard key={blogPost.newBlogPostTitle} blogPost={blogPost} />)}
-      </div>     
+        {blogPosts.map(blogPost => <BlogPostsCard key={blogPost.blogPostID} blogPost={blogPost} />)}
+      </div>
     </section>
   )
 }

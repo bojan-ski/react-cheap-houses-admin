@@ -71,7 +71,7 @@ export const AppProvider = ({ children }) => {
     const [selectedContent, setSelectedContent] = useState('blogs')
 
     // blog list
-    const itemsPerPage = 12;
+    const itemsPerPage = 3;
     const { blogPosts, fetchBlogPosts, curBlogPage } = useFetchBlogPageData(itemsPerPage)
 
     return <AppContext.Provider value={{
