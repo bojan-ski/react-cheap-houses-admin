@@ -10,7 +10,7 @@ import Pagination from '../components/Pagination'
 
 
 const AllActiveListings = () => {
-    const { allActiveListings, fetchAllActiveListings, curActiveListingsPage, userQueryParameter } = useGlobalContext()
+    const { allActiveListings, fetchAllActiveListings, curActiveListingsPage, isActiveListingsLoading, userQueryParameter } = useGlobalContext()
 
     // Fetch the first page on mount
     useEffect(() => {
@@ -36,7 +36,7 @@ const AllActiveListings = () => {
                     <>
                         <AllListingsContainer listingsList={allActiveListings} />
 
-                        <Pagination fetchData={fetchAllActiveListings} page={curActiveListingsPage} queryParam={userQueryParameter} />
+                        <Pagination fetchData={fetchAllActiveListings} page={curActiveListingsPage} queryParam={userQueryParameter} isLoading={isActiveListingsLoading} />
                     </>
                 )}
             </div>

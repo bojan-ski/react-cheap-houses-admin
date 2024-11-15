@@ -4,7 +4,7 @@ import scrollToTop from "../utils/scrollToTop";
 import { GrNext, GrPrevious } from "react-icons/gr"
 
 
-const Pagination = ({ fetchData, page, queryParam }) => {
+const Pagination = ({ fetchData, page, queryParam, isLoading }) => {
     const handleNextPage = () => {
         queryParam ? fetchData(page + 1, queryParam) : fetchData(page + 1);
         scrollToTop()
@@ -28,10 +28,10 @@ const Pagination = ({ fetchData, page, queryParam }) => {
             </p>
 
             <div className="pagination-btn-container">
-                <button className="btn px-3 me-3 btn-prev" onClick={handlePreviousPage} disabled={page === 0}>
+                <button className="btn px-3 me-3 btn-prev" onClick={handlePreviousPage} disabled={page === 0 || isLoading}>
                     <GrPrevious className="text-white" />
                 </button>
-                <button className="btn px-3 btn-next" onClick={handleNextPage} >
+                <button className="btn px-3 btn-next" onClick={handleNextPage} disabled={isLoading}>
                     <GrNext className="text-white" />
                 </button>
             </div>

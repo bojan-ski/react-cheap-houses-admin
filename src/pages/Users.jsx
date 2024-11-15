@@ -10,7 +10,7 @@ import SearchOption from '../components/SearchOption';
 
 
 const Users = () => {
-  const { allUsersList, fetchAllUsers, curUsersPage } = useGlobalContext()
+  const { allUsersList, fetchAllUsers, curUsersPage, isAllUsersLoading } = useGlobalContext()
   // search feature - state
   const [userSearchTerm, setUserSearchTerm] = useState('')
 
@@ -38,7 +38,7 @@ const Users = () => {
           <>
             <AllUsersContainer allUsersList={allUsersList} />
 
-            <Pagination fetchData={fetchAllUsers} page={curUsersPage} queryParam={userSearchTerm} />
+            <Pagination fetchData={fetchAllUsers} page={curUsersPage} queryParam={userSearchTerm} isLoading={isAllUsersLoading}/>
           </>
         )}
       </div>

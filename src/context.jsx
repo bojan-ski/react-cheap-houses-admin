@@ -43,24 +43,24 @@ export const AppProvider = ({ children }) => {
     }, [])
 
     // USERS PAGE
-    const itemsAppUsersPage = 12;
-    const { allUsersList, fetchAllUsers, curUsersPage } = useFetchAllAppUsersData(itemsAppUsersPage);
+    const itemsAppUsersPage = 2;
+    const { allUsersList, fetchAllUsers, curUsersPage, isLoading: isAllUsersLoading } = useFetchAllAppUsersData(itemsAppUsersPage);
 
     // SELECTED USER PAGE
     const [selectedUserID, setSelectedUserID] = useState('')    
     const itemsSelectedUserPage = 2;
-    const { listings: allSelectedUserListings, fetchListings: fetchAllSelectedUserListings, page: curSelectedUserPage } = useFetchSelectedUserListings(itemsSelectedUserPage);
+    const { listings: allSelectedUserListings, fetchListings: fetchAllSelectedUserListings, page: curSelectedUserPage, isLoading: isAllSelectedUserListingsLoading } = useFetchSelectedUserListings(itemsSelectedUserPage);
 
     // AGENCIES PAGE
     const [selectedAgencyData, setSelectedAgencyData] = useState({})
 
     // PENDING LISTINGS PAGE
-    const itemsPerPendingListingsPage = 9;
-    const { listings: allPendingListings, fetchListings: fetchAllPendingListings, page: curPendingListingsPage } = useFetchAllListingsData(itemsPerPendingListingsPage, 'pending');
+    const itemsPerPendingListingsPage = 2;
+    const { listings: allPendingListings, fetchListings: fetchAllPendingListings, page: curPendingListingsPage, isLoading: isPendingListingsLoading } = useFetchAllListingsData(itemsPerPendingListingsPage, 'pending');
 
     // ACTIVE LISTINGS PAGE
     const itemsPerActiveListingsPage = 2;
-    const { listings: allActiveListings, fetchListings: fetchAllActiveListings, page: curActiveListingsPage } = useFetchAllListingsData(itemsPerActiveListingsPage, 'active');
+    const { listings: allActiveListings, fetchListings: fetchAllActiveListings, page: curActiveListingsPage, isLoading: isActiveListingsLoading } = useFetchAllListingsData(itemsPerActiveListingsPage, 'active');
 
     // search and filter option
     const [userQueryParameter, setUserQueryParameter] = useState() 
@@ -72,7 +72,7 @@ export const AppProvider = ({ children }) => {
 
     // blog list
     const itemsPerPage = 3;
-    const { blogPosts, fetchBlogPosts, curBlogPage } = useFetchBlogPageData(itemsPerPage)
+    const { blogPosts, fetchBlogPosts, curBlogPage, isLoading: isBlogsPageLoading } = useFetchBlogPageData(itemsPerPage)
 
     return <AppContext.Provider value={{
         userData, // Auth, Login
@@ -82,6 +82,7 @@ export const AppProvider = ({ children }) => {
         allUsersList, // Users
         fetchAllUsers, // Users
         curUsersPage, // Users
+        isAllUsersLoading, // Users
 
         // SELECTED USER PAGE
         selectedUserID, // SelectedUser
@@ -89,6 +90,7 @@ export const AppProvider = ({ children }) => {
         allSelectedUserListings, // SelectedUser, AgenciesContainer, SelectedAgencyListings
         fetchAllSelectedUserListings, // SelectedUser, SelectAgencyOptions, SelectedAgencyListings
         curSelectedUserPage, // SelectedUser, SelectedAgencyListings
+        isAllSelectedUserListingsLoading, // SelectedUser, isAllSelectedUserListingsLoading
 
         selectedAgencyData, // AgenciesContainer, SelectAgencyOptions, SelectedAgencyProfileData, SelectedAgencyListings
         setSelectedAgencyData, // AgenciesContainer, SelectAgencyOptions
@@ -97,11 +99,13 @@ export const AppProvider = ({ children }) => {
         allPendingListings, // AllPendingListings
         fetchAllPendingListings, // AllPendingListings, ApproveListingBtn, DeleteListingBtn
         curPendingListingsPage, // AllPendingListings
+        isPendingListingsLoading, // AllPendingListings
 
         // ACTIVE LISTINGS PAGE
         allActiveListings, // AllActiveListings
         fetchAllActiveListings, // AllActiveListings, ApproveListingBtn, DeleteListingBtn, SelectQueryOption, ListingsSearchOption, ListingsFilterOptions, 
         curActiveListingsPage, // AllActiveListings
+        isActiveListingsLoading, // AllActiveListings
         userQueryParameter, // AllActiveListings, ListingsSearchOption, ListingsFilterOptions, FilterOptions
         setUserQueryParameter, // SelectQueryOption, ListingsSearchOption, FilterOptions
         disableOption, // ListingsSearchOption, ListingsFilterOptions, FilterOptions
@@ -112,7 +116,8 @@ export const AppProvider = ({ children }) => {
         setSelectedContent, // BlogPageSelectOptions
         blogPosts, // BlogPostsList
         fetchBlogPosts, // BlogPostsList, NewBlogPostForm
-        curBlogPage // BlogPostsList
+        curBlogPage, // BlogPostsList
+        isBlogsPageLoading, // BlogPostsList
     }}>
         {children}
     </AppContext.Provider>

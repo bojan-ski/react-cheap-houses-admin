@@ -21,13 +21,13 @@ export const loader = async ({ params }) => {
 
 const SelectedUser = () => {
     const params = useParams()
-    const { selectedUserID, setSelectedUserID, allSelectedUserListings, fetchAllSelectedUserListings, curSelectedUserPage } = useGlobalContext()
+    const { selectedUserID, setSelectedUserID, allSelectedUserListings, fetchAllSelectedUserListings, curSelectedUserPage, isAllSelectedUserListingsLoading } = useGlobalContext()
 
     // Fetch the first page on mount
     useEffect(() => {
-        console.log('SelectedUser - useEffect');       
+        console.log('SelectedUser - useEffect');
 
-        if(selectedUserID != params.id || allSelectedUserListings.length == 0){          
+        if (selectedUserID != params.id || allSelectedUserListings.length == 0) {
             fetchAllSelectedUserListings(0, params.id);
             setSelectedUserID(params.id)
         }
@@ -56,7 +56,7 @@ const SelectedUser = () => {
 
                             <AllListingsContainer listingsList={allSelectedUserListings} />
 
-                            <PaginationUsers fetchData={fetchAllSelectedUserListings} userID={params.id} page={curSelectedUserPage}/>
+                            <PaginationUsers fetchData={fetchAllSelectedUserListings} userID={params.id} page={curSelectedUserPage} isLoading={isAllSelectedUserListingsLoading} />
                         </>
                     )}
                 </section>

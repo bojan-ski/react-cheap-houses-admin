@@ -7,7 +7,7 @@ import PaginationUsers from '../PaginationUsers'
 
 
 const SelectedAgencyListings = () => {
-    const { selectedAgencyData, allSelectedUserListings, fetchAllSelectedUserListings, curSelectedUserPage } = useGlobalContext()
+    const { selectedAgencyData, allSelectedUserListings, fetchAllSelectedUserListings, curSelectedUserPage, isAllSelectedUserListingsLoading } = useGlobalContext()
 
     return (
         <>
@@ -17,7 +17,7 @@ const SelectedAgencyListings = () => {
 
             <AllListingsContainer listingsList={allSelectedUserListings} />
 
-            <PaginationUsers fetchData={fetchAllSelectedUserListings} userID={selectedAgencyData.data.agencyID} page={curSelectedUserPage} />
+            <PaginationUsers fetchData={fetchAllSelectedUserListings} userID={selectedAgencyData.data.agencyID} page={curSelectedUserPage} isLoading={isAllSelectedUserListingsLoading} />
         </>
     )
 }

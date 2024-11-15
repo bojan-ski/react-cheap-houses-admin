@@ -9,7 +9,7 @@ import Pagination from '../components/Pagination'
 
 
 const AllPendingListings = () => {
-    const { allPendingListings, fetchAllPendingListings, curPendingListingsPage } = useGlobalContext()
+    const { allPendingListings, fetchAllPendingListings, curPendingListingsPage, isPendingListingsLoading } = useGlobalContext()
 
     // Fetch the first page on mount
     useEffect(() => {
@@ -34,7 +34,7 @@ const AllPendingListings = () => {
                     <>
                         <AllListingsContainer listingsList={allPendingListings} />
 
-                        <Pagination fetchData={fetchAllPendingListings} page={curPendingListingsPage} />
+                        <Pagination fetchData={fetchAllPendingListings} page={curPendingListingsPage} isLoading={isPendingListingsLoading} />
                     </>
                 )}
             </div>

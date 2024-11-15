@@ -9,7 +9,7 @@ import SearchOption from '../../SearchOption'
 
 
 const BlogPostsList = () => {
-    const { blogPosts, fetchBlogPosts, curBlogPage } = useGlobalContext()
+    const { blogPosts, fetchBlogPosts, curBlogPage, isBlogsPageLoading } = useGlobalContext()
     // search feature - state
     const [blogSearchTerm, setBlogSearchTerm] = useState('')
 
@@ -17,21 +17,18 @@ const BlogPostsList = () => {
     useEffect(() => {
         console.log('Blog page - useEffect');
 
-        if (blogPosts.length == 0 && blogSearchTerm == ''){
+        if (blogPosts.length === 0 && blogSearchTerm === '') {
             console.log('get blog data');
-            
+
             fetchBlogPosts();
         }
     }, [])
-
-    console.log(blogPosts);
-    
 
     return (
         <section className="blog-posts mb-5">
             <div className="container">
 
-                <SearchOption searchTerm={blogSearchTerm} setSearchTerm={setBlogSearchTerm} fetchSearchResults={fetchBlogPosts} placeholderText='Blog Post-a'/>
+                <SearchOption searchTerm={blogSearchTerm} setSearchTerm={setBlogSearchTerm} fetchSearchResults={fetchBlogPosts} placeholderText='Blog Post-a' />
 
                 {!blogPosts || blogPosts == 0 ? (
                     <NoDataAvailableMessage text='postavljenih Blog post-ova' />
@@ -39,7 +36,7 @@ const BlogPostsList = () => {
                     <>
                         <BlogPostsContainer blogPosts={blogPosts} />
 
-                        <Pagination fetchData={fetchBlogPosts} page={curBlogPage} queryParam={blogSearchTerm} />
+                        <Pagination fetchData={fetchBlogPosts} page={curBlogPage} queryParam={blogSearchTerm} isLoading={isBlogsPageLoading} />
                     </>
                 )}
             </div>
