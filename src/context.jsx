@@ -92,8 +92,8 @@ export const AppProvider = ({ children }) => {
         curSelectedUserPage, // SelectedUser, SelectedAgencyListings
         isAllSelectedUserListingsLoading, // SelectedUser, isAllSelectedUserListingsLoading
 
-        selectedAgencyData, // AgenciesContainer, SelectAgencyOptions, SelectedAgencyProfileData, SelectedAgencyListings
-        setSelectedAgencyData, // AgenciesContainer, SelectAgencyOptions
+        selectedAgencyData, // AgenciesContainer, SelectAgencyOptions, SelectedAgencyProfileData, SelectedAgencyListings, SelectedAgencyModal
+        setSelectedAgencyData, // AgenciesContainer, SelectAgencyOptions, SelectedAgencyModal
 
         // PENDING LISTINGS PAGE
         allPendingListings, // AllPendingListings

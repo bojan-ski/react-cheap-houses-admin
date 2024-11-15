@@ -2,7 +2,7 @@
 import { RiDeleteBin2Fill, RiImageAddFill } from "react-icons/ri";
 
 
-const FileInputImage = ({ image, onMutate, inputId, handleRemoveImage }) => (
+const FileInputImage = ({ image, onMutate, inputId, handleRemoveImage, className, height, width }) => (
     <>
         <input
             className="d-none"
@@ -36,8 +36,8 @@ const FileInputImage = ({ image, onMutate, inputId, handleRemoveImage }) => (
                 <img
                     src={URL.createObjectURL(image)}
                     alt={inputId}
-                    className="img-fluid"
-                    style={{ objectFit: 'cover', height: '580px' }}
+                    className={className}
+                    style={{ objectFit: 'cover', height: `${height}`, width: `${width}` }}
                 />
             </div>
         )}

@@ -45,10 +45,10 @@ const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleAddImage, hand
 
         const currentDate = getCurrentDate()
 
-        const newBlogPostImgOneUrl = await checkIfImageIsValid(uploadedImagesData.newBlogPostImgOne, newBlogPostTitle, currentDate);
-        const newBlogPostImgTwoUrl = await checkIfImageIsValid(uploadedImagesData.newBlogPostImgTwo, newBlogPostTitle, currentDate);
-        const newBlogPostPromoImgOneUrl = await checkIfImageIsValid(uploadedImagesData.newBlogPostPromoImgOne, newBlogPostTitle, currentDate);
-        const newBlogPostPromoImgTwoUrl = await checkIfImageIsValid(uploadedImagesData.newBlogPostPromoImgTwo, newBlogPostTitle, currentDate);
+        const newBlogPostImgOneUrl = await checkIfImageIsValid('blogPostImages', uploadedImagesData.newBlogPostImgOne, newBlogPostTitle, currentDate);
+        const newBlogPostImgTwoUrl = await checkIfImageIsValid('blogPostImages', uploadedImagesData.newBlogPostImgTwo, newBlogPostTitle, currentDate);
+        const newBlogPostPromoImgOneUrl = await checkIfImageIsValid('blogPostImages', uploadedImagesData.newBlogPostPromoImgOne, newBlogPostTitle, currentDate);
+        const newBlogPostPromoImgTwoUrl = await checkIfImageIsValid('blogPostImages', uploadedImagesData.newBlogPostPromoImgTwo, newBlogPostTitle, currentDate);
 
         const newBlogPostData = {
             newBlogPostTitle,
@@ -72,7 +72,7 @@ const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleAddImage, hand
             await fetchBlogPosts()
 
             // redirect user
-            setTimeout(() => setSelectedContent('blogs'), 2000)            
+            setTimeout(() => setSelectedContent('blogs'), 2000)
         }
 
         setIsLoading(false)
@@ -113,6 +113,8 @@ const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleAddImage, hand
                                 onMutate={(e) => handleAddImage(e, 'newBlogPostImgOne')}
                                 inputId="newBlogPostImgOne"
                                 handleRemoveImage={handleRemoveImage}
+                                className="img-fluid"
+                                height='580px'
                             />
                         </div>
                     </div>
@@ -160,6 +162,8 @@ const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleAddImage, hand
                                         onMutate={(e) => handleAddImage(e, 'newBlogPostImgTwo')}
                                         inputId="newBlogPostImgTwo"
                                         handleRemoveImage={handleRemoveImage}
+                                        className="img-fluid"
+                                        height='580px'
                                     />
                                 </div>
                             </>
@@ -174,6 +178,8 @@ const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleAddImage, hand
                                         onMutate={(e) => handleAddImage(e, 'newBlogPostImgTwo')}
                                         inputId="newBlogPostImgTwo"
                                         handleRemoveImage={handleRemoveImage}
+                                        className="img-fluid"
+                                        height='580px'
                                     />
                                 </div>
 

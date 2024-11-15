@@ -4,12 +4,12 @@ import storeUploadedImage from "./storeUploadedImage";
 import { toast } from "react-toastify";
 
 
-const checkIfImageIsValid = async (image, title, date) => {
+const checkIfImageIsValid = async (storageName, image, title, date) => {
     if (image && image.name !== 'undefined' && image.size < 1000000) {
         try {
-            return await storeUploadedImage('blogPostImages', image, title, date);
+            return await storeUploadedImage(storageName, image, title, date);
         } catch (error) {
-            toast.error(`Error uploading image: ${image.name}`);
+            toast.error(`Greška prilikom upload-a slike: ${image.name}`);
             console.error(error);
         }
     }

@@ -46,13 +46,15 @@ const NewBlogPostContainer = ({ customEntry }) => {
                             onMutate={(e) => handleAddImage(e, 'newBlogPostPromoImgOne')}
                             inputId="newBlogPostPromoImgOne"
                             handleRemoveImage={handleRemoveImage}
+                            className="img-fluid"
+                            height='580px'
                         />
                     )}
                 </div>
 
                 {/* row item 2 */}
                 <div className="col-8">
-                    <NewBlogPostForm customEntry={customEntry} uploadedImagesData={uploadedImagesData} handleAddImage={handleAddImage} handleRemoveImage={handleRemoveImage}/>
+                    <NewBlogPostForm customEntry={customEntry} uploadedImagesData={uploadedImagesData} handleAddImage={handleAddImage} handleRemoveImage={handleRemoveImage} />
                 </div>
 
                 {/* row item 3 */}
@@ -63,6 +65,8 @@ const NewBlogPostContainer = ({ customEntry }) => {
                             onMutate={(e) => handleAddImage(e, 'newBlogPostPromoImgTwo')}
                             inputId="newBlogPostPromoImgTwo"
                             handleRemoveImage={handleRemoveImage}
+                            className="img-fluid"
+                            height='580px'
                         />
                     )}
                 </div>

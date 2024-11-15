@@ -1,3 +1,6 @@
+import React from 'react'
+
+
 const SelectedImageModal = ({ imageSrc }) => {
     return (
         <div className="modal fade" id="selectedImageModal" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="selectedImageModalLabel" aria-hidden="true">

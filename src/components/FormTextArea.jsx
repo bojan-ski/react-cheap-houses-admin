@@ -1,4 +1,4 @@
-const FormTextArea = ({ name, rows, cols, value, defaultValue, minLength, maxLength, required, onMutate }) => {
+const FormTextArea = ({ name, rows, cols, value, defaultValue, minLength, maxLength, required, onMutate, disabled }) => {
     return (
         <textarea
             className="textarea mb-4 form-control"
@@ -12,6 +12,7 @@ const FormTextArea = ({ name, rows, cols, value, defaultValue, minLength, maxLen
             maxLength={maxLength}
             required={required}
             onChange={onMutate}
+            disabled={disabled}
         />
     )
 }
