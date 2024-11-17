@@ -8,8 +8,7 @@ import EditSelectedAgencyBtn from './EditSelectedAgencyBtn';
 
 const SelectedAgencyProfileData = () => {
     const { selectedAgencyData } = useGlobalContext()
-    console.log(selectedAgencyData);
-    
+    // console.log(selectedAgencyData);
 
     return (
         <div className='agency-box-data bg-white rounded-4 p-3'>

@@ -6,18 +6,19 @@ import { toast } from "react-toastify";
 
 
 const updateAgencyProfileData = async (docID, agencyLogoUrl, agencyDesc) => {
-    console.log(docID);
-    console.log(agencyLogoUrl);
-    console.log(agencyDesc);
+    // console.log(docID);
+    // console.log(agencyLogoUrl);
+    // console.log(agencyDesc);
 
     try {
         const agencyProfileDataRef = doc(db, `agencies/${docID}`);
 
         const agencyUpdatedData = {
-            agencyLogo: agencyLogoUrl,
-            agencyDescription: agencyDesc
-        }
-
+            ...(agencyLogoUrl != null && { agencyLogo: agencyLogoUrl }),
+            ...(agencyDesc != '' && { agencyDescription: agencyDesc })
+        };
+        // console.log(agencyUpdatedData);
+        
         // Update the document
         await updateDoc(agencyProfileDataRef, agencyUpdatedData);
 
@@ -25,8 +26,9 @@ const updateAgencyProfileData = async (docID, agencyLogoUrl, agencyDesc) => {
     } catch (error) {
         // error message
         toast.error('Greška prilikom ažuriranja podata')
-
         console.error('Error updating document: ', error);
+
+        return false
     }
 }
 

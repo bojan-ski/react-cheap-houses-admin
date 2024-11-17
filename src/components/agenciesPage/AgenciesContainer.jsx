@@ -11,7 +11,6 @@ import SelectedAgencyListings from './SelectedAgencyListings';
 
 const AgenciesContainer = () => {
     const allAgencies = useLoaderData()
-
     const { allSelectedUserListings, selectedAgencyData, setSelectedAgencyData, fetchAllSelectedUserListings } = useGlobalContext()   
     
     // Fetch first agency data on mount

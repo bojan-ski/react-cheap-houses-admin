@@ -1,25 +1,30 @@
 import React, { useState } from 'react'
+import { useRevalidator } from 'react-router-dom'
 // context
 import { useGlobalContext } from '../context'
 // api
 import checkIfImageIsValid from '../api/checkIfImageIsValid'
+import updateAgencyProfileData from '../api/updateAgencyProfileData'
+import deleteUploadedImage from '../api/deleteUploadedImage'
+// utils
 import getCurrentDate from '../utils/getCurrentDate'
 // components
 import FileInputImage from '../components/FileInputImage'
 import FormTextArea from '../components/FormTextArea'
 // toastify
 import { toast } from 'react-toastify'
-import updateAgencyProfileData from '../api/updateAgencyProfileData'
+// react icons
+import { RiDeleteBin2Fill } from 'react-icons/ri'
 
 
 const SelectedAgencyModal = () => {
+    const revalidator = useRevalidator()
+    
     const { selectedAgencyData, setSelectedAgencyData } = useGlobalContext()
-    console.log(selectedAgencyData);
 
-    const [agencyLogo, setAgencyLogo] = useState(selectedAgencyData?.data?.agencyLogo ? selectedAgencyData?.data?.agencyLogo : null);
-    const [agencyDesc, setAgencyDesc] = useState(selectedAgencyData?.data?.agencyDescription ? selectedAgencyData?.data?.agencyDescription : '')
+    const [agencyLogo, setAgencyLogo] = useState('');
+    const [agencyDesc, setAgencyDesc] = useState('')
 
-    const [isEditAgencyData, setIsEditAgencyData] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
 
     const handleAddAgencyLogo = e => {
@@ -32,42 +37,72 @@ const SelectedAgencyModal = () => {
         }
     };
 
-    const handleAgencyLogo = () => {
-        setAgencyLogo(null)
+    const handleRemoveAgencyLogo = () => {
+        setAgencyLogo('')
     };
 
     const handleUpdateSelectedAgencyProfileData = async e => {
         e.preventDefault()
 
-        if(!agencyLogo || !agencyDesc) return setIsEditAgencyData(false)
+        if (!agencyLogo && !agencyDesc) return toast.warning('Nema promena')
 
         setIsLoading(true)
 
         const currentDate = getCurrentDate()
 
-        // console.log(agencyLogo);
-        // console.log(agencyDesc);
-
         const agencyLogoUrl = await checkIfImageIsValid('agenciesLogo', agencyLogo, selectedAgencyData.data.agencyName, currentDate);
-
-        if(agencyLogoUrl == null) return setIsLoading(false)
 
         const response = await updateAgencyProfileData(selectedAgencyData.id, agencyLogoUrl, agencyDesc)
 
-        if(response){
+        if (response) {
             // success message
             toast.success('Uspešno ste ažurirali podatke agencije')
 
-            setIsEditAgencyData(false)
+            // update global state
+            setSelectedAgencyData((curState) => ({
+                ...curState,
+                data: {
+                    ...curState.data,
+                    ...(agencyLogoUrl != null && { agencyLogo: agencyLogoUrl }),
+                    ...(agencyDesc != '' && { agencyDescription: agencyDesc })
+                },
+            }));
+
+            // reset local state
+            setAgencyLogo('')
+            setAgencyDesc('')
+
+            //revalidate react loader
+            revalidator.revalidate()
         }
 
         setIsLoading(false)
     }
 
+    const handleDeleteAgencyLogo = async (agencyLogoUrl) => {
+        if (window.confirm('Obriši logo agencije?')) {
+            await deleteUploadedImage(agencyLogoUrl);
 
+            const response = await updateAgencyProfileData(selectedAgencyData.id, '', '')
 
-    // console.log(agencyLogo);
-    // console.log(agencyDesc);
+            if (response) {
+                // success message
+                toast.success('Logo agencije je obrisan')
+
+                // update global state
+                setSelectedAgencyData((curState) => ({
+                    ...curState,
+                    data: {
+                        ...curState.data,
+                        agencyLogo: '',
+                    },
+                }));
+
+                //revalidate react loader
+                revalidator.revalidate()
+            }
+        }
+    } 
 
     return (
         <div className="modal fade" id="selectedAgencyModal" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="selectedAgencyModalLabel" aria-hidden="true">
@@ -83,18 +118,27 @@ const SelectedAgencyModal = () => {
                         <form onSubmit={handleUpdateSelectedAgencyProfileData}>
                             <div className="row">
                                 {/* row item 1 */}
-                                <div className="col-12 col-lg-6 text-start mb-3">
+                                <div className="col-6 text-start mb-3">
                                     <p className='fw-bold text-muted mb-2'>
                                         Logo agencije:
                                     </p>
-                                    {agencyLogo ? (
-                                        <img src={agencyLogo} alt="agency-logo" className='rounded-4' style={{ objectFit: 'cover', height: '100px', width: '100px' }} />
+                                    {selectedAgencyData?.data?.agencyLogo ? (
+                                        <>
+                                            <button
+                                                type="button"
+                                                className="btn btn-danger text-white d-block mb-2 ms-4"
+                                                onClick={() => handleDeleteAgencyLogo(selectedAgencyData?.data?.agencyLogo)}
+                                            >
+                                                <RiDeleteBin2Fill size={25} />
+                                            </button>
+                                            <img src={selectedAgencyData?.data?.agencyLogo} alt="agency-logo" className='rounded-4' style={{ objectFit: 'cover', height: '100px', width: '100px' }} />
+                                        </>
                                     ) : (
                                         <FileInputImage
                                             image={agencyLogo}
                                             onMutate={handleAddAgencyLogo}
                                             inputId="agencyLogo"
-                                            handleRemoveImage={handleAgencyLogo}
+                                            handleRemoveImage={handleRemoveAgencyLogo}
                                             className="rounded-4"
                                             height='100px'
                                             width='100px'
@@ -103,7 +147,7 @@ const SelectedAgencyModal = () => {
                                 </div>
 
                                 {/* row item 2 */}
-                                <div className="col-12 col-lg-6 text-start mb-3">
+                                <div className="col-6 text-start mb-3">
                                     <p className='fw-bold text-muted mb-2'>
                                         Naziv agencije:
                                     </p>
@@ -119,35 +163,20 @@ const SelectedAgencyModal = () => {
                                     </p>
                                     <FormTextArea
                                         name="agencyDesc"
-                                        rows={6}
+                                        rows={4}
                                         minLength={10}
-                                        maxLength={300}
-                                        defaultValue={agencyDesc}
+                                        maxLength={220}
+                                        defaultValue={selectedAgencyData?.data?.agencyDescription ? selectedAgencyData?.data?.agencyDescription : ''}
                                         onMutate={e => setAgencyDesc(e.target.value)}
-                                        disabled={!isEditAgencyData}
+                                        disabled={isLoading}
                                     />
                                 </div>
                             </div>
-
-                            <div className="edit-agency-data-btn-container d-flex justify-content-between">
-                                {isEditAgencyData && (
-                                    <>
-                                        <button type="submit" className="btn btn-success fw-bold px-5 py-2" disabled={isLoading}>
-                                            Sačuvaj
-                                        </button>
-                                        <button type="button" className='btn btn-warning fw-bold text-white px-5 py-2' onClick={() => setIsEditAgencyData(!isEditAgencyData)} disabled={isLoading}>
-                                            Otkaži
-                                        </button>
-                                    </>
-                                )}
-                            </div>
+                            <button type="submit" className="btn bg-orange-hover text-white w-100 fw-bold fs-5 px-5 py-2" disabled={isLoading}>
+                                Sačuvaj
+                            </button>
                         </form>
 
-                        {!isEditAgencyData && (
-                            <button type="button" className='btn bg-orange-hover fw-bold text-white px-5 py-2' onClick={() => setIsEditAgencyData(!isEditAgencyData)}>
-                                Ažuriraj
-                            </button>
-                        )}
                     </div>
 
                 </div>
