@@ -6,10 +6,6 @@ import { toast } from "react-toastify";
 
 
 const updateAgencyProfileData = async (docID, agencyLogoUrl, agencyDesc) => {
-    // console.log(docID);
-    // console.log(agencyLogoUrl);
-    // console.log(agencyDesc);
-
     try {
         const agencyProfileDataRef = doc(db, `agencies/${docID}`);
 
@@ -17,9 +13,8 @@ const updateAgencyProfileData = async (docID, agencyLogoUrl, agencyDesc) => {
             ...(agencyLogoUrl != null && { agencyLogo: agencyLogoUrl }),
             ...(agencyDesc != '' && { agencyDescription: agencyDesc })
         };
-        // console.log(agencyUpdatedData);
         
-        // Update the document
+        // Update document
         await updateDoc(agencyProfileDataRef, agencyUpdatedData);
 
         return true

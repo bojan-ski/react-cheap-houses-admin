@@ -88,12 +88,12 @@ export const AppProvider = ({ children }) => {
         selectedUserID, // SelectedUser
         setSelectedUserID, // SelectedUser
         allSelectedUserListings, // SelectedUser, AgenciesContainer, SelectedAgencyListings
-        fetchAllSelectedUserListings, // SelectedUser, SelectAgencyOptions, SelectedAgencyListings
+        fetchAllSelectedUserListings, // SelectedUser, SelectAgencyOptions, SelectedAgencyListings, DeleteSelectedAgencyBtn
         curSelectedUserPage, // SelectedUser, SelectedAgencyListings
         isAllSelectedUserListingsLoading, // SelectedUser, isAllSelectedUserListingsLoading
 
-        selectedAgencyData, // AgenciesContainer, SelectAgencyOptions, SelectedAgencyProfileData, SelectedAgencyListings, SelectedAgencyModal
-        setSelectedAgencyData, // AgenciesContainer, SelectAgencyOptions, SelectedAgencyModal
+        selectedAgencyData, // AgenciesContainer, SelectAgencyOptions, SelectedAgencyProfileData, SelectedAgencyListings, SelectedAgencyModal, DeleteSelectedAgencyBtn
+        setSelectedAgencyData, // AgenciesContainer, SelectAgencyOptions, SelectedAgencyModal, DeleteSelectedAgencyBtn
 
         // PENDING LISTINGS PAGE
         allPendingListings, // AllPendingListings

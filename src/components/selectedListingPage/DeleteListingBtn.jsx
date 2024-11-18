@@ -23,7 +23,7 @@ const DeleteListingBtn = () => {
     const backPath = backPathUrl()
 
     const handleDeleteListing = async () => {
-        if (window.confirm('Are you sure you want to delete?')) {
+        if (window.confirm('Obriši oglas?')) {
             setIsLoading(true)
 
             const response = await deleteListing(params.id, selectedListingDetails.imageUrls)

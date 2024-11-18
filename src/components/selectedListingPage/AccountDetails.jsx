@@ -17,13 +17,13 @@ const AccountDetails = () => {
                 </h4>
 
                 <p className='mb-0 fw-bold text-muted'>
-                    ID korisnika:<span className='ms-2 text-dark capitalize'>{userRef}</span>
+                    ID korisnika:<span className='ms-2 text-dark'>{userRef}</span>
                 </p>
                 <p className='mb-0 fw-bold text-muted'>
-                    Korisničko ime:<span className='ms-2 text-dark capitalize'>{userUsername}</span>
+                    Korisničko ime:<span className='ms-2 text-dark'>{userUsername}</span>
                 </p>
                 <p className='mb-0 fw-bold text-muted'>
-                    Elektronska pošta:<span className='ms-2 text-dark capitalize'>{userEmail}</span>
+                    Elektronska pošta:<span className='ms-2 text-dark'>{userEmail}</span>
                 </p>
                 <p className='mb-0 fw-bold text-muted'>
                     Tip naloga:<span className='ms-2 text-dark capitalize'>{userAccountType}</span>

@@ -19,8 +19,9 @@ import { RiDeleteBin2Fill } from 'react-icons/ri'
 
 const SelectedAgencyModal = () => {
     const revalidator = useRevalidator()
-    
+
     const { selectedAgencyData, setSelectedAgencyData } = useGlobalContext()
+    // console.log(selectedAgencyData);    
 
     const [agencyLogo, setAgencyLogo] = useState('');
     const [agencyDesc, setAgencyDesc] = useState('')
@@ -79,6 +80,10 @@ const SelectedAgencyModal = () => {
         setIsLoading(false)
     }
 
+    // console.log(selectedAgencyData);
+    // console.log(selectedAgencyData?.data?.agencyDescription);
+    // console.log(agencyDesc);
+
     const handleDeleteAgencyLogo = async (agencyLogoUrl) => {
         if (window.confirm('Obriši logo agencije?')) {
             await deleteUploadedImage(agencyLogoUrl);
@@ -102,7 +107,7 @@ const SelectedAgencyModal = () => {
                 revalidator.revalidate()
             }
         }
-    } 
+    }
 
     return (
         <div className="modal fade" id="selectedAgencyModal" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="selectedAgencyModalLabel" aria-hidden="true">
@@ -160,13 +165,14 @@ const SelectedAgencyModal = () => {
                                 <div className="col-12 text-start">
                                     <p className='fw-bold text-muted mb-2'>
                                         Opis agencije:
-                                    </p>
+                                    </p>                                    
                                     <FormTextArea
                                         name="agencyDesc"
                                         rows={4}
                                         minLength={10}
                                         maxLength={220}
-                                        defaultValue={selectedAgencyData?.data?.agencyDescription ? selectedAgencyData?.data?.agencyDescription : ''}
+                                        // value={selectedAgencyData?.data?.agencyDescription || ''}
+                                        defaultValue={selectedAgencyData?.data?.agencyDescription || ''}
                                         onMutate={e => setAgencyDesc(e.target.value)}
                                         disabled={isLoading}
                                     />

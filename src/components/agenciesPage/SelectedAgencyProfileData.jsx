@@ -8,7 +8,6 @@ import EditSelectedAgencyBtn from './EditSelectedAgencyBtn';
 
 const SelectedAgencyProfileData = () => {
     const { selectedAgencyData } = useGlobalContext()
-    // console.log(selectedAgencyData);
 
     return (
         <div className='agency-box-data bg-white rounded-4 p-3'>
@@ -19,7 +18,7 @@ const SelectedAgencyProfileData = () => {
                 <div className="col-12 text-center text-lg-end mb-4 border-bottom pb-3">
                     <EditSelectedAgencyBtn />
 
-                    <DeleteSelectedAgencyBtn selectedAgencyData={selectedAgencyData} />
+                    <DeleteSelectedAgencyBtn />
                 </div>
 
                 {/* sub row item 2 */}
