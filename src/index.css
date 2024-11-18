@@ -161,6 +161,7 @@ textarea {
   color: var(--orange-color);
   transition: all 0.3s ease;
 }
+
 /* ---------- MAIN ---------- */
 main {
   flex: 1;

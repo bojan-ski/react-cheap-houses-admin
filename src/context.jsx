@@ -17,7 +17,7 @@ export const AppProvider = ({ children }) => {
         isLoggedIn: false,
         userID: '',
         userEmail: '',
-    })
+    })    
 
     // check if user is logged
     useEffect(() => {
@@ -78,7 +78,7 @@ export const AppProvider = ({ children }) => {
         userData, // Auth, Login
         setUserData, // LogOutBtn
 
-        // USERS PAGE
+        // USERS and AGENCIES PAGE
         allUsersList, // Users
         fetchAllUsers, // Users
         curUsersPage, // Users

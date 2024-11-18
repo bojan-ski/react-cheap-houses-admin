@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRevalidator } from 'react-router-dom'
 // context
 import { useGlobalContext } from '../context'
@@ -20,13 +20,18 @@ import { RiDeleteBin2Fill } from 'react-icons/ri'
 const SelectedAgencyModal = () => {
     const revalidator = useRevalidator()
 
-    const { selectedAgencyData, setSelectedAgencyData } = useGlobalContext()
-    // console.log(selectedAgencyData);    
+    const { selectedAgencyData, setSelectedAgencyData } = useGlobalContext()  
 
     const [agencyLogo, setAgencyLogo] = useState('');
     const [agencyDesc, setAgencyDesc] = useState('')
 
     const [isLoading, setIsLoading] = useState(false)
+
+    useEffect(()=>{
+        console.log('useEffect - SelectedAgencyModal');
+        
+        setAgencyDesc(selectedAgencyData?.data?.agencyDescription || '')
+    },[selectedAgencyData.id])
 
     const handleAddAgencyLogo = e => {
         const { files } = e.target;
@@ -71,7 +76,6 @@ const SelectedAgencyModal = () => {
 
             // reset local state
             setAgencyLogo('')
-            setAgencyDesc('')
 
             //revalidate react loader
             revalidator.revalidate()
@@ -79,10 +83,6 @@ const SelectedAgencyModal = () => {
 
         setIsLoading(false)
     }
-
-    // console.log(selectedAgencyData);
-    // console.log(selectedAgencyData?.data?.agencyDescription);
-    // console.log(agencyDesc);
 
     const handleDeleteAgencyLogo = async (agencyLogoUrl) => {
         if (window.confirm('Obriši logo agencije?')) {
@@ -108,6 +108,10 @@ const SelectedAgencyModal = () => {
             }
         }
     }
+
+    // console.log(selectedAgencyData);
+    // console.log(selectedAgencyData?.data?.agencyDescription);
+    // console.log(agencyDesc);
 
     return (
         <div className="modal fade" id="selectedAgencyModal" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="selectedAgencyModalLabel" aria-hidden="true">
@@ -165,14 +169,15 @@ const SelectedAgencyModal = () => {
                                 <div className="col-12 text-start">
                                     <p className='fw-bold text-muted mb-2'>
                                         Opis agencije:
-                                    </p>                                    
+                                    </p>
                                     <FormTextArea
                                         name="agencyDesc"
                                         rows={4}
                                         minLength={10}
                                         maxLength={220}
                                         // value={selectedAgencyData?.data?.agencyDescription || ''}
-                                        defaultValue={selectedAgencyData?.data?.agencyDescription || ''}
+                                        // defaultValue={selectedAgencyData?.data?.agencyDescription || ''}
+                                        value={agencyDesc}
                                         onMutate={e => setAgencyDesc(e.target.value)}
                                         disabled={isLoading}
                                     />
