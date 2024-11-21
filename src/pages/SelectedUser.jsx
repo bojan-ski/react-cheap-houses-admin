@@ -25,8 +25,6 @@ const SelectedUser = () => {
 
     // Fetch the first page on mount
     useEffect(() => {
-        console.log('SelectedUser - useEffect');
-
         if (selectedUserID != params.id || allSelectedUserListings.length == 0) {
             fetchAllSelectedUserListings(0, params.id);
             setSelectedUserID(params.id)

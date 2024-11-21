@@ -13,14 +13,16 @@ import { Navigation, Pagination } from 'swiper/modules';
 
 
 const AllListingsContainerCard = ({ listing }) => {
-    const { listingType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyLocation, propertyDistrict, imageUrls, askingPrice, listingCreated } = listing.data
+    const { listingType, listingStatus, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyLocation, propertyDistrict, imageUrls, askingPrice, listingCreated } = listing.data
 
     const pathname = window.location.pathname
-    // console.log(pathname);    
+    
+    const isPendingListing = listingStatus == "pending";    
+    const isPendingListingPage = window.location.pathname.split('/')[1] != 'oglasi_na_cekanju'; 
 
     return (
         <div className="listings-card col-12 col-lg-4 p-1 text-center text-lg-start">
-            <div className="listings-card-details">
+            <div className={`listings-card-details ${(isPendingListing && isPendingListingPage) &&'bg-warning-subtle'}`}>
 
                 <h4 className="text-orange text-center fw-bold mb-4">
                     {listingType === 'izdajem' ? "IZDAJE SE" : 'NA PRODAJU'}

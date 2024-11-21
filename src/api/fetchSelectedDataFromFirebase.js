@@ -14,7 +14,6 @@ const fetchSelectedDataFromFirebase = async (collectionName, id, placeholderText
     } catch (error) {
         // error message
         toast.error(`Greška prilikom prikazivanja izabranog ${placeholderText}`)
-        // toast.error(`Greška prilikom prikazivanja izabranog korisnika`)
 
         return null
     }

@@ -13,10 +13,7 @@ const useFetchSelectedUserListings = (itemsPerPage) => {
     const [page, setPage] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
 
-
     const fetchListings = useCallback(async (pageNumber = 0, userID, reset = false) => {
-        console.log('fetchListings - useFetchSelectedUserListings');
-
         setIsLoading(true);
 
         let updatedSnapshots = pageSnapshots;
@@ -86,14 +83,10 @@ const useFetchSelectedUserListings = (itemsPerPage) => {
         } catch (error) {
             //error message
             toast.error('Greška prilikom prikazivanja svi objavljenih oglasa izabranog korisnika')
-
-            console.log(error);
         }
 
         setIsLoading(false);
-
-        console.log(pageSnapshots);
-        
+                
     }, [page, itemsPerPage, pageSnapshots])
 
     return { listings, fetchListings, page, isLoading };
