@@ -12,7 +12,7 @@ const userSignIn = async (email, password) => {
         return true
     } catch (error) {
         //error message
-        toast.error('Kredencijale koje ste uneli nisu validni, molimo Vas probajte ponovo')
+        toast.error('Kredencijale koje ste uneli nisu validni')
 
         return false
     }

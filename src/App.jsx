@@ -1,6 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 
-
 // PRIVATE ROUTE
 import PrivateRoute from "./private/PrivateRoute.jsx"
 

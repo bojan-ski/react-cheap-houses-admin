@@ -10,17 +10,11 @@ import SearchOption from '../components/SearchOption';
 
 
 const Users = () => {
-  const { allUsersList, fetchAllUsers, curUsersPage, isAllUsersLoading } = useGlobalContext()
-  // search feature - state
-  const [userSearchTerm, setUserSearchTerm] = useState('')
+  const { userSearchTerm, setUserSearchTerm, userDisableSearch, setUserDisableSearch, allUsersList, fetchAllUsers, curUsersPage, isAllUsersLoading } = useGlobalContext()
 
   // Fetch the first page on mount
   useEffect(() => {
-    console.log('Users - useEffect');
-
-    if (allUsersList.length == 0) {
-      fetchAllUsers();
-    }
+    if (allUsersList.length == 0 && userSearchTerm == '') fetchAllUsers();
   }, [])
 
   return (
@@ -30,7 +24,14 @@ const Users = () => {
 
       <div className="container">
 
-        <SearchOption searchTerm={userSearchTerm} setSearchTerm={setUserSearchTerm} fetchSearchResults={fetchAllUsers} placeholderText='korisnika' />
+        <SearchOption
+          searchTerm={userSearchTerm}
+          setSearchTerm={setUserSearchTerm}
+          disableOption={userDisableSearch}
+          setDisableOption={setUserDisableSearch}
+          fetchSearchResults={fetchAllUsers}
+          placeholderText='korisnika'
+        />
 
         {!allUsersList || allUsersList == 0 ? (
           <NoDataAvailableMessage text='korisnika portal-a "JEFTINE KUĆE"' />
@@ -38,7 +39,7 @@ const Users = () => {
           <>
             <AllUsersContainer allUsersList={allUsersList} />
 
-            <Pagination fetchData={fetchAllUsers} page={curUsersPage} queryParam={userSearchTerm} isLoading={isAllUsersLoading}/>
+            <Pagination fetchData={fetchAllUsers} page={curUsersPage} queryParam={userSearchTerm} isLoading={isAllUsersLoading} />
           </>
         )}
       </div>

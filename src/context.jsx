@@ -17,7 +17,7 @@ export const AppProvider = ({ children }) => {
         isLoggedIn: false,
         userID: '',
         userEmail: '',
-    })    
+    })
 
     // check if user is logged
     useEffect(() => {
@@ -43,27 +43,32 @@ export const AppProvider = ({ children }) => {
     }, [])
 
     // USERS PAGE
-    const itemsAppUsersPage = 2;
+    const itemsAppUsersPage = 4;
     const { allUsersList, fetchAllUsers, curUsersPage, isLoading: isAllUsersLoading } = useFetchAllAppUsersData(itemsAppUsersPage);
 
+    // search feature - state
+    const [userSearchTerm, setUserSearchTerm] = useState('')
+    const [userDisableSearch, setUserDisableSearch] = useState(false)
+    
     // SELECTED USER PAGE
-    const [selectedUserID, setSelectedUserID] = useState('')    
-    const itemsSelectedUserPage = 2;
+    const [selectedUserID, setSelectedUserID] = useState('')
+
+    const itemsSelectedUserPage = 3;
     const { listings: allSelectedUserListings, fetchListings: fetchAllSelectedUserListings, page: curSelectedUserPage, isLoading: isAllSelectedUserListingsLoading } = useFetchSelectedUserListings(itemsSelectedUserPage);
 
     // AGENCIES PAGE
     const [selectedAgencyData, setSelectedAgencyData] = useState({})
 
     // PENDING LISTINGS PAGE
-    const itemsPerPendingListingsPage = 2;
+    const itemsPerPendingListingsPage = 3;
     const { listings: allPendingListings, fetchListings: fetchAllPendingListings, page: curPendingListingsPage, isLoading: isPendingListingsLoading } = useFetchAllListingsData(itemsPerPendingListingsPage, 'pending');
 
     // ACTIVE LISTINGS PAGE
-    const itemsPerActiveListingsPage = 2;
+    const itemsPerActiveListingsPage = 3;
     const { listings: allActiveListings, fetchListings: fetchAllActiveListings, page: curActiveListingsPage, isLoading: isActiveListingsLoading } = useFetchAllListingsData(itemsPerActiveListingsPage, 'active');
 
     // search and filter option
-    const [userQueryParameter, setUserQueryParameter] = useState() 
+    const [userQueryParameter, setUserQueryParameter] = useState()
     const [disableOption, setDisableOption] = useState(false)
 
     // BLOG PAGE
@@ -83,6 +88,11 @@ export const AppProvider = ({ children }) => {
         fetchAllUsers, // Users
         curUsersPage, // Users
         isAllUsersLoading, // Users
+
+        userSearchTerm, // Users
+        setUserSearchTerm, // Users
+        userDisableSearch, // Users
+        setUserDisableSearch, // Users
 
         // SELECTED USER PAGE
         selectedUserID, // SelectedUser

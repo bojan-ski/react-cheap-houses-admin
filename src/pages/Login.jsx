@@ -1,3 +1,4 @@
+import React from 'react'
 import { Navigate, useNavigate } from "react-router-dom";
 // context
 import { useGlobalContext } from "../context";
@@ -23,18 +24,21 @@ const Login = () => {
     const enteredEmail = e.target.elements[0].value.trim()
     const enteredPassword = e.target.elements[1].value
 
-    const response = await userSignIn(enteredEmail, enteredPassword)
+    if (enteredEmail == 'admin@admin.com' && enteredPassword == '123456') {
+      const response = await userSignIn(enteredEmail, enteredPassword)
 
-    if (response) {
-      e.target.elements[0].value = ''
-      e.target.elements[1].value = ''
+      if (response) {
+        e.target.elements[0].value = ''
+        e.target.elements[1].value = ''
 
-      // success message
-      toast.success('ADMIN - Uspešno ste se prijavili')
+        // success message
+        toast.success('ADMIN - Uspešno ste se prijavili')
 
-      // redirect user
-      setTimeout(() => navigate('/korisnici'), 1500)
-      // setTimeout(() => window.location.href = '/korisnici', 1500)
+        // redirect user
+        setTimeout(() => navigate('/korisnici'), 1500)
+      }
+    } else {
+      return toast.error('Nemate pristup!!!')
     }
   }
 
@@ -56,7 +60,6 @@ const Login = () => {
             </button>
           </form>
         </section>
-
       </div>
     </div>
   )

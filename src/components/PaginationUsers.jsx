@@ -1,8 +1,8 @@
 import React from 'react'
 // utils func
 import scrollToTop from "../utils/scrollToTop";
-// React Icons
-import { GrNext, GrPrevious } from "react-icons/gr"
+// components
+import PaginationUI from './PaginationUI';
 
 
 const PaginationUsers = ({ fetchData, userID, page, isLoading }) => {
@@ -18,25 +18,7 @@ const PaginationUsers = ({ fetchData, userID, page, isLoading }) => {
         }
     };
 
-    return (
-        < section className="pagination d-flex align-items-center justify-content-between" >
-            <p className="fw-bold text-muted mb-0 fs-5">
-                Stranica:
-                <span className="text-dark ms-2">
-                    {page + 1}
-                </span>
-            </p>
-
-            <div className="pagination-btn-container">
-                <button className="btn px-3 me-3 btn-prev" onClick={handlePreviousPage} disabled={isLoading || page === 0}>
-                    <GrPrevious className="text-white" />
-                </button>
-                <button className="btn px-3 btn-next" onClick={handleNextPage} disabled={isLoading}>
-                    <GrNext className="text-white" />
-                </button>
-            </div>
-        </section >
-    )
+    return <PaginationUI page={page} handlePreviousPage={handlePreviousPage} handleNextPage={handleNextPage} isLoading={isLoading}/>
 }
 
 export default PaginationUsers

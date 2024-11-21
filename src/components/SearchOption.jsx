@@ -1,15 +1,14 @@
-import React, { useState } from "react"
+import React from "react"
 // toastify
 import { toast } from "react-toastify"
 
 
-const SearchOption = ({ searchTerm, setSearchTerm, fetchSearchResults, placeholderText }) => {
-    const [disableOption, setDisableOption] = useState(false)
+const SearchOption = ({ searchTerm, setSearchTerm, disableOption, setDisableOption, fetchSearchResults, placeholderText }) => {
 
     const handleSearchTerm = e => {
         e.preventDefault()
 
-        if (searchTerm == '' || searchTerm.trim().length == 0) return toast.warning(`Molimo Vas da uneste validan naziv ${placeholderText}`)
+        if (searchTerm == '' || searchTerm.trim().length == 0) return toast.warning(`Uneste validan naziv ${placeholderText}`)
 
         setDisableOption(true)
 

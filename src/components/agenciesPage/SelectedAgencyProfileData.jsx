@@ -14,14 +14,14 @@ const SelectedAgencyProfileData = () => {
 
             <div className="row">
 
-                {/* sub row item 1 */}
+                {/* row item 1 */}
                 <div className="col-12 text-center text-lg-end mb-4 border-bottom pb-3">
                     <EditSelectedAgencyBtn />
 
                     <DeleteSelectedAgencyBtn />
                 </div>
 
-                {/* sub row item 2 */}
+                {/* row item 2 */}
                 <div className="col-12 col-lg-4">
                     <div className="row">
                         <div className="col-6 col-lg-12 mb-2 d-flex align-items-center justify-content-center">
@@ -38,7 +38,7 @@ const SelectedAgencyProfileData = () => {
                     </div>
                 </div>
 
-                {/* sub row item 3 */}
+                {/* row item 3 */}
                 <div className="col-12 col-lg-8">
                     {selectedAgencyData?.data?.agencyDescription && (
                         <p className='agency-desc mb-0'>

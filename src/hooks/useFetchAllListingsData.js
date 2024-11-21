@@ -15,7 +15,9 @@ const useFetchAllListingsData = (itemsPerPage, listingsStatus) => {
     const fetchListings = useCallback(async (pageNumber = 0, userQueryParameter = '', reset = false) => {  
         console.log('fetchListings');
 
-        setIsLoading(true);        
+        setIsLoading(true);   
+        
+        let updatedSnapshots = pageSnapshots;
               
         try {
             let queryParameters = [
@@ -49,15 +51,16 @@ const useFetchAllListingsData = (itemsPerPage, listingsStatus) => {
                     ...queryParameters,
                 );
 
-                setPageSnapshots([]);
+                updatedSnapshots = [];
+                setPageSnapshots(updatedSnapshots);
             } else if (pageNumber > page) {
                 // Moving forward, use the last snapshot of the current page              
-                let lastVisible = pageSnapshots[pageSnapshots.length - 1];
+                let lastVisible = updatedSnapshots[updatedSnapshots.length - 1];
 
                 q = query(...queryParameters, startAfter(lastVisible));
             } else if (pageNumber < page) {
                 // Moving back, use the snapshot of the previous page
-                let previousPageSnapshot = pageSnapshots[pageNumber - 1];
+                let previousPageSnapshot = updatedSnapshots[pageNumber - 1];
 
                 q = query(...queryParameters, startAfter(previousPageSnapshot));
             }
@@ -67,7 +70,8 @@ const useFetchAllListingsData = (itemsPerPage, listingsStatus) => {
             // Check if the end of the collection is reached
             if (querySnapshot.docs.length == 0 && pageNumber !== 0) {
                 // Loop back to the first page
-                setPageSnapshots([]);
+                updatedSnapshots = [];
+                setPageSnapshots(updatedSnapshots);
 
                 fetchListings(0, userQueryParameter, true);
                 return;
@@ -75,7 +79,10 @@ const useFetchAllListingsData = (itemsPerPage, listingsStatus) => {
 
             // Update the last visible document for the next page
             const newLastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
-            setPageSnapshots([...pageSnapshots, newLastVisible]);
+            updatedSnapshots = reset
+                ? [newLastVisible]
+                : [...updatedSnapshots, newLastVisible];
+            setPageSnapshots(updatedSnapshots);
 
             // Replace the listings with the new set of documents for the current page
             setListings(querySnapshot.docs.map(doc => ({ id: doc.id, data: doc.data() })));
@@ -88,6 +95,8 @@ const useFetchAllListingsData = (itemsPerPage, listingsStatus) => {
         }
 
         setIsLoading(false)
+
+         // console.log(pageSnapshots);
         
     }, [page, itemsPerPage, pageSnapshots])
 

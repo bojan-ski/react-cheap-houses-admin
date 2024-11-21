@@ -12,9 +12,7 @@ const useFetchAllAppUsersData = (itemsPerPage) => {
     const [curUsersPage, setCurUsersPage] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
 
-    const fetchAllUsers = useCallback(async (pageNumber = 0, searchTerm = '', reset = false) => {
-        console.log('fetchAllUsers');
-
+    const fetchAllUsers = useCallback(async (pageNumber = 0, searchTerm = '', reset = false) => {        
         setIsLoading(true);
 
         try {
@@ -73,10 +71,7 @@ const useFetchAllAppUsersData = (itemsPerPage) => {
             setCurUsersPage(pageNumber);
         } catch (error) {
             //error message
-            toast.error('Greška prilikom prikazivanja svih korisnika')
-
-            console.log(error);
-            
+            toast.error('Greška prilikom prikazivanja svih korisnika')            
         }
 
         setIsLoading(false);

@@ -1,3 +1,6 @@
+import React from 'react'
+
+
 const FormInput = ({ label, name, type, placeholder, value, defaultValue, required, onMutate, disabled, maxLength, minLength }) => {
     return (
         <div className="mb-3">
