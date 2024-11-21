@@ -1,3 +1,6 @@
+import React from "react"
+
+
 const NewBlogPostCustomization = ({ setCustomEntry }) => {
     return (
         <div className="container">

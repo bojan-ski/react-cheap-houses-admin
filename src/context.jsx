@@ -74,6 +74,10 @@ export const AppProvider = ({ children }) => {
     // BLOG PAGE
     // blog options
     const [selectedContent, setSelectedContent] = useState('blogs')
+    const [blogsDisableSearch, setBlogsDisableSearch] = useState(false)
+
+    // search feature - state
+    const [blogSearchTerm, setBlogSearchTerm] = useState('')
 
     // blog list
     const itemsPerPage = 3;
@@ -124,6 +128,12 @@ export const AppProvider = ({ children }) => {
         // BLOG PAGE
         selectedContent, // Blog, BlogPageSelectOptions
         setSelectedContent, // BlogPageSelectOptions
+
+        blogSearchTerm, // BlogPostsList
+        setBlogSearchTerm, // BlogPostsList
+        blogsDisableSearch, // BlogPostsList
+        setBlogsDisableSearch, // BlogPostsList
+
         blogPosts, // BlogPostsList
         fetchBlogPosts, // BlogPostsList, NewBlogPostForm
         curBlogPage, // BlogPostsList

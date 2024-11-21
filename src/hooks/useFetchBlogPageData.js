@@ -12,9 +12,7 @@ const useFetchBlogPageData = (itemsPerPage) => {
     const [curBlogPage, setCurBlogPage] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
 
-    const fetchBlogPosts = useCallback(async (pageNumber = 0, searchTerm = '', reset = false) => { 
-        console.log('fetchBlogPosts');
-        
+    const fetchBlogPosts = useCallback(async (pageNumber = 0, searchTerm = '', reset = false) => {         
         setIsLoading(true);
 
         try {
@@ -71,12 +69,11 @@ const useFetchBlogPageData = (itemsPerPage) => {
             setCurBlogPage(pageNumber);
         } catch (error) {
             //error message
-            toast.error('Greška prilikom prikazivanja svi Blog post-ova, molimo Vas probajte ponovo')
-
-            console.log(error);            
+            toast.error('Greška prilikom prikazivanja svi Blog post-ova')         
         }
 
         setIsLoading(false);
+
     }, [curBlogPage, itemsPerPage, pageSnapshots])
 
     return { blogPosts, fetchBlogPosts, curBlogPage, isLoading };

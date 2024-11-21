@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 // components
 import NewBlogPostCustomization from "./NewBlogPostCustomization"
 import NewBlogPostContainer from "./NewBlogPostContainer"

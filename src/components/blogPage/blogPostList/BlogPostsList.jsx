@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 // context
 import { useGlobalContext } from '../../../context'
 // components
@@ -9,26 +9,25 @@ import SearchOption from '../../SearchOption'
 
 
 const BlogPostsList = () => {
-    const { blogPosts, fetchBlogPosts, curBlogPage, isBlogsPageLoading } = useGlobalContext()
-    // search feature - state
-    const [blogSearchTerm, setBlogSearchTerm] = useState('')
+    const { blogSearchTerm, setBlogSearchTerm, blogsDisableSearch, setBlogsDisableSearch, blogPosts, fetchBlogPosts, curBlogPage, isBlogsPageLoading } = useGlobalContext()
 
     // Fetch the first page on mount
     useEffect(() => {
-        console.log('Blog page - useEffect');
-
-        if (blogPosts.length === 0 && blogSearchTerm === '') {
-            console.log('get blog data');
-
-            fetchBlogPosts();
-        }
+        if (blogPosts.length === 0 && blogSearchTerm === '') fetchBlogPosts();
     }, [])
 
     return (
         <section className="blog-posts mb-5">
             <div className="container">
 
-                <SearchOption searchTerm={blogSearchTerm} setSearchTerm={setBlogSearchTerm} fetchSearchResults={fetchBlogPosts} placeholderText='Blog Post-a' />
+                <SearchOption
+                    searchTerm={blogSearchTerm}
+                    setSearchTerm={setBlogSearchTerm}
+                    disableOption={blogsDisableSearch}
+                    setDisableOption={setBlogsDisableSearch}
+                    fetchSearchResults={fetchBlogPosts}
+                    placeholderText='Blog Post-a'
+                />
 
                 {!blogPosts || blogPosts == 0 ? (
                     <NoDataAvailableMessage text='postavljenih Blog post-ova' />
