@@ -28,8 +28,6 @@ const SelectedAgencyModal = () => {
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(()=>{
-        console.log('useEffect - SelectedAgencyModal');
-        
         setAgencyDesc(selectedAgencyData?.data?.agencyDescription || '')
     },[selectedAgencyData.id])
 
@@ -45,12 +43,10 @@ const SelectedAgencyModal = () => {
 
     const handleRemoveAgencyLogo = () => {
         setAgencyLogo('')
-    };
+    };   
 
     const handleUpdateSelectedAgencyProfileData = async e => {
         e.preventDefault()
-
-        if (!agencyLogo && !agencyDesc) return toast.warning('Nema promena')
 
         setIsLoading(true)
 
@@ -108,10 +104,6 @@ const SelectedAgencyModal = () => {
             }
         }
     }
-
-    // console.log(selectedAgencyData);
-    // console.log(selectedAgencyData?.data?.agencyDescription);
-    // console.log(agencyDesc);
 
     return (
         <div className="modal fade" id="selectedAgencyModal" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="selectedAgencyModalLabel" aria-hidden="true">

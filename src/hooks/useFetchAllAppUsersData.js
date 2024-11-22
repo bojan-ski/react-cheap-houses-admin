@@ -75,6 +75,7 @@ const useFetchAllAppUsersData = (itemsPerPage) => {
         }
 
         setIsLoading(false);
+        
     }, [curUsersPage, itemsPerPage, pageSnapshots])
 
     return { allUsersList, fetchAllUsers, curUsersPage, isLoading };

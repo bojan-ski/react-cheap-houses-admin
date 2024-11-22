@@ -15,8 +15,6 @@ const AgenciesContainer = () => {
     
     // Fetch first agency data on mount
     useEffect(() => {
-        console.log('AgenciesContainer - useEffect');
-
         if (allAgencies.length > 0 && selectedAgencyData.id == undefined) {
             setSelectedAgencyData(allAgencies[0])
             fetchAllSelectedUserListings(0, allAgencies[0].data.agencyID);

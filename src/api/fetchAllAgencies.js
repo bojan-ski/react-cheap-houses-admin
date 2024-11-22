@@ -6,8 +6,6 @@ import { toast } from "react-toastify";
 
 
 const fetchAllAgencies = async () => {
-    console.log('API - fetchAllAgencies');
-
     try {
         const q = query(collection(db, 'agencies'), orderBy('timestamp', 'desc'));
         const querySnapshot = await getDocs(q);
