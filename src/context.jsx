@@ -107,8 +107,8 @@ export const AppProvider = ({ children }) => {
         curSelectedUserPage, // SelectedUser, SelectedAgencyListings
         isAllSelectedUserListingsLoading, // SelectedUser, isAllSelectedUserListingsLoading
 
-        selectedAgencyData, // AgenciesContainer, SelectAgencyOptions, SelectedAgencyProfileData, SelectedAgencyListings, SelectedAgencyModal, DeleteSelectedAgencyBtn
-        setSelectedAgencyData, // AgenciesContainer, SelectAgencyOptions, SelectedAgencyModal, DeleteSelectedAgencyBtn
+        selectedAgencyData, // AgenciesContainer, SelectAgencyOptions, SelectedAgencyProfileData, SelectedAgencyListings, SelectedAgencyModal, DeleteSelectedAgencyBtn, ApproveListingBtn, DeleteListingBtn
+        setSelectedAgencyData, // AgenciesContainer, SelectAgencyOptions, SelectedAgencyModal, DeleteSelectedAgencyBtn, ApproveListingBtn, DeleteListingBtn
 
         // PENDING LISTINGS PAGE
         allPendingListings, // AllPendingListings
@@ -138,7 +138,7 @@ export const AppProvider = ({ children }) => {
         setBlogsDisableSearch, // BlogPostsList
 
         blogPosts, // BlogPostsList
-        fetchBlogPosts, // BlogPostsList, NewBlogPostForm
+        fetchBlogPosts, // BlogPostsList, NewBlogPostForm, DeleteBlogPost
         curBlogPage, // BlogPostsList
         isBlogsPageLoading, // BlogPostsList
     }}>

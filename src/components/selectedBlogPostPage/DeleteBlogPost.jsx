@@ -2,15 +2,19 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 // api
 import deleteUploadedImage from '../../api/deleteUploadedImage';
-// toastify
-import { toast } from 'react-toastify';
 // firebase
 import { deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../../firebase.config';
+// context
+import { useGlobalContext } from '../../context';
+// toastify
+import { toast } from 'react-toastify';
 
 
 const DeleteBlogPost = ({ blogPostID, selectedBlogPost }) => {
     const navigate = useNavigate()
+
+    const { fetchBlogPosts } = useGlobalContext()
 
     const deleteBlogPost = async (blogPostID) => {
         if (window.confirm('Obriši Blog post?')) {
@@ -32,6 +36,9 @@ const DeleteBlogPost = ({ blogPostID, selectedBlogPost }) => {
 
                 // success message after listing removal 
                 toast.success('Uspešno ste obrisali Vaš oglas');
+
+                // re-fetch blog posts
+                await fetchBlogPosts()
 
                 //redirect user
                 navigate('/blog')

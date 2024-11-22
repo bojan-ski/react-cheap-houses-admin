@@ -17,7 +17,7 @@ const SelectedAgencyListings = () => {
 
             <AllListingsContainer listingsList={allSelectedUserListings} />
 
-            <PaginationUsers fetchData={fetchAllSelectedUserListings} userID={selectedAgencyData.data.agencyID} page={curSelectedUserPage} isLoading={isAllSelectedUserListingsLoading} />
+            <PaginationUsers fetchData={fetchAllSelectedUserListings} userID={selectedAgencyData?.data?.agencyID} page={curSelectedUserPage} isLoading={isAllSelectedUserListingsLoading} />
         </>
     )
 }

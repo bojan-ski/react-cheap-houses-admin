@@ -15,6 +15,8 @@ const useFetchBlogPageData = (itemsPerPage) => {
     const fetchBlogPosts = useCallback(async (pageNumber = 0, searchTerm = '', reset = false) => {         
         setIsLoading(true);
 
+        let updatedSnapshots = pageSnapshots;
+
         try {
             const baseQuery = [
                 collection(db, 'blogPosts'),
@@ -32,15 +34,16 @@ const useFetchBlogPageData = (itemsPerPage) => {
                 // Fetch the first page or reset to the first page
                 q = query(...baseQuery);
 
-                setPageSnapshots([]);
+                updatedSnapshots = [];
+                setPageSnapshots(updatedSnapshots);
             } else if (pageNumber > curBlogPage) {  
                 // Moving forward, use the last snapshot of the current page              
-                let lastVisible = pageSnapshots[pageSnapshots.length - 1];
+                let lastVisible = updatedSnapshots[updatedSnapshots.length - 1];
               
                 q = query(...baseQuery, startAfter(lastVisible));
             } else if (pageNumber < curBlogPage) {
                 // Moving back, use the snapshot of the previous page
-                let previousPageSnapshot = pageSnapshots[pageNumber - 1];
+                let previousPageSnapshot = updatedSnapshots[pageNumber - 1];
 
                 q = query(...baseQuery, startAfter(previousPageSnapshot));
             }
@@ -50,7 +53,8 @@ const useFetchBlogPageData = (itemsPerPage) => {
             // Check if the end of the collection is reached
             if (querySnapshot.empty && pageNumber !== 0) {
                 // Loop back to the first page
-                setPageSnapshots([]);
+                updatedSnapshots = [];
+                setPageSnapshots(updatedSnapshots);
 
                 fetchBlogPosts(0, searchTerm, true);
                 return;
@@ -58,7 +62,10 @@ const useFetchBlogPageData = (itemsPerPage) => {
 
             // Update the last visible document for the next page
             const newLastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];  
-            setPageSnapshots([...pageSnapshots, newLastVisible]);
+            updatedSnapshots = reset
+                ? [newLastVisible]
+                : [...updatedSnapshots, newLastVisible];
+            setPageSnapshots(updatedSnapshots);
 
             // Replace the listings with the new set of documents for the current page
             setBlogPosts(querySnapshot.docs.map(doc => ({
@@ -72,7 +79,7 @@ const useFetchBlogPageData = (itemsPerPage) => {
             toast.error('Greška prilikom prikazivanja svi Blog post-ova')         
         }
 
-        setIsLoading(false);
+        setIsLoading(false);        
 
     }, [curBlogPage, itemsPerPage, pageSnapshots])
 

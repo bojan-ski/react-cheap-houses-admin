@@ -16,7 +16,7 @@ import { toast } from 'react-toastify'
 
 
 const ApproveListingBtn = () => {
-    const params = useParams()    
+    const params = useParams()
     const navigate = useNavigate()
     const revalidator = useRevalidator()
 
@@ -37,7 +37,7 @@ const ApproveListingBtn = () => {
 
     useEffect(() => {
         fetchAllAgenciesList()
-    }, [])    
+    }, [])
 
     const checkIfAgencyInDB = async () => {
         const agencyExists = allAgencies.some(agency => agency.data.agencyID === userRef);
@@ -79,14 +79,12 @@ const ApproveListingBtn = () => {
                 // re-fetch listings
                 const pageRefresh = window.location.pathname.split('/')[1]
 
-                if(selectedUserID && pageRefresh == 'korisnici') await fetchAllSelectedUserListings(0, selectedUserID)
+                if (selectedUserID && pageRefresh == 'korisnici') await fetchAllSelectedUserListings(0, selectedUserID)
 
-                if(selectedAgencyData?.data?.agencyID && pageRefresh == 'agencije') await fetchAllSelectedUserListings(0, selectedAgencyData?.data?.agencyID)
+                if (selectedAgencyData?.data?.agencyID && pageRefresh == 'agencije') await fetchAllSelectedUserListings(0, selectedAgencyData?.data?.agencyID)
 
-                if(pageRefresh == 'oglasi_na_cekanju'){
-                    await fetchAllActiveListings()
-                    await fetchAllPendingListings()                    
-                }
+                await fetchAllActiveListings()
+                await fetchAllPendingListings()
 
                 //revalidate react loader
                 revalidator.revalidate()
@@ -103,7 +101,7 @@ const ApproveListingBtn = () => {
         }
 
         setIsLoading(false)
-    }    
+    }
 
     return (
         <button className="btn btn-success me-3" onClick={handleApproveListing} disabled={isLoading}>
