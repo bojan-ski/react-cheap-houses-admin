@@ -12,7 +12,7 @@ const Error = ({ textOne, textTwo }) => {
                 <h3 className="fw-bold text-muted mb-5">
                     {textTwo}
                 </h3>
-                <Link to='/' className="btn bg-orange-hover fw-bold fs-5 text-white p-3">
+                <Link to='/korisnici' className="btn bg-orange-hover fw-bold fs-5 text-white p-3">
                     Nazad na početnu stranicu
                 </Link>
             </div>
