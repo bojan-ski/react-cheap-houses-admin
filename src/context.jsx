@@ -103,7 +103,7 @@ export const AppProvider = ({ children }) => {
         selectedUserID, // SelectedUser
         setSelectedUserID, // SelectedUser
         allSelectedUserListings, // SelectedUser, AgenciesContainer, SelectedAgencyListings
-        fetchAllSelectedUserListings, // SelectedUser, SelectAgencyOptions, SelectedAgencyListings, DeleteSelectedAgencyBtn
+        fetchAllSelectedUserListings, // SelectedUser, SelectAgencyOptions, SelectedAgencyListings, DeleteSelectedAgencyBtn, ApproveListingBtn
         curSelectedUserPage, // SelectedUser, SelectedAgencyListings
         isAllSelectedUserListingsLoading, // SelectedUser, isAllSelectedUserListingsLoading
 

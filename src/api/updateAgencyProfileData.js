@@ -21,7 +21,6 @@ const updateAgencyProfileData = async (docID, agencyLogoUrl, agencyDesc) => {
     } catch (error) {
         // error message
         toast.error('Greška prilikom ažuriranja podata')
-        console.error('Error updating document: ', error);
 
         return false
     }

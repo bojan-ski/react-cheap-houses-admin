@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLoaderData, useNavigate, useParams } from 'react-router-dom'
+import { useLoaderData, useNavigate, useParams, useRevalidator } from 'react-router-dom'
 // api
 import addAgency from '../../api/addAgency'
 import approveListing from '../../api/approveListing'
@@ -16,12 +16,14 @@ import { toast } from 'react-toastify'
 
 
 const ApproveListingBtn = () => {
-    const params = useParams()
+    const params = useParams()    
     const navigate = useNavigate()
+    const revalidator = useRevalidator()
+
     const selectedListingDetails = useLoaderData()
     const { userRef, userUsername, userAccountType } = selectedListingDetails
 
-    const { fetchAllPendingListings, fetchAllActiveListings } = useGlobalContext()
+    const { selectedUserID, selectedAgencyData, fetchAllPendingListings, fetchAllActiveListings, fetchAllSelectedUserListings } = useGlobalContext()
 
     const [allAgencies, setAllAgencies] = useState([])
     const [isLoading, setIsLoading] = useState(false)
@@ -34,8 +36,6 @@ const ApproveListingBtn = () => {
     }
 
     useEffect(() => {
-        console.log('useEffect - ApproveListingBtn');
-
         fetchAllAgenciesList()
     }, [])    
 
@@ -77,16 +77,25 @@ const ApproveListingBtn = () => {
 
             if (response) {
                 // re-fetch listings
-                await fetchAllPendingListings()
-                await fetchAllActiveListings()
+                const pageRefresh = window.location.pathname.split('/')[1]
+
+                if(selectedUserID && pageRefresh == 'korisnici') await fetchAllSelectedUserListings(0, selectedUserID)
+
+                if(selectedAgencyData?.data?.agencyID && pageRefresh == 'agencije') await fetchAllSelectedUserListings(0, selectedAgencyData?.data?.agencyID)
+
+                if(pageRefresh == 'oglasi_na_cekanju'){
+                    await fetchAllActiveListings()
+                    await fetchAllPendingListings()                    
+                }
+
+                //revalidate react loader
+                revalidator.revalidate()
 
                 // success message
                 toast.success('Oglas je odobren')
 
                 // redirect user
                 setTimeout(() => navigate(`/${backPath}`), 2000)
-                // setTimeout(() => navigate('/oglasi_na_cekanju'), 2500)
-                // setTimeout(()=> window.location.href ='/aktivni_oglasi',2000)
 
                 //scroll to top
                 scrollToTop()
@@ -94,7 +103,7 @@ const ApproveListingBtn = () => {
         }
 
         setIsLoading(false)
-    }
+    }    
 
     return (
         <button className="btn btn-success me-3" onClick={handleApproveListing} disabled={isLoading}>

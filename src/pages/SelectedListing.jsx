@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom"
 // api funcs
 import fetchSelectedDataFromFirebase from "../api/fetchSelectedDataFromFirebase.js";

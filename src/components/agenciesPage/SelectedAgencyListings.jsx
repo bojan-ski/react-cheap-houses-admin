@@ -12,7 +12,7 @@ const SelectedAgencyListings = () => {
     return (
         <>
             <h2 className="fw-bold text-center mb-4">
-                Svi oglasi {selectedAgencyData.data.agencyName}
+                Svi oglasi {selectedAgencyData?.data?.agencyName}
             </h2>
 
             <AllListingsContainer listingsList={allSelectedUserListings} />

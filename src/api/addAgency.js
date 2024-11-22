@@ -9,8 +9,6 @@ const addAgency = async (newAgencyData) => {
 
         return true
     } catch (error) {
-        console.error(error);
-
         return false
     }
 }

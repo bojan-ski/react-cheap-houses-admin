@@ -7,8 +7,8 @@ import DeleteListingBtn from './DeleteListingBtn'
 
 const AccountDetails = () => {
     const selectedListingDetails = useLoaderData()
-    const { userRef, userUsername, userEmail, userAccountType, listingStatus } = selectedListingDetails
-
+    const { userRef, userUsername, userEmail, userAccountType, listingStatus } = selectedListingDetails    
+    
     return (
         <div className="row">
             <div className="col-12 col-lg-6 mb-3">
