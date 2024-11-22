@@ -14,11 +14,7 @@ const AllActiveListings = () => {
 
     // Fetch the first page on mount
     useEffect(() => {
-        console.log('All Active Listings page - useEffect');
-
-        if (allActiveListings.length == 0) {
-            fetchAllActiveListings();
-        }
+        if (allActiveListings.length == 0) fetchAllActiveListings();
     }, [])
 
     return (

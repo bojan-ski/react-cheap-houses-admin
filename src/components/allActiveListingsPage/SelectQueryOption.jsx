@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 // context
 import { useGlobalContext } from '../../context';
 // components
@@ -9,10 +9,8 @@ import { FaFilter, FaSearch } from "react-icons/fa";
 
 
 const SelectQueryOption = () => {
-    const { fetchAllActiveListings, setUserQueryParameter, setDisableOption } = useGlobalContext()
-
-    const [adminSelectQueryOption, setAdminSelectQueryOption] = useState('search')
-
+    const { adminSelectQueryOption, setAdminSelectQueryOption, fetchAllActiveListings, setUserQueryParameter, setDisableOption } = useGlobalContext()  
+     
     const handleReset = () => {
         setDisableOption(false)
 

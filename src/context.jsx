@@ -68,6 +68,7 @@ export const AppProvider = ({ children }) => {
     const { listings: allActiveListings, fetchListings: fetchAllActiveListings, page: curActiveListingsPage, isLoading: isActiveListingsLoading } = useFetchAllListingsData(itemsPerActiveListingsPage, 'active');
 
     // search and filter option
+    const [adminSelectQueryOption, setAdminSelectQueryOption] = useState('search')
     const [userQueryParameter, setUserQueryParameter] = useState()
     const [disableOption, setDisableOption] = useState(false)
 
@@ -120,6 +121,8 @@ export const AppProvider = ({ children }) => {
         fetchAllActiveListings, // AllActiveListings, ApproveListingBtn, DeleteListingBtn, SelectQueryOption, ListingsSearchOption, ListingsFilterOptions, 
         curActiveListingsPage, // AllActiveListings
         isActiveListingsLoading, // AllActiveListings
+        adminSelectQueryOption, // SelectQueryOption
+        setAdminSelectQueryOption, // SelectQueryOption
         userQueryParameter, // AllActiveListings, ListingsSearchOption, ListingsFilterOptions, FilterOptions
         setUserQueryParameter, // SelectQueryOption, ListingsSearchOption, FilterOptions
         disableOption, // ListingsSearchOption, ListingsFilterOptions, FilterOptions

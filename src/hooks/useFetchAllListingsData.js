@@ -13,8 +13,6 @@ const useFetchAllListingsData = (itemsPerPage, listingsStatus) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const fetchListings = useCallback(async (pageNumber = 0, userQueryParameter = '', reset = false) => {  
-        console.log('fetchListings');
-
         setIsLoading(true);   
         
         let updatedSnapshots = pageSnapshots;
@@ -89,14 +87,10 @@ const useFetchAllListingsData = (itemsPerPage, listingsStatus) => {
             setPage(pageNumber);
         } catch (error) {
             //error message
-            toast.error('Greška prilikom prikazivanja svi objavljenih oglasa, molimo Vas probajte ponovo')
-
-            console.log(error);            
+            toast.error('Greška prilikom prikazivanja svi objavljenih oglasa, molimo Vas probajte ponovo')          
         }
 
         setIsLoading(false)
-
-         // console.log(pageSnapshots);
         
     }, [page, itemsPerPage, pageSnapshots])
 

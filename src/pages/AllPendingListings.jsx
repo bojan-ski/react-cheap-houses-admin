@@ -13,14 +13,8 @@ const AllPendingListings = () => {
 
     // Fetch the first page on mount
     useEffect(() => {
-        console.log('All Pending Listings page - useEffect');
-
-        if (allPendingListings.length == 0) {
-            fetchAllPendingListings();
-        }
+        if (allPendingListings.length == 0) fetchAllPendingListings();
     }, [])
-
-    // console.log(allPendingListings);
 
     return (
         <div className="pending-listings-page my-5">
@@ -29,7 +23,7 @@ const AllPendingListings = () => {
 
             <div className="container">
                 {!allPendingListings || allPendingListings == 0 ? (
-                    <NoDataAvailableMessage text='novih oglasa koje čekaju validaciju' />
+                    <NoDataAvailableMessage text='novih oglasa koje čekaju odobrenje' />
                 ) : (
                     <>
                         <AllListingsContainer listingsList={allPendingListings} />
