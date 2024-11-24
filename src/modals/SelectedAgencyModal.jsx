@@ -35,7 +35,7 @@ const SelectedAgencyModal = () => {
         const { files } = e.target;
 
         if (files[0].size > import.meta.env.VITE_MAX_IMAGE_SIZE) {
-            toast.error("Logo mora biti manja od 1MB.");
+            toast.warning("Logo mora biti manja od 1MB.");
         } else {
             setAgencyLogo(files[0]);
         }
@@ -140,7 +140,7 @@ const SelectedAgencyModal = () => {
                                             onMutate={handleAddAgencyLogo}
                                             inputId="agencyLogo"
                                             handleRemoveImage={handleRemoveAgencyLogo}
-                                            className="rounded-4"
+                                            className="rounded-4 ms-2"
                                             height='100px'
                                             width='100px'
                                         />

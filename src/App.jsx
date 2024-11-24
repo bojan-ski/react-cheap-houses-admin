@@ -97,53 +97,53 @@ const router = createBrowserRouter([
       },
       // {
       //   path: '/korisnici',
-      //   element: <PrivateRoute><Users /></PrivateRoute>,
+      //   element: <Users />,
       // },
       // {
       //   path: '/korisnici/:id',
-      //   element: <PrivateRoute><SelectedUser /></PrivateRoute>,
+      //   element: <SelectedUser />,
       //   loader: selectedUserLoader
       // },
       // {
       //   path: '/korisnici/:id/:id',
-      //   element: <PrivateRoute><SelectedListing /></PrivateRoute>,
+      //   element: <SelectedListing />,
       //   loader: selectedListingLoader
       // },
       // {
       //   path: '/oglasi_na_cekanju',
-      //   element: <PrivateRoute><AllPendingListings /></PrivateRoute>,
+      //   element: <AllPendingListings />,
       // },
       // {
       //   path: '/oglasi_na_cekanju/:id',
-      //   element: <PrivateRoute><SelectedListing /></PrivateRoute>,
+      //   element: <SelectedListing />,
       //   loader: selectedListingLoader
       // },
       // {
       //   path: '/aktivni_oglasi',
-      //   element: <PrivateRoute><AllActiveListings /></PrivateRoute>,
+      //   element: <AllActiveListings />,
       // },
       // {
       //   path: '/aktivni_oglasi/:id',
-      //   element: <PrivateRoute><SelectedListing /></PrivateRoute>,
+      //   element: <SelectedListing />,
       //   loader: selectedListingLoader
       // },
       // {
       //   path: '/agencije',
-      //   element: <PrivateRoute><Agencies /></PrivateRoute>,
+      //   element: <Agencies />,
       //   loader: allAgenciesLoader
       // },
       // {
       //   path: '/agencije/:id',
-      //   element: <PrivateRoute><SelectedListing /></PrivateRoute>,
+      //   element: <SelectedListing />,
       //   loader: selectedListingLoader
       // },
       // {
       //   path: '/blog',
-      //   element: <PrivateRoute><Blog /></PrivateRoute>,
+      //   element: <Blog />,
       // },
       // {
       //   path: '/blog/:id',
-      //   element: <PrivateRoute><SelectedBlogPost /></PrivateRoute>,
+      //   element: <SelectedBlogPost />,
       //   loader: selectedBlogPostLoader
       // },
     ]

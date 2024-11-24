@@ -6,10 +6,13 @@ import fetchAllAgencies from '../api/fetchAllAgencies';
 import PageHeader from '../components/PageHeader';
 import NoDataAvailableMessage from '../components/NoDataAvailableMessage';
 import AgenciesContainer from '../components/agenciesPage/AgenciesContainer';
+import { auth } from '../firebase.config';
 
 
 // LOADER
-export const loader = async () => {
+export const loader = async () => {   
+    if(!auth?.currentUser) return []
+
     const allAgencies = await fetchAllAgencies()
 
     return allAgencies

@@ -14,7 +14,7 @@ import { toast } from 'react-toastify'
 const Login = () => {
   const { userData } = useGlobalContext()
 
-  if (userData.isLoggedIn) return <Navigate to='/korisnici' />
+  if (userData?.isLoggedIn) return <Navigate to='/korisnici' />
 
   const navigate = useNavigate()
 
