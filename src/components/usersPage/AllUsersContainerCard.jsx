@@ -20,7 +20,7 @@ const AllUsersContainerCard = ({ appUserData }) => {
                 {accountType}
             </td>
             <td className="text-center">
-                <Link to={`/korisnici/${appUserData.userID}`} className="btn btn-success">
+                <Link to={`/korisnici/${appUserData.userID}`} className="btn bg-orange-hover text-white">
                     Detalji
                 </Link>
             </td>
