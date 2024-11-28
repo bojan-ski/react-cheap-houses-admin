@@ -87,7 +87,7 @@ const useFetchAllListingsData = (itemsPerPage, listingsStatus) => {
             setPage(pageNumber);
         } catch (error) {
             //error message
-            toast.error('Greška prilikom prikazivanja svi objavljenih oglasa, molimo Vas probajte ponovo')          
+            toast.error('Greška prilikom prikazivanja svi objavljenih oglasa')          
         }
 
         setIsLoading(false)

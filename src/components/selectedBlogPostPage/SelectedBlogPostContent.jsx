@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 const SelectedBlogPostContent = ({ selectedBlogPost }) => {
     return (
         <section className='selected-blog-post-content rounded-4 bg-white p-4'>

@@ -1,3 +1,4 @@
+import React from 'react'
 // context
 import { useGlobalContext } from "../context"
 // components

@@ -22,7 +22,7 @@ const fetchAllAgencies = async () => {
         return allAgencies;
     } catch (error) {
         // Error message
-        toast.error('Greška prilikom prikazivanja svih agencija, molimo Vas probajte ponovo');
+        toast.error('Greška prilikom prikazivanja svih agencija');
 
         return [];
     }

@@ -1,3 +1,4 @@
+import React from 'react'
 import { useRouteError } from "react-router-dom"
 // components
 import Error from "../components/errorPage/Error.jsx"

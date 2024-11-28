@@ -12,7 +12,7 @@ const postNewBlogPost = async (newBlogPostData) => {
         return true
     } catch (error) {
         // error message
-        toast.error('Greška prilikom objavljivanja Vašeg Blog post-a, molimo Vas probajte ponovo')
+        toast.error('Greška prilikom objavljivanja Blog post-a')
 
         return false
     }

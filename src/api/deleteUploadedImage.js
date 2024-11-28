@@ -16,7 +16,7 @@ const deleteUploadedImage = async (imageUrl) => {
         await deleteObject(storageRef);
     } catch (error) {
         //error message
-        toast.error('Greška prilikom uklanjanja slike/slika, molimo Vas probajte ponovo')
+        toast.error('Greška prilikom uklanjanja slike/slika')
     }
 }
 

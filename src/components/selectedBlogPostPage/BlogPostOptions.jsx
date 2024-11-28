@@ -4,6 +4,7 @@ import { useLoaderData, useParams } from 'react-router-dom'
 import BackButton from '../BackButton'
 import DeleteBlogPost from './DeleteBlogPost'
 
+
 const BlogPostOptions = () => {
     const selectedBlogPost = useLoaderData()
     const params = useParams() 

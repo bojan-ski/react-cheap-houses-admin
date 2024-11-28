@@ -1,11 +1,10 @@
+import React from 'react'
 import { Link, NavLink } from "react-router-dom"
 // data
 import appNavigationLinks from "../../../data/appNavigationLinks.js"
 // React Icons
-import { BsHouseHeart } from "react-icons/bs"
 import { IoReorderThreeOutline } from "react-icons/io5"
-
-
+// app assets
 import headerLogo from '../../../assets/header-assets/jeftine_kuce_logo_text_whit_small.png'
 
 

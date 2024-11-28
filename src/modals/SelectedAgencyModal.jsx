@@ -167,8 +167,6 @@ const SelectedAgencyModal = () => {
                                         rows={4}
                                         minLength={10}
                                         maxLength={220}
-                                        // value={selectedAgencyData?.data?.agencyDescription || ''}
-                                        // defaultValue={selectedAgencyData?.data?.agencyDescription || ''}
                                         value={agencyDesc}
                                         onMutate={e => setAgencyDesc(e.target.value)}
                                         disabled={isLoading}
