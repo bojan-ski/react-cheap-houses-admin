@@ -6,6 +6,7 @@ import PageHeader from '../components/PageHeader'
 import NoDataAvailableMessage from '../components/NoDataAvailableMessage'
 import NewsletterSubscribersContainer from '../components/newsletterSubscribersPage/NewsletterSubscribersContainer'
 import Pagination from '../components/Pagination'
+import DownloadSubscribersData from '../components/newsletterSubscribersPage/DownloadSubscribersData'
 
 
 const NewsletterSubscribers = () => {
@@ -27,6 +28,8 @@ const NewsletterSubscribers = () => {
                     <NoDataAvailableMessage text='pretplatnika' />
                 ) : (
                     <>
+                        <DownloadSubscribersData />
+
                         <NewsletterSubscribersContainer allNewsletterSubscribers={allNewsletterSubscribers} />
 
                         <Pagination fetchData={fetchAllNewsletterSubscribers} page={curSubscribersPage} isLoading={isNewsletterSubscribersLoading} />

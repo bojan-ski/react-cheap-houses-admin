@@ -1,5 +1,6 @@
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
+
 // Store images in Firebase
 const storeUploadedImage = async (storageFile, uploadedImage, newBlogPostTitle, currentDate) => {
     return new Promise((resolve, reject) => {

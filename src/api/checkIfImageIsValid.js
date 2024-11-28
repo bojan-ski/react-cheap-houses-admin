@@ -10,7 +10,6 @@ const checkIfImageIsValid = async (storageName, image, title, date) => {
             return await storeUploadedImage(storageName, image, title, date);
         } catch (error) {
             toast.error(`Greška prilikom upload-a slike: ${image.name}`);
-            console.error(error);
         }
     }
     return null;
