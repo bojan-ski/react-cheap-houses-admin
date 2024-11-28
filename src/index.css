@@ -132,15 +132,9 @@ textarea {
   width: 100%;
 }
 
-@media (min-width: 768px) {
-  #header .navbar .navbar-nav {
-    width: 90%;
-  }
-}
-
 @media (min-width: 992px) {
   #header .navbar .navbar-nav {
-    width: 70%;
+    width: 80%;
   }
 }
 
@@ -506,6 +500,12 @@ main {
 /* SelectedBlogPostContent component */
 .selected-blog-post-content{
   box-shadow: var(--light-dark-shadow);
+}
+
+/* NEWSLETTER SUBSCRIBERS PAGE */
+/* NewsletterSubscribersContainer component */
+.newsletter-subscribers-page .table thead tr th{
+  background-color: var(--orange-color);
 }
 
 /* ERROR PAGE */

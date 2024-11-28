@@ -14,13 +14,13 @@ const ProfileDetails = () => {
             </h2>
 
             <p className='mb-1 fw-bold text-muted'>
-                ID korisnika:<span className='ms-2 text-dark capitalize'>{params.id}</span>
+                ID korisnika:<span className='ms-2 text-dark'>{params.id}</span>
             </p>
             <p className='mb-1 fw-bold text-muted'>
-                Korisničko ime:<span className='ms-2 text-dark capitalize'>{username}</span>
+                Korisničko ime:<span className='ms-2 text-dark'>{username}</span>
             </p>
             <p className='mb-1 fw-bold text-muted'>
-                Elektronska pošta:<span className='ms-2 text-dark capitalize'>{email}</span>
+                Elektronska pošta:<span className='ms-2 text-dark'>{email}</span>
             </p>
             <p className='mb-1 fw-bold text-muted'>
                 Tip naloga:<span className='ms-2 text-dark capitalize'>{accountType}</span>

@@ -21,9 +21,6 @@ const Auth = () => {
                     <>
                         <p className='d-none d-md-block mb-0 fw-bold text-muted me-3'>
                             Dobrodošli Admin
-                            {/* <span className='ms-2 text-dark'>
-                                {userData.userEmail}
-                            </span> */}
                         </p>
 
                         <LogOutBtn />

@@ -4,6 +4,7 @@ const appNavigationLinks = [
     {label: 'Aktivni Oglasi', href: '/aktivni_oglasi'},
     {label: 'Agencije', href: '/agencije'},
     {label: 'Blog', href: '/blog'},
+    {label: 'Pretplatnici', href: '/pretplatnici'},
 ]
 
 export default appNavigationLinks

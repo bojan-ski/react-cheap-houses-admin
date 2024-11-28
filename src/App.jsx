@@ -14,6 +14,7 @@ import SelectedListing from "./pages/SelectedListing.jsx"
 import Agencies from "./pages/Agencies.jsx"
 import Blog from "./pages/Blog.jsx"
 import SelectedBlogPost from "./pages/SelectedBlogPost.jsx"
+import NewsletterSubscribers from "./pages/NewsletterSubscribers.jsx"
 import ErrorPage from "./pages/ErrorPage.jsx"
 
 // LOADERS
@@ -68,84 +69,32 @@ const router = createBrowserRouter([
             path: 'aktivni_oglasi/:id',
             element: <SelectedListing />,
             loader: selectedListingLoader
-
           },
           {
             path: 'agencije',
             element: <Agencies />,
             loader: allAgenciesLoader
-
           },
           {
             path: 'agencije/:id',
             element: <SelectedListing />,
             loader: selectedListingLoader
-
           },
           {
             path: 'blog',
             element: <Blog />
-
           },
           {
             path: 'blog/:id',
             element: <SelectedBlogPost />,
             loader: selectedBlogPostLoader
-
+          },
+          {
+            path: 'pretplatnici',
+            element: <NewsletterSubscribers />
           },
         ],
       },
-      // {
-      //   path: '/korisnici',
-      //   element: <Users />,
-      // },
-      // {
-      //   path: '/korisnici/:id',
-      //   element: <SelectedUser />,
-      //   loader: selectedUserLoader
-      // },
-      // {
-      //   path: '/korisnici/:id/:id',
-      //   element: <SelectedListing />,
-      //   loader: selectedListingLoader
-      // },
-      // {
-      //   path: '/oglasi_na_cekanju',
-      //   element: <AllPendingListings />,
-      // },
-      // {
-      //   path: '/oglasi_na_cekanju/:id',
-      //   element: <SelectedListing />,
-      //   loader: selectedListingLoader
-      // },
-      // {
-      //   path: '/aktivni_oglasi',
-      //   element: <AllActiveListings />,
-      // },
-      // {
-      //   path: '/aktivni_oglasi/:id',
-      //   element: <SelectedListing />,
-      //   loader: selectedListingLoader
-      // },
-      // {
-      //   path: '/agencije',
-      //   element: <Agencies />,
-      //   loader: allAgenciesLoader
-      // },
-      // {
-      //   path: '/agencije/:id',
-      //   element: <SelectedListing />,
-      //   loader: selectedListingLoader
-      // },
-      // {
-      //   path: '/blog',
-      //   element: <Blog />,
-      // },
-      // {
-      //   path: '/blog/:id',
-      //   element: <SelectedBlogPost />,
-      //   loader: selectedBlogPostLoader
-      // },
     ]
   }
 ])

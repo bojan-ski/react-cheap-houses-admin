@@ -7,6 +7,7 @@ import useFetchAllAppUsersData from "./hooks/useFetchAllAppUsersData";
 import useFetchAllListingsData from "./hooks/useFetchAllListingsData";
 import useFetchBlogPageData from "./hooks/useFetchBlogPageData";
 import useFetchSelectedUserListings from "./hooks/useFetchSelectedUserListings";
+import useFetchAllNewsletterSubscribers from "./hooks/useFetchAllNewsletterSubscribers";
 
 
 const AppContext = createContext()
@@ -49,7 +50,7 @@ export const AppProvider = ({ children }) => {
     // search feature - state
     const [userSearchTerm, setUserSearchTerm] = useState('')
     const [userDisableSearch, setUserDisableSearch] = useState(false)
-    
+
     // SELECTED USER PAGE
     const [selectedUserID, setSelectedUserID] = useState('')
 
@@ -81,8 +82,12 @@ export const AppProvider = ({ children }) => {
     const [blogSearchTerm, setBlogSearchTerm] = useState('')
 
     // blog list
-    const itemsPerPage = 3;
-    const { blogPosts, fetchBlogPosts, curBlogPage, isLoading: isBlogsPageLoading } = useFetchBlogPageData(itemsPerPage)
+    const itemsPerBlogPage = 3;
+    const { blogPosts, fetchBlogPosts, curBlogPage, isLoading: isBlogsPageLoading } = useFetchBlogPageData(itemsPerBlogPage)
+
+    // NEWSLETTER SUBSCRIBERS PAGE
+    const itemsPerSubscribersPage = 4;
+    const { allNewsletterSubscribers, fetchAllNewsletterSubscribers, curSubscribersPage, isLoading: isNewsletterSubscribersLoading } = useFetchAllNewsletterSubscribers(itemsPerSubscribersPage);
 
     return <AppContext.Provider value={{
         userData, // Auth, Login
@@ -141,6 +146,12 @@ export const AppProvider = ({ children }) => {
         fetchBlogPosts, // BlogPostsList, NewBlogPostForm, DeleteBlogPost
         curBlogPage, // BlogPostsList
         isBlogsPageLoading, // BlogPostsList
+
+        // NEWSLETTER SUBSCRIBERS PAGE
+        allNewsletterSubscribers, // NewsletterSubscribers
+        fetchAllNewsletterSubscribers, // NewsletterSubscribers
+        curSubscribersPage, // NewsletterSubscribers
+        isNewsletterSubscribersLoading, // NewsletterSubscribers
     }}>
         {children}
     </AppContext.Provider>
