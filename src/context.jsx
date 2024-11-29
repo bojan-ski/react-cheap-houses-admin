@@ -22,8 +22,6 @@ export const AppProvider = ({ children }) => {
 
     // check if user is logged
     useEffect(() => {
-        console.log('context - onAuthStateChanged');
-
         onAuthStateChanged(auth, async (user) => {
             if (user) {
                 auth.currentUser ? (
