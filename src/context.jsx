@@ -80,7 +80,7 @@ export const AppProvider = ({ children }) => {
     const [blogSearchTerm, setBlogSearchTerm] = useState('')
 
     // blog list
-    const itemsPerBlogPage = 3;
+    const itemsPerBlogPage = 6;
     const { blogPosts, fetchBlogPosts, curBlogPage, isLoading: isBlogsPageLoading } = useFetchBlogPageData(itemsPerBlogPage)
 
     // NEWSLETTER SUBSCRIBERS PAGE

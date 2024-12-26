@@ -484,12 +484,34 @@ main {
 }
 
 /* BlogPostsCard component */
-.blog-page .blog-post-card .blog-post-card-main{
-  height: 220px;
-}
-
 .blog-page .blog-post-card {
   box-shadow: var(--light-dark-shadow);
+}
+
+.blog-page .blog-post-card .blog-post-card-main{
+  height: 500px;
+}
+
+@media (min-width: 1200px) {
+  .blog-page .blog-post-card .blog-post-card-main{
+    height: 530px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .blog-page .blog-post-card .blog-post-card-main{
+    height: 500px;
+  }
+}
+
+.blog-page .blog-post-card .blog-post-card-main .blog-post-card-img-container{
+  height: 400px;
+}
+
+.blog-page .blog-post-card .blog-post-card-main .blog-post-card-img-container img{
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 
 /* SELECTED BLOG POST PAGE */
