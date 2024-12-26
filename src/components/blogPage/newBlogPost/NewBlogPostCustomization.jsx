@@ -13,13 +13,6 @@ const NewBlogPostCustomization = ({ setCustomEntry }) => {
                     </h5>
 
                     <div className="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                        <input type="checkbox" className="btn-check" id="imageOne" autoComplete="off" onChange={e => setCustomEntry(curState => ({
-                            ...curState, imageOne: e.target.checked
-                        }))} />
-                        <label className="btn btn-outline-warning" htmlFor="imageOne">
-                            Dodaj sliku - 1MB max
-                        </label>
-
                         <input type="checkbox" className="btn-check" id="postContentTwo" autoComplete="off" onChange={e => setCustomEntry(curState => ({
                             ...curState, postContentTwo: e.target.checked
                         }))} />

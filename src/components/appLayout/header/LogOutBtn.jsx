@@ -35,7 +35,7 @@ const LogOutBtn = () => {
     }
 
     return (
-        <button type="button" className="logout-btn btn btn-warning text-white" onClick={logOutUser}>
+        <button type="button" className="logout-btn btn btn-danger text-white" onClick={logOutUser}>
             Odjavi se
         </button>
     )

@@ -18,7 +18,7 @@ const NewBlogPostContainer = ({ customEntry }) => {
         const { files } = e.target;
 
         if (files[0].size > import.meta.env.VITE_MAX_IMAGE_SIZE) {
-            toast.error("Slika mora biti manja od 1MB.");
+            toast.warning("Slika mora biti manja od 1MB.");
         } else {
             setUploadedImagesData((prevState) => ({
                 ...prevState,

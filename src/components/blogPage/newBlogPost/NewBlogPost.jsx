@@ -6,7 +6,7 @@ import NewBlogPostContainer from "./NewBlogPostContainer"
 
 const NewBlogPost = () => {
     const [customEntry, setCustomEntry] = useState({
-        imageOne: false,
+        imageOne: true,
         postContentTwo: false,
         imageTwo: false,
         promoOne: false,

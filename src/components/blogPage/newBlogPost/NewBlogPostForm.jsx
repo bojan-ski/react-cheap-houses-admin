@@ -39,6 +39,14 @@ const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleAddImage, hand
 
         setIsLoading(true)
 
+        if (!uploadedImagesData.newBlogPostImgOne) {
+            toast.warning('Slika je potrebna')
+
+            setIsLoading(false)
+
+            return
+        }
+
         const newBlogPostTitle = textFormData.newBlogPostTitle;
         const newBlogPostContentOne = textFormData.newBlogPostContentOne;
         const newBlogPostContentTwo = textFormData.newBlogPostContentTwo.length > 0 ? textFormData.newBlogPostContentTwo : null;
@@ -92,47 +100,32 @@ const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleAddImage, hand
 
             <div className="row mb-5">
                 {/* ROW ITEM ONE */}
-                {customEntry.imageOne ? (
-                    <div className="row">
-                        {/* new blog post - content 1 */}
-                        <div className="col-12 col-xl-6">
-                            <FormTextArea
-                                name="newBlogPostContentOne"
-                                rows={27}
-                                minLength={10}
-                                maxLength={1500}
-                                required={true}
-                                onMutate={handleTextMutate}
-                            />
-                        </div>
 
-                        {/* new blog post - img 1 */}
-                        <div className="col-12 col-xl-6">
-                            <FileInputImage
-                                image={uploadedImagesData.newBlogPostImgOne}
-                                onMutate={(e) => handleAddImage(e, 'newBlogPostImgOne')}
-                                inputId="newBlogPostImgOne"
-                                handleRemoveImage={handleRemoveImage}
-                                className="img-fluid"
-                                height='580px'
-                            />
-                        </div>
+                <div className="row">
+                    {/* new blog post - content 1 */}
+                    <div className="col-12 col-xl-6">
+                        <FormTextArea
+                            name="newBlogPostContentOne"
+                            rows={30}
+                            minLength={10}
+                            maxLength={1500}
+                            required={true}
+                            onMutate={handleTextMutate}
+                        />
                     </div>
-                ) : (
-                    <>
-                        {/* new blog post - content 1 */}
-                        <div className="col-12">
-                            <FormTextArea
-                                name="newBlogPostContentOne"
-                                rows={15}
-                                minLength={10}
-                                maxLength={1500}
-                                required={true}
-                                onMutate={handleTextMutate}
-                            />
-                        </div>
-                    </>
-                )}
+
+                    {/* new blog post - img 1 */}
+                    <div className="col-12 col-xl-6">
+                        <FileInputImage
+                            image={uploadedImagesData.newBlogPostImgOne}
+                            onMutate={(e) => handleAddImage(e, 'newBlogPostImgOne')}
+                            inputId="newBlogPostImgOne"
+                            handleRemoveImage={handleRemoveImage}
+                            className="img-fluid"
+                            height='580px'
+                        />
+                    </div>
+                </div>
 
                 {/* ROW ITEM TWO */}
                 {(customEntry.imageTwo || customEntry.postContentTwo) && (
@@ -187,7 +180,7 @@ const NewBlogPostForm = ({ customEntry, uploadedImagesData, handleAddImage, hand
                                 <div className="col-12 col-xl-6 order-1 order-xl-2">
                                     <FormTextArea
                                         name="newBlogPostContentTwo"
-                                        rows={27}
+                                        rows={30}
                                         minLength={10}
                                         maxLength={1500}
                                         required={false}
